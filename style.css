@@ -126,14 +126,35 @@ body {
 }
 
 .flag.th {
-    background: linear-gradient(to bottom, #ed1c24 33%, #ffffff 33%, #ffffff 66%, #241f4f 66%);
+    background: linear-gradient(to bottom, 
+        #ed1c24 0%, #ed1c24 20%, 
+        #ffffff 20%, #ffffff 40%, 
+        #241f4f 40%, #241f4f 60%, 
+        #ffffff 60%, #ffffff 80%, 
+        #ed1c24 80%, #ed1c24 100%);
 }
 
 .flag.us {
     background: 
-        linear-gradient(to bottom, #b22234 0%, #b22234 7.7%, #ffffff 7.7%, #ffffff 15.4%, #b22234 15.4%),
-        linear-gradient(to right, #3c3b6e 0%, #3c3b6e 40%, transparent 40%);
-    background-size: 100% 100%, 100% 100%;
+        /* Blue canton */
+        linear-gradient(to right, #3c3b6e 0%, #3c3b6e 40%, transparent 40%),
+        /* Red and white stripes */
+        repeating-linear-gradient(to bottom,
+            #b22234 0%, #b22234 7.7%,
+            #ffffff 7.7%, #ffffff 15.4%);
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.flag.us::after {
+    content: '★';
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 8px;
+    text-shadow: 0 0 2px rgba(0,0,0,0.5);
 }
 
 .language-dropdown {
