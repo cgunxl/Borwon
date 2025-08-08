@@ -143,6 +143,20 @@
 
             <!-- Free (No-signup) AI Tools Tab -->
             <div id="free-tab" class="tab-content active">
+                <div class="ai-categories">
+                    <button class="chip active" data-filter="all" onclick="filterAITools('all')" data-i18n-th="ทั้งหมด" data-i18n-en="All">ทั้งหมด</button>
+                    <button class="chip" data-filter="search" onclick="filterAITools('search')" data-i18n-th="ค้นหา/ถามตอบ" data-i18n-en="Search/Q&A">ค้นหา/ถามตอบ</button>
+                    <button class="chip" data-filter="chat" onclick="filterAITools('chat')" data-i18n-th="แชต" data-i18n-en="Chat">แชต</button>
+                    <button class="chip" data-filter="image" onclick="filterAITools('image')" data-i18n-th="รูปภาพ" data-i18n-en="Image">รูปภาพ</button>
+                    <button class="chip" data-filter="video" onclick="filterAITools('video')" data-i18n-th="วิดีโอ" data-i18n-en="Video">วิดีโอ</button>
+                    <button class="chip" data-filter="voice" onclick="filterAITools('voice')" data-i18n-th="เสียง" data-i18n-en="Voice">เสียง</button>
+                    <button class="chip" data-filter="presentation" onclick="filterAITools('presentation')" data-i18n-th="พรีเซนต์/สไลด์" data-i18n-en="Presentation">พรีเซนต์/สไลด์</button>
+                    <button class="chip" data-filter="translation" onclick="filterAITools('translation')" data-i18n-th="แปลภาษา" data-i18n-en="Translation">แปลภาษา</button>
+                    <button class="chip" data-filter="drawing" onclick="filterAITools('drawing')" data-i18n-th="วาด/สเก็ตช์" data-i18n-en="Drawing">วาด/สเก็ตช์</button>
+                    <button class="chip" data-filter="design" onclick="filterAITools('design')" data-i18n-th="ออกแบบ" data-i18n-en="Design">ออกแบบ</button>
+                    <button class="chip" data-filter="writing" onclick="filterAITools('writing')" data-i18n-th="การเขียน" data-i18n-en="Writing">การเขียน</button>
+                    <button class="chip" data-filter="transcription" onclick="filterAITools('transcription')" data-i18n-th="ถอดเสียง" data-i18n-en="Transcription">ถอดเสียง</button>
+                </div>
                 <div class="ai-tools-grid" id="free-tools-grid">
                     <!-- START: No-signup tools -->
                     <!-- 1. Perplexity AI -->
@@ -151,7 +165,7 @@
                             <h3>Perplexity AI</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="ถามตอบ / หาข้อมูลทันใจ ใช้แทน Google" data-i18n-en="AI Chat, Search, Q&A — Find info, summarize, synthesize">ถามตอบ / หาข้อมูลทันใจ ใช้แทน Google</p>
+                        <p class="tool-description" data-i18n-th="ถามตอบ/หาข้อมูลทันใจ ใช้แทน Google ได้ในหลายกรณี พร้อมสรุปประเด็นสำคัญแบบอ้างอิงแหล่งที่มา. เหมาะสำหรับค้นคว้าเร็วๆ และต่อยอดเป็นโน้ตหรือรายงานได้ทันที." data-i18n-en="Fast Q&A and research with cited sources; often a Google replacement. Great for quick investigations, fact checks, and turning results into notes or reports.">ถามตอบ/หาข้อมูลทันใจ ใช้แทน Google ได้ในหลายกรณี พร้อมสรุปประเด็นสำคัญแบบอ้างอิงแหล่งที่มา. เหมาะสำหรับค้นคว้าเร็วๆ และต่อยอดเป็นโน้ตหรือรายงานได้ทันที.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักวิจัย, นักเรียน, คนทำงาน" data-i18n-en="Best for: Researchers, Students, Working professionals">เหมาะกับ: นักวิจัย, นักเรียน, คนทำงาน</p>
                         <a href="https://www.perplexity.ai" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -162,7 +176,7 @@
                             <h3>You.com</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="รวมหลาย AI ในเว็บเดียว เช่น Code / Write / Chat" data-i18n-en="Many AI features in one website, like Code / Write / Chat">รวมหลาย AI ในเว็บเดียว เช่น Code / Write / Chat</p>
+                        <p class="tool-description" data-i18n-th="รวมหลายความสามารถไว้ในเว็บเดียว เช่น Code, Write, และ Chat. ค้นหาข้อมูลพร้อมสรุป และมีเครื่องมือช่วยเขียน/แก้โค้ดในตัว ลดเวลาทำงานซ้ำๆ." data-i18n-en="Many AI features in one place: Code, Write, and Chat. Search with summaries plus built-in coding and writing helpers to reduce repetitive work.">รวมหลายความสามารถไว้ในเว็บเดียว เช่น Code, Write, และ Chat. ค้นหาข้อมูลพร้อมสรุป และมีเครื่องมือช่วยเขียน/แก้โค้ดในตัว ลดเวลาทำงานซ้ำๆ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: โปรแกรมเมอร์, นักเขียน" data-i18n-en="Best for: Programmers, Writers">เหมาะกับ: โปรแกรมเมอร์, นักเขียน</p>
                         <a href="https://you.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -173,7 +187,7 @@
                             <h3>Magic Studio</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="ลบฉากหลัง ปรับภาพอัตโนมัติ ใช้ทำ content ขายของ" data-i18n-en="Remove background, AI edits">ลบฉากหลัง ปรับภาพอัตโนมัติ ใช้ทำ content ขายของ</p>
+                        <p class="tool-description" data-i18n-th="ลบฉากหลังและตกแต่งภาพแบบอัตโนมัติ เหมาะกับภาพสินค้า/คน ใช้ทำโพสต์ขายของและโฆษณาได้ทันใจ. รองรับงานพื้นฐานได้ดีแม้ไม่มีทักษะตัดต่อภาพ." data-i18n-en="Auto background removal and smart retouching for products and people. Great for quick e‑commerce posts and ads; beginner‑friendly even without design skills.">ลบฉากหลังและตกแต่งภาพแบบอัตโนมัติ เหมาะกับภาพสินค้า/คน ใช้ทำโพสต์ขายของและโฆษณาได้ทันใจ. รองรับงานพื้นฐานได้ดีแม้ไม่มีทักษะตัดต่อภาพ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักขายออนไลน์, SME" data-i18n-en="Best for: Online sellers, SMEs">เหมาะกับ: นักขายออนไลน์, SME</p>
                         <a href="https://magicstudio.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -184,7 +198,7 @@
                             <h3>TTSMP3</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="พิมพ์แล้วพูดได้ทันที เหมาะกับทำคลิป TikTok" data-i18n-en="Instant voice from text">พิมพ์แล้วพูดได้ทันที เหมาะกับทำคลิป TikTok</p>
+                        <p class="tool-description" data-i18n-th="พิมพ์แล้วพูดได้ทันที ปรับความเร็ว โทนเสียง และสำเนียงได้ เหมาะสำหรับทำคลิปสั้น/คำบรรยายเสียง. ใช้งานง่าย ไม่ต้องสมัคร." data-i18n-en="Instant text‑to‑speech with speed, tone, and accent options. Perfect for short clips and quick voiceovers; easy to use without signup.">พิมพ์แล้วพูดได้ทันที ปรับความเร็ว โทนเสียง และสำเนียงได้ เหมาะสำหรับทำคลิปสั้น/คำบรรยายเสียง. ใช้งานง่าย ไม่ต้องสมัคร.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: YouTuber, TikToker" data-i18n-en="Best for: YouTubers, TikTokers">เหมาะกับ: YouTuber, TikToker</p>
                         <a href="https://ttsmp3.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -195,7 +209,7 @@
                             <h3>TTSMaker</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="พากย์เสียงฟรี เสียง TikTok, YouTube" data-i18n-en="Free voiceover, TikTok, YouTube">พากย์เสียงฟรี เสียง TikTok, YouTube</p>
+                        <p class="tool-description" data-i18n-th="เว็บไซต์พากย์เสียงฟรี เลือกเสียงได้หลายภาษา/หลายสไตล์ ใช้ทำวิดีโอรีวิวหรืออธิบายคอนเทนต์. มีเสียงแนว TikTok และ YouTube ให้เลือก." data-i18n-en="Free voiceover site with many languages and styles. Useful for review videos and explainers; includes popular TikTok/YouTube‑style voices.">เว็บไซต์พากย์เสียงฟรี เลือกเสียงได้หลายภาษา/หลายสไตล์ ใช้ทำวิดีโอรีวิวหรืออธิบายคอนเทนต์. มีเสียงแนว TikTok และ YouTube ให้เลือก.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: Content Creator" data-i18n-en="Best for: Content creators">เหมาะกับ: Content Creator</p>
                         <a href="https://ttsmaker.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -206,7 +220,7 @@
                             <h3>Remove.bg</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="ลบพื้นหลังอัตโนมัติ เตรียมภาพสินค้า, คน, AI" data-i18n-en="Auto remove image background">ลบพื้นหลังอัตโนมัติ เตรียมภาพสินค้า, คน, AI</p>
+                        <p class="tool-description" data-i18n-th="ลบพื้นหลังภาพได้ไวและแม่นยำ เหมาะกับการเตรียมภาพสินค้า, โปรไฟล์บุคคล หรือใช้ต่อกับ AI ออกแบบ. ประหยัดเวลาตัดเส้นด้วยมือหลายเท่า." data-i18n-en="Fast and accurate background removal for product shots, profile photos, or AI design inputs. Saves tons of manual cut‑out time.">ลบพื้นหลังภาพได้ไวและแม่นยำ เหมาะกับการเตรียมภาพสินค้า, โปรไฟล์บุคคล หรือใช้ต่อกับ AI ออกแบบ. ประหยัดเวลาตัดเส้นด้วยมือหลายเท่า.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: E-commerce, นักขายออนไลน์" data-i18n-en="Best for: E-commerce, Online sellers">เหมาะกับ: E-commerce, นักขายออนไลน์</p>
                         <a href="https://www.remove.bg" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -217,7 +231,7 @@
                             <h3>Cleanup.pictures</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="ลบโลโก้ ลบสิ่งเกะกะออกจากรูปภาพต่างๆ" data-i18n-en="Remove logos, remove objects from images">ลบโลโก้ ลบสิ่งเกะกะออกจากรูปภาพต่างๆ</p>
+                        <p class="tool-description" data-i18n-th="ลบโลโก้ สิ่งเกะกะ หรือคนที่ไม่ต้องการออกจากภาพได้ง่าย เพียงระบายทับ. ใช้เตรียมภาพโฆษณาหรือสร้างภาพก่อน/หลังให้ดูมืออาชีพ." data-i18n-en="Brush away logos, clutter, or unwanted people with ease. Perfect for ads, clean mockups, and professional before/after visuals.">ลบโลโก้ สิ่งเกะกะ หรือคนที่ไม่ต้องการออกจากภาพได้ง่าย เพียงระบายทับ. ใช้เตรียมภาพโฆษณาหรือสร้างภาพก่อน/หลังให้ดูมืออาชีพ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: Photographer, Graphic Designer" data-i18n-en="Best for: Photographers, Graphic designers">เหมาะกับ: Photographer, Graphic Designer</p>
                         <a href="https://cleanup.pictures" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -228,7 +242,7 @@
                             <h3>Craiyon</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="วาดภาพจากข้อความ ทำปก, คอนเทนต์ภาพ" data-i18n-en="Turn sketch to image">วาดภาพจากข้อความ ทำปก, คอนเทนต์ภาพ</p>
+                        <p class="tool-description" data-i18n-th="พิมพ์คำอธิบายเพื่อให้ AI วาดภาพ ใช้ทำปก, แบนเนอร์, หรือไอเดียภาพอย่างรวดเร็ว. เหมาะกับการลองคอนเซ็ปต์ก่อนค่อยเก็บรายละเอียดในโปรแกรมอื่น." data-i18n-en="Type prompts to generate images for covers, banners, and quick concepts. Ideal for brainstorming visuals before refining in other apps.">พิมพ์คำอธิบายเพื่อให้ AI วาดภาพ ใช้ทำปก, แบนเนอร์, หรือไอเดียภาพอย่างรวดเร็ว. เหมาะกับการลองคอนเซ็ปต์ก่อนค่อยเก็บรายละเอียดในโปรแกรมอื่น.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: Blogger, Content Creator" data-i18n-en="Best for: Bloggers, Content creators">เหมาะกับ: Blogger, Content Creator</p>
                         <a href="https://www.craiyon.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -239,7 +253,7 @@
                             <h3>Unscreen</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="ลบพื้นหลังจากวิดีโอแบบอัตโนมัติ ไม่ต้องใช้ green screen" data-i18n-en="Remove video background">ลบพื้นหลังจากวิดีโอแบบอัตโนมัติ ไม่ต้องใช้ green screen</p>
+                        <p class="tool-description" data-i18n-th="ลบพื้นหลังจากวิดีโอโดยไม่ต้องใช้ฉากเขียว เหมาะกับคลิปรีวิว, พรีเซนต์, หรือวิดีโอสั้น. ใช้งานง่ายสำหรับมือใหม่สายวิดีโอ." data-i18n-en="Remove video backgrounds without green screen. Great for reviews, presentations, and short‑form clips; beginner‑friendly for video makers.">ลบพื้นหลังจากวิดีโอโดยไม่ต้องใช้ฉากเขียว เหมาะกับคลิปรีวิว, พรีเซนต์, หรือวิดีโอสั้น. ใช้งานง่ายสำหรับมือใหม่สายวิดีโอ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: Video Editor, YouTuber" data-i18n-en="Best for: Video editors, YouTubers">เหมาะกับ: Video Editor, YouTuber</p>
                         <a href="https://www.unscreen.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -250,7 +264,7 @@
                             <h3>Tome</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="พิมพ์หัวข้อ AI สร้างสไลด์ให้อัตโนมัติทันที" data-i18n-en="Auto-generate slides from AI">พิมพ์หัวข้อ AI สร้างสไลด์ให้อัตโนมัติทันที</p>
+                        <p class="tool-description" data-i18n-th="ใส่หัวข้อหรือสคริปต์ให้ AI ช่วยสร้างสไลด์อัตโนมัติพร้อมรูปภาพ/เลย์เอาต์. ประหยัดเวลาทำพรีเซนต์และได้งานที่ดูสะอาดสวยงามทันที." data-i18n-en="Give a topic/script and get auto‑generated slides with images and layouts. Saves time and yields clean, presentable decks instantly.">ใส่หัวข้อหรือสคริปต์ให้ AI ช่วยสร้างสไลด์อัตโนมัติพร้อมรูปภาพ/เลย์เอาต์. ประหยัดเวลาทำพรีเซนต์และได้งานที่ดูสะอาดสวยงามทันที.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักเรียน, นักธุรกิจ" data-i18n-en="Best for: Students, Business professionals">เหมาะกับ: นักเรียน, นักธุรกิจ</p>
                         <a href="https://tome.app" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -261,7 +275,7 @@
                             <h3>DeepL Translator</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="แปลภาษาแม่นยำ ใช้ทำเว็บหลายภาษา" data-i18n-en="Highly accurate AI translation">แปลภาษาแม่นยำ ใช้ทำเว็บหลายภาษา</p>
+                        <p class="tool-description" data-i18n-th="แปลภาษาได้แม่นยำ เหมาะกับงานที่ต้องการคุณภาพ เช่น เอกสาร, เว็บไซต์, หรือคอนเทนต์เชิงธุรกิจ. รองรับการปรับสำนวนให้เป็นธรรมชาติ." data-i18n-en="High‑quality translations for documents, websites, and business content with natural phrasing control.">แปลภาษาได้แม่นยำ เหมาะกับงานที่ต้องการคุณภาพ เช่น เอกสาร, เว็บไซต์, หรือคอนเทนต์เชิงธุรกิจ. รองรับการปรับสำนวนให้เป็นธรรมชาติ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักแปล, นักธุรกิจ" data-i18n-en="Best for: Translators, Business professionals">เหมาะกับ: นักแปล, นักธุรกิจ</p>
                         <a href="https://www.deepl.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -272,7 +286,7 @@
                             <h3>AutoDraw</h3>
                             <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="วาดเร็วด้วย AI ช่วย ทำโลโก้หรือภาพร่าง" data-i18n-en="Fast AI drawing with help">วาดเร็วด้วย AI ช่วย ทำโลโก้หรือภาพร่าง</p>
+                        <p class="tool-description" data-i18n-th="วาดรูปอย่างรวดเร็วด้วยตัวช่วย AI จับใจความจากสเก็ตช์หยาบแล้วแนะนำรูปทรงที่สวยขึ้น. ใช้ทำโลโก้ง่ายๆ หรือภาพประกอบเบื้องต้นได้ดี." data-i18n-en="Fast sketch‑to‑icon helper that turns rough drawings into clean shapes. Great for quick logos and simple illustrations." >วาดรูปอย่างรวดเร็วด้วยตัวช่วย AI จับใจความจากสเก็ตช์หยาบแล้วแนะนำรูปทรงที่สวยขึ้น. ใช้ทำโลโก้ง่ายๆ หรือภาพประกอบเบื้องต้นได้ดี.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: Designer, เด็ก" data-i18n-en="Best for: Designers, Kids">เหมาะกับ: Designer, เด็ก</p>
                         <a href="https://www.autodraw.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
@@ -290,6 +304,17 @@
 
             <!-- Requires-signup AI Tools Tab -->
             <div id="premium-tab" class="tab-content">
+                <!-- Premium categories chips -->
+                <div class="ai-categories">
+                    <button class="chip active" data-filter="all" onclick="filterAITools('all')" data-i18n-th="ทั้งหมด" data-i18n-en="All">ทั้งหมด</button>
+                    <button class="chip" data-filter="chat" onclick="filterAITools('chat')" data-i18n-th="แชต" data-i18n-en="Chat">แชต</button>
+                    <button class="chip" data-filter="design" onclick="filterAITools('design')" data-i18n-th="ออกแบบ" data-i18n-en="Design">ออกแบบ</button>
+                    <button class="chip" data-filter="image" onclick="filterAITools('image')" data-i18n-th="รูปภาพ" data-i18n-en="Image">รูปภาพ</button>
+                    <button class="chip" data-filter="video" onclick="filterAITools('video')" data-i18n-th="วิดีโอ" data-i18n-en="Video">วิดีโอ</button>
+                    <button class="chip" data-filter="voice" onclick="filterAITools('voice')" data-i18n-th="เสียง" data-i18n-en="Voice">เสียง</button>
+                    <button class="chip" data-filter="transcription" onclick="filterAITools('transcription')" data-i18n-th="ถอดเสียง" data-i18n-en="Transcription">ถอดเสียง</button>
+                    <button class="chip" data-filter="writing" onclick="filterAITools('writing')" data-i18n-th="การเขียน" data-i18n-en="Writing">การเขียน</button>
+                </div>
                 <div class="ai-tools-grid" id="premium-tools-grid">
                     <!-- 1. ChatGPT -->
                     <div class="ai-tool-card premium" data-category="chat">
@@ -297,7 +322,7 @@
                             <h3>ChatGPT</h3>
                             <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="AI Chat, Coding, เขียน, Research" data-i18n-en="AI Chat, Coding, Writing, Research">AI Chat, Coding, เขียน, Research</p>
+                        <p class="tool-description" data-i18n-th="ผู้ช่วยแชตอัจฉริยะสำหรับงานเขียน โค้ด และงานวิจัย สั่งให้สรุป แปลงรูปแบบ หรือสร้างไอเดียได้รวดเร็ว. ปรับโทนภาษาและความยาวได้ตามต้องการ." data-i18n-en="Smart chat assistant for writing, coding, and research. Summarize, transform formats, and ideate quickly with controllable tone and length.">ผู้ช่วยแชตอัจฉริยะสำหรับงานเขียน โค้ด และงานวิจัย สั่งให้สรุป แปลงรูปแบบ หรือสร้างไอเดียได้รวดเร็ว. ปรับโทนภาษาและความยาวได้ตามต้องการ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: สายเขียนบท, นักเรียน, dev, นักธุรกิจ" data-i18n-en="Best for: Writers, Students, Devs, Business">เหมาะกับ: สายเขียนบท, นักเรียน, dev, นักธุรกิจ</p>
                         <p class="signup-info" data-i18n-th="วิธีสมัคร: Google/Microsoft หรืออีเมล + เบอร์มือถือ" data-i18n-en="Signup: Google/Microsoft or email + phone">วิธีสมัคร: Google/Microsoft หรืออีเมล + เบอร์มือถือ</p>
                         <a href="https://chat.openai.com" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
@@ -309,7 +334,7 @@
                             <h3>Gemini (Google AI)</h3>
                             <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="AI Chat จาก Google, สรุป ค้นหา วิเคราะห์" data-i18n-en="AI Chat from Google: summarize, search, analyze">AI Chat จาก Google, สรุป ค้นหา วิเคราะห์</p>
+                        <p class="tool-description" data-i18n-th="แชตจาก Google ที่เก่งด้านสรุป วิเคราะห์ และค้นหาข้อมูลจากเว็บ. เชื่อมต่อบริการใน Ecosystem ของ Google ได้สะดวกสำหรับสายงานที่ใช้อยู่แล้ว." data-i18n-en="Google's chat excels at summarization, analysis, and web retrieval. Fits well with Google ecosystem workflows already in use.">แชตจาก Google ที่เก่งด้านสรุป วิเคราะห์ และค้นหาข้อมูลจากเว็บ. เชื่อมต่อบริการใน Ecosystem ของ Google ได้สะดวกสำหรับสายงานที่ใช้อยู่แล้ว.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักวิจัย, สาย tech, คนชอบใช้ Google" data-i18n-en="Best for: Researchers, Tech, Google fans">เหมาะกับ: นักวิจัย, สาย tech, คนชอบใช้ Google</p>
                         <p class="signup-info" data-i18n-th="วิธีสมัคร: Gmail Account ทุกคนสมัครได้" data-i18n-en="Signup: Gmail account for everyone">วิธีสมัคร: Gmail Account ทุกคนสมัครได้</p>
                         <a href="https://gemini.google.com" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
@@ -321,7 +346,7 @@
                             <h3>Claude AI</h3>
                             <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="AI Chat, อ่านไฟล์, สรุป PDF ยาวๆ" data-i18n-en="AI Chat, file reading, long PDF summarizing">AI Chat, อ่านไฟล์, สรุป PDF ยาวๆ</p>
+                        <p class="tool-description" data-i18n-th="โดดเด่นด้านการอ่านและสรุปไฟล์ยาว เช่น PDF/เอกสารการวิจัย พร้อมเหตุผลที่อ่านง่าย. ดีมากสำหรับงานวิเคราะห์เนื้อหาและสรุปใจความสำคัญ." data-i18n-en="Great at reading and summarizing long PDFs and research with clear reasoning. Excellent for content analysis and extracting key insights.">โดดเด่นด้านการอ่านและสรุปไฟล์ยาว เช่น PDF/เอกสารการวิจัย พร้อมเหตุผลที่อ่านง่าย. ดีมากสำหรับงานวิเคราะห์เนื้อหาและสรุปใจความสำคัญ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: คนต้องสรุปเปเปอร์/ไฟล์เยอะๆ" data-i18n-en="Best for: Heavy doc summarizing">เหมาะกับ: คนต้องสรุปเปเปอร์/ไฟล์เยอะๆ</p>
                         <p class="signup-info" data-i18n-th="วิธีสมัคร: ใช้อีเมลหรือ Google" data-i18n-en="Signup: Email or Google">วิธีสมัคร: ใช้อีเมลหรือ Google</p>
                         <a href="https://claude.ai" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
@@ -333,7 +358,7 @@
                             <h3>Canva AI</h3>
                             <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="AI ออกแบบโปสเตอร์, Presentation, วิดีโอ" data-i18n-en="AI for posters, presentations, videos">AI ออกแบบโปสเตอร์, Presentation, วิดีโอ</p>
+                        <p class="tool-description" data-i18n-th="สร้างโปสเตอร์ โพสต์โซเชียล พรีเซนต์ และวิดีโอด้วยเทมเพลตสวยๆ บวกฟีเจอร์ AI ช่วยจัดเลย์เอาต์/แก้ภาพ. ทำงานได้เร็วแม้ไม่มีพื้นฐานดีไซน์." data-i18n-en="Design posters, social posts, slides, and videos using beautiful templates plus AI for layout and image fixes. Fast results without design background.">สร้างโปสเตอร์ โพสต์โซเชียล พรีเซนต์ และวิดีโอด้วยเทมเพลตสวยๆ บวกฟีเจอร์ AI ช่วยจัดเลย์เอาต์/แก้ภาพ. ทำงานได้เร็วแม้ไม่มีพื้นฐานดีไซน์.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: คอนเทนต์ครีเอเตอร์, ขายของออนไลน์, นักเรียน" data-i18n-en="Best for: Content creators, E-commerce, Students">เหมาะกับ: คอนเทนต์ครีเอเตอร์, ขายของออนไลน์, นักเรียน</p>
                         <p class="signup-info" data-i18n-th="วิธีสมัคร: Google/FB/Email ง่ายสุดๆ" data-i18n-en="Signup: Google/FB/Email very easy">วิธีสมัคร: Google/FB/Email ง่ายสุดๆ</p>
                         <a href="https://www.canva.com" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
@@ -345,7 +370,7 @@
                             <h3>Leonardo.Ai</h3>
                             <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="วาดภาพ AI คุณภาพสูง, ปรับสไตล์" data-i18n-en="High-quality AI art, styling">วาดภาพ AI คุณภาพสูง, ปรับสไตล์</p>
+                        <p class="tool-description" data-i18n-th="สร้างภาพ AI คุณภาพสูง ปรับสไตล์และคุมรายละเอียดได้ เหมาะกับภาพเชิงศิลป์/ภาพสินค้า. มีโมเดลให้เลือกหลายแนวสำหรับงานมืออาชีพ." data-i18n-en="High‑quality AI art with style controls and detail tuning. Great for artistic and product images; multiple models suit professional needs.">สร้างภาพ AI คุณภาพสูง ปรับสไตล์และคุมรายละเอียดได้ เหมาะกับภาพเชิงศิลป์/ภาพสินค้า. มีโมเดลให้เลือกหลายแนวสำหรับงานมืออาชีพ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักวาด, NFT, ดีไซเนอร์" data-i18n-en="Best for: Artists, NFT, Designers">เหมาะกับ: นักวาด, NFT, ดีไซเนอร์</p>
                         <p class="signup-info" data-i18n-th="วิธีสมัคร: Google หรือ Email" data-i18n-en="Signup: Google or Email">วิธีสมัคร: Google หรือ Email</p>
                         <a href="https://app.leonardo.ai" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
@@ -357,7 +382,7 @@
                             <h3>RunwayML</h3>
                             <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="AI Video Editor ตัดต่อคลิป, ลบวัตถุ, ทำคลิปไวรัล" data-i18n-en="AI video editor, object removal, viral clips">AI Video Editor ตัดต่อคลิป, ลบวัตถุ, ทำคลิปไวรัล</p>
+                        <p class="tool-description" data-i18n-th="เครื่องมือตัดต่อวิดีโอด้วย AI เช่น ลบวัตถุ เปลี่ยนฉาก และสร้างวิดีโอจากข้อความ. ช่วยทำคลิปไวรัล/คอนเทนต์เร็วขึ้นแบบมืออาชีพ." data-i18n-en="AI video editor for object removal, scene changes, and text‑to‑video. Create viral clips and content faster with pro‑level results.">เครื่องมือตัดต่อวิดีโอด้วย AI เช่น ลบวัตถุ เปลี่ยนฉาก และสร้างวิดีโอจากข้อความ. ช่วยทำคลิปไวรัล/คอนเทนต์เร็วขึ้นแบบมืออาชีพ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: Youtuber, คนตัดคลิป, Creator" data-i18n-en="Best for: YouTubers, Editors, Creators">เหมาะกับ: Youtuber, คนตัดคลิป, Creator</p>
                         <p class="signup-info" data-i18n-th="วิธีสมัคร: Google/Apple ID" data-i18n-en="Signup: Google/Apple ID">วิธีสมัคร: Google/Apple ID</p>
                         <a href="https://runwayml.com" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
@@ -369,7 +394,7 @@
                             <h3>ElevenLabs</h3>
                             <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="AI สร้างเสียงพูด/พากย์เหมือนคนจริง" data-i18n-en="AI speech/voiceover very realistic">AI สร้างเสียงพูด/พากย์เหมือนคนจริง</p>
+                        <p class="tool-description" data-i18n-th="สร้างเสียงพูดคุณภาพสูงเหมือนคนจริง ปรับโทน/อารมณ์ได้ และโคลนเสียงได้ในรุ่นพรีเมียม. เหมาะกับงานพากย์และคอนเทนต์เสียงมืออาชีพ." data-i18n-en="Ultra‑realistic speech with controllable tone and emotions; voice cloning on premium tiers. Great for professional voiceovers and audio content." >สร้างเสียงพูดคุณภาพสูงเหมือนคนจริง ปรับโทน/อารมณ์ได้ และโคลนเสียงได้ในรุ่นพรีเมียม. เหมาะกับงานพากย์และคอนเทนต์เสียงมืออาชีพ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: คนทำคลิปเสียง, Podcast, TikTok" data-i18n-en="Best for: Voice clips, Podcasts, TikTok">เหมาะกับ: คนทำคลิปเสียง, Podcast, TikTok</p>
                         <p class="signup-info" data-i18n-th="วิธีสมัคร: Email/Google สมัคร 1 นาที" data-i18n-en="Signup: Email/Google ~1 min">วิธีสมัคร: Email/Google สมัคร 1 นาที</p>
                         <a href="https://www.elevenlabs.io" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
@@ -381,7 +406,7 @@
                             <h3>Otter.ai</h3>
                             <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="ถอดเสียง ประชุม/สัมภาษณ์ ภาษาไทย+อังกฤษ" data-i18n-en="Meeting/interview transcription TH+EN">ถอดเสียง ประชุม/สัมภาษณ์ ภาษาไทย+อังกฤษ</p>
+                        <p class="tool-description" data-i18n-th="ถอดเสียงการประชุม/สัมภาษณ์ได้ทั้งไทยและอังกฤษ พร้อมไฮไลต์คำสำคัญและลิงก์ย้อนดูช่วงเวลาในคลิป. เหมาะกับงานประชุมและการเก็บโน้ตอัตโนมัติ." data-i18n-en="Transcribe meetings and interviews in TH/EN with key highlights and time‑linked references. Ideal for meetings and automated note‑taking." >ถอดเสียงการประชุม/สัมภาษณ์ได้ทั้งไทยและอังกฤษ พร้อมไฮไลต์คำสำคัญและลิงก์ย้อนดูช่วงเวลาในคลิป. เหมาะกับงานประชุมและการเก็บโน้ตอัตโนมัติ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักเรียน, อาจารย์, สายพอดแคสต์" data-i18n-en="Best for: Students, Teachers, Podcasts">เหมาะกับ: นักเรียน, อาจารย์, สายพอดแคสต์</p>
                         <p class="signup-info" data-i18n-th="วิธีสมัคร: Email/Google" data-i18n-en="Signup: Email/Google">วิธีสมัคร: Email/Google</p>
                         <a href="https://otter.ai" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
@@ -393,7 +418,7 @@
                             <h3>Copy.ai</h3>
                             <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="AI เขียนข้อความ, โฆษณา, content SEO" data-i18n-en="AI copywriting, ads, SEO content">AI เขียนข้อความ, โฆษณา, content SEO</p>
+                        <p class="tool-description" data-i18n-th="ช่วยเขียนข้อความการตลาด โฆษณา และบทความ SEO พร้อมโครงร่างคอนเทนต์ให้เริ่มต้นไว. เลือกโทนและกลุ่มเป้าหมายเพื่อข้อความที่ตรงใจ." data-i18n-en="Write marketing copy, ads, and SEO articles with quick content outlines. Choose tone and target audience to match your brand voice." >ช่วยเขียนข้อความการตลาด โฆษณา และบทความ SEO พร้อมโครงร่างคอนเทนต์ให้เริ่มต้นไว. เลือกโทนและกลุ่มเป้าหมายเพื่อข้อความที่ตรงใจ.</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักเขียนโฆษณา, Blogger" data-i18n-en="Best for: Copywriters, Bloggers">เหมาะกับ: นักเขียนโฆษณา, Blogger</p>
                         <p class="signup-info" data-i18n-th="วิธีสมัคร: Email/Google" data-i18n-en="Signup: Email/Google">วิธีสมัคร: Email/Google</p>
                         <a href="https://copy.ai" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
@@ -405,7 +430,7 @@
                             <h3>Descript</h3>
                             <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description" data-i18n-th="AI ตัดต่อวิดีโอ+เสียงจากข้อความ" data-i18n-en="AI edit video+audio from text">AI ตัดต่อวิดีโอ+เสียงจากข้อความ</p>
+                        <p class="tool-description" data-i18n-th="ตัดต่อวิดีโอ+เสียงจากข้อความ" data-i18n-en="AI edit video+audio from text">AI ตัดต่อวิดีโอ+เสียงจากข้อความ</p>
                         <p class="tool-suitable" data-i18n-th="เหมาะกับ: Podcast, YouTuber, Content Creator" data-i18n-en="Best for: Podcasts, YouTubers, Creators">เหมาะกับ: Podcast, YouTuber, Content Creator</p>
                         <p class="signup-info" data-i18n-th="วิธีสมัคร: Google/Email" data-i18n-en="Signup: Google/Email">วิธีสมัคร: Google/Email</p>
                         <a href="https://www.descript.com" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
