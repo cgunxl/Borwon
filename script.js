@@ -118,6 +118,13 @@ function openModal(modalType) {
     const modal = document.getElementById(modalType + '-modal');
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
+    const content = modal.querySelector('.modal-content');
+    if (content) {
+        content.classList.remove('open');
+        // force reflow to restart animation
+        void content.offsetWidth;
+        content.classList.add('open');
+    }
 }
 
 function closeModal(modalType) {
@@ -216,7 +223,18 @@ function showAITab(tabName) {
 
     // Show selected tab
     const tabEl = document.getElementById(tabName + '-tab');
-    if (tabEl) tabEl.classList.add('active');
+    if (tabEl) {
+        tabEl.classList.add('active');
+        // reset filter to all when switching tabs
+        const firstChip = tabEl.querySelector('.ai-categories .chip[data-filter="all"]');
+        if (firstChip) {
+            tabEl.querySelectorAll('.ai-categories .chip').forEach(c => c.classList.remove('active'));
+            firstChip.classList.add('active');
+            filterAITools('all');
+        }
+        // animate the tab content
+        void tabEl.offsetWidth;
+    }
 
     // Add active class to correct button deterministically
     const tabsContainer = document.querySelector('.ai-tabs');
@@ -253,6 +271,37 @@ function searchAITools() {
         } else {
             moreToolsNotice.style.display = 'none';
         }
+    }
+}
+
+// NEW: Category filter function
+function filterAITools(category) {
+    const activeTab = document.querySelector('.tab-content.active');
+    if (!activeTab) return;
+
+    // set active chip styling
+    const chips = activeTab.querySelectorAll('.ai-categories .chip');
+    chips.forEach(chip => {
+        const isActive = chip.getAttribute('data-filter') === category;
+        chip.classList.toggle('active', isActive);
+    });
+
+    const toolCards = activeTab.querySelectorAll('.ai-tool-card');
+    toolCards.forEach(card => {
+        const cardCategory = (card.getAttribute('data-category') || '').toLowerCase();
+        const shouldShow = category === 'all' || cardCategory === category;
+        card.style.display = shouldShow ? 'block' : 'none';
+        if (shouldShow) {
+            card.classList.remove('reveal-from-top');
+            void card.offsetWidth; // restart animation
+            card.classList.add('reveal-from-top');
+        }
+    });
+
+    // handle more-tools-notice visibility under filtering
+    const notice = activeTab.querySelector('.more-tools-notice');
+    if (notice) {
+        notice.style.display = category === 'all' ? 'block' : 'none';
     }
 }
 

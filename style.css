@@ -579,14 +579,48 @@ body {
     font-size: 1.2rem;
 }
 
+/* NEW: Category Chips */
+.ai-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0 0 1.25rem 0;
+}
+
+.chip {
+    border: 1px solid var(--border-color);
+    background: rgba(255,255,255,0.02);
+    color: var(--text-secondary);
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.chip:hover {
+    border-color: var(--secondary-blue);
+    color: var(--primary-green);
+    transform: translateY(-1px);
+}
+
+.chip.active {
+    background: linear-gradient(45deg, rgba(0,255,65,0.12), rgba(0,204,255,0.10));
+    color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
 .tab-content {
     display: none;
 }
 
 .tab-content.active {
     display: block;
+    animation: dropIn 420ms ease;
 }
 
+/* Grid */
 .ai-tools-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -610,6 +644,12 @@ body {
     border-color: var(--secondary-blue);
 }
 
+/* Slide-in animation when items are shown */
+.ai-tool-card.reveal-from-top {
+    animation: slideDownSoft 380ms ease;
+}
+
+/* Premium styling unchanged */
 .ai-tool-card.premium {
     border-color: rgba(255, 215, 0, 0.3);
     background: rgba(255, 215, 0, 0.02);
@@ -620,6 +660,7 @@ body {
     box-shadow: 0 15px 30px rgba(255, 215, 0, 0.1);
 }
 
+/* RESTORED: tool header layout */
 .tool-header {
     display: flex;
     justify-content: space-between;
@@ -632,6 +673,28 @@ body {
     font-size: 1.3rem;
     font-weight: 700;
     margin: 0;
+}
+
+/* Modal drop-in */
+.modal-content.open {
+    animation: dropIn 460ms cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes dropIn {
+    0% { opacity: 0; transform: translateY(-24px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes slideDownSoft {
+    0% { opacity: 0; transform: translateY(-18px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Minor text spacing for longer descriptions */
+.tool-description { 
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
+    line-height: 1.65;
 }
 
 .tool-badge {
@@ -657,7 +720,7 @@ body {
 .tool-description {
     color: var(--text-secondary);
     margin-bottom: 0.8rem;
-    line-height: 1.5;
+    line-height: 1.65;
 }
 
 .tool-suitable {
