@@ -1,10 +1,158 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Borwon - AI Portal</title>
-  </head>
-  <body>
-    <h1>Welcome to Borwon!</h1>
-    <p>AI Tools, Money Game, Deal Hunter, News, และรีวิว</p>
-  </body>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บวร - เว็บไซต์สำหรับแนะนำต่างๆ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <header class="header">
+        <div class="nav-container">
+            <div>
+                <div class="logo" data-translate="site-title">บวร</div>
+                <div class="subtitle" data-translate="site-subtitle">เว็บไซต์สำหรับแนะนำต่างๆ</div>
+            </div>
+            <div class="language-selector">
+                <button class="language-btn" onclick="toggleLanguageDropdown()">
+                    <span class="flag th" id="current-flag"></span>
+                    <span id="current-lang">ไทย</span>
+                    <span>▼</span>
+                </button>
+                <div class="language-dropdown" id="language-dropdown">
+                    <div class="language-option" onclick="changeLanguage('th')">
+                        <span class="flag th"></span>
+                        <span>ไทย</span>
+                    </div>
+                    <div class="language-option" onclick="changeLanguage('en')">
+                        <span class="flag us"></span>
+                        <span>USA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="hero-section fade-in">
+            <h1 class="hero-title" data-translate="hero-title">บวร</h1>
+            <p class="hero-subtitle" data-translate="hero-subtitle">แพลตฟอร์มแนะนำเครื่องมือและบริการที่ดีที่สุด สำหรับทุกความต้องการ</p>
+        </section>
+
+        <section class="stats-section fade-in">
+            <div class="stat-item">
+                <span class="stat-number" data-translate="stat-ai-tools">100+</span>
+                <span class="stat-label" data-translate="stat-ai-label">AI Tools</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-translate="stat-categories">3</span>
+                <span class="stat-label" data-translate="stat-categories-label">หมวดหมู่</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-translate="stat-free">90+</span>
+                <span class="stat-label" data-translate="stat-free-label">เครื่องมือฟรี</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-translate="stat-languages">2</span>
+                <span class="stat-label" data-translate="stat-languages-label">ภาษา</span>
+            </div>
+        </section>
+
+        <!-- Centralized Ad Container -->
+        <div class="ad-container" id="ad-container">
+            <span data-translate="ad-placeholder">พื้นที่สำหรับโฆษณา - จัดการแบบรวมศูนย์</span>
+        </div>
+
+        <section class="categories-section">
+            <h2 class="section-title fade-in" data-translate="categories-title">เลือกหมวดหมู่ที่สนใจ</h2>
+            
+            <div class="categories-grid">
+                <div class="category-card fade-in" onclick="openModal('money-games')">
+                    <div class="mascot-container">
+                        <img src="mascot_money_games.png" alt="บวรมันนี่เกมส์" loading="lazy">
+                    </div>
+                    <h3 class="category-title" data-translate="money-games-title">บวรมันนี่เกมส์</h3>
+                    <p class="category-description" data-translate="money-games-desc">แพลตฟอร์มการเงิน ข่าวคริปโต หุ้น และการลงทุน พร้อมเทคนิคสร้างรายได้</p>
+                </div>
+
+                <div class="category-card fade-in" onclick="openModal('ai-master')">
+                    <div class="mascot-container">
+                        <img src="mascot_ai_master.png" alt="บวรเอไอมาสเตอร์" loading="lazy">
+                    </div>
+                    <h3 class="category-title" data-translate="ai-master-title">บวรเอไอมาสเตอร์</h3>
+                    <p class="category-description" data-translate="ai-master-desc">เครื่องมือ AI ครบ 100 ตัว ทั้งฟรีและพรีเมียม พร้อมคำแนะนำการใช้งาน</p>
+                </div>
+
+                <div class="category-card fade-in" onclick="openModal('deal-hunter')">
+                    <div class="mascot-container">
+                        <img src="mascot_deal_hunter.png" alt="บวรดีลฮันเตอร์" loading="lazy">
+                    </div>
+                    <h3 class="category-title" data-translate="deal-hunter-title">บวรดีลฮันเตอร์</h3>
+                    <p class="category-description" data-translate="deal-hunter-desc">เทคนิคช้อปปิ้งประหยัด แพลตฟอร์มดีลดี และวิธีการซื้อให้คุ้มค่า</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="money-games-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <img src="mascot_money_games.png" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+                    <span data-translate="money-games-title">บวรมันนี่เกมส์</span>
+                </h2>
+                <button class="close-btn" onclick="closeModal('money-games')">&times;</button>
+            </div>
+            <div class="coming-soon">
+                <h3 data-translate="coming-soon-title">🚧 กำลังพัฒนา</h3>
+                <p data-translate="money-games-preview">แพลตฟอร์มการเงิน ข่าวคริปโต หุ้น และการลงทุน พร้อมเทคนิคสร้างรายได้</p>
+                <p data-translate="coming-soon-desc">เร็วๆ นี้!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="ai-master-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <img src="mascot_ai_master.png" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+                    <span data-translate="ai-master-title">บวรเอไอมาสเตอร์</span>
+                </h2>
+                <button class="close-btn" onclick="closeModal('ai-master')">&times;</button>
+            </div>
+            <div class="coming-soon">
+                <h3 data-translate="coming-soon-title">🚧 กำลังพัฒนา</h3>
+                <p data-translate="ai-master-preview">เครื่องมือ AI ครบ 100 ตัว ทั้งฟรีและพรีเมียม พร้อมคำแนะนำการใช้งาน</p>
+                <p data-translate="coming-soon-desc">เร็วๆ นี้!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="deal-hunter-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <img src="mascot_deal_hunter.png" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+                    <span data-translate="deal-hunter-title">บวรดีลฮันเตอร์</span>
+                </h2>
+                <button class="close-btn" onclick="closeModal('deal-hunter')">&times;</button>
+            </div>
+            <div class="coming-soon">
+                <h3 data-translate="coming-soon-title">🚧 กำลังพัฒนา</h3>
+                <p data-translate="deal-hunter-preview">เทคนิคช้อปปิ้งประหยัด แพลตฟอร์มดีลดี และวิธีการซื้อให้คุ้มค่า</p>
+                <p data-translate="coming-soon-desc">เร็วๆ นี้!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p data-translate="footer-text">&copy; 2024 บวร - เว็บไซต์สำหรับแนะนำต่างๆ | สร้างด้วยเทคโนโลยีที่ทันสมัย</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
+
