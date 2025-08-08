@@ -83,7 +83,7 @@ function changeLanguage(lang) {
         currentLang.textContent = 'USA';
     }
     
-    // Update all translatable elements
+    // Update all translatable elements (static keys)
     const elements = document.querySelectorAll('[data-translate]');
     elements.forEach(element => {
         const key = element.getAttribute('data-translate');
@@ -91,6 +91,26 @@ function changeLanguage(lang) {
             element.textContent = translations[lang][key];
         }
     });
+
+    // Update generic i18n elements that define per-language text directly
+    const i18nElements = document.querySelectorAll('[data-i18n-th], [data-i18n-en]');
+    i18nElements.forEach(el => {
+        const text = el.getAttribute(lang === 'th' ? 'data-i18n-th' : 'data-i18n-en');
+        if (!text) return;
+        // If element supports placeholder translation
+        if (el.hasAttribute('data-placeholder-th') || el.hasAttribute('data-placeholder-en')) {
+            const placeholder = el.getAttribute(lang === 'th' ? 'data-placeholder-th' : 'data-placeholder-en');
+            if (placeholder) el.setAttribute('placeholder', placeholder);
+        } else {
+            el.textContent = text;
+        }
+    });
+
+    // Ensure ad placeholder respects language
+    const adContainer = document.getElementById('ad-container');
+    if (adContainer && !adManager.adCode) {
+        adContainer.innerHTML = `<span data-translate="ad-placeholder">${translations[currentLanguage]['ad-placeholder']}</span>`;
+    }
 }
 
 // Modal Functions
@@ -189,16 +209,22 @@ function showAITab(tabName) {
     // Hide all tabs
     const tabs = document.querySelectorAll('.tab-content');
     tabs.forEach(tab => tab.classList.remove('active'));
-    
+
     // Remove active class from all buttons
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
-    
+
     // Show selected tab
-    document.getElementById(tabName + '-tab').classList.add('active');
-    
-    // Add active class to clicked button
-    event.target.closest('.tab-btn').classList.add('active');
+    const tabEl = document.getElementById(tabName + '-tab');
+    if (tabEl) tabEl.classList.add('active');
+
+    // Add active class to correct button deterministically
+    const tabsContainer = document.querySelector('.ai-tabs');
+    if (tabsContainer) {
+        const [freeBtn, premiumBtn] = tabsContainer.querySelectorAll('.tab-btn');
+        if (tabName === 'free' && freeBtn) freeBtn.classList.add('active');
+        if (tabName === 'premium' && premiumBtn) premiumBtn.classList.add('active');
+    }
 }
 
 // AI Tools Search Function
@@ -233,12 +259,12 @@ function searchAITools() {
 // Update translations for AI Tools
 const aiTranslations = {
     th: {
-        'ai-free-tab': '🆓 AI ฟรี 100%',
-        'ai-premium-tab': '⭐ AI พรีเมียม'
+        'ai-free-tab': '🟢 ไม่ต้องสมัคร',
+        'ai-premium-tab': '🟠 ต้องสมัคร'
     },
     en: {
-        'ai-free-tab': '🆓 Free AI 100%',
-        'ai-premium-tab': '⭐ Premium AI'
+        'ai-free-tab': '🟢 No signup',
+        'ai-premium-tab': '🟠 Requires signup'
     }
 };
 
@@ -253,5 +279,12 @@ Object.keys(aiTranslations).forEach(lang => {
 document.addEventListener('DOMContentLoaded', function() {
     // Set default active tab
     showAITab('free');
+    
+    // Localize search placeholder on load
+    const searchInput = document.getElementById('ai-search-input');
+    if (searchInput) {
+        const placeholder = searchInput.getAttribute(currentLanguage === 'th' ? 'data-placeholder-th' : 'data-placeholder-en');
+        if (placeholder) searchInput.setAttribute('placeholder', placeholder);
+    }
 });
 
