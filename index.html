@@ -110,7 +110,11 @@
                 <h3 data-translate="coming-soon-title">🚧 กำลังพัฒนา</h3>
                 <p data-translate="money-games-preview">แพลตฟอร์มการเงิน ข่าวคริปโต หุ้น และการลงทุน พร้อมเทคนิคสร้างรายได้</p>
                 <p data-translate="coming-soon-desc">เร็วๆ นี้!</p>
-          <!-- AI Master Modal -->
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Master Modal -->
     <div id="ai-master-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -124,298 +128,319 @@
             <!-- AI Tools Tabs -->
             <div class="ai-tabs">
                 <button class="tab-btn active" onclick="showAITab('free')">
-                    <span data-translate="ai-free-tab">🆓 AI ฟรี 100%</span>
+                    <span data-translate="ai-free-tab">🟢 ไม่ต้องสมัคร</span>
                 </button>
                 <button class="tab-btn" onclick="showAITab('premium')">
-                    <span data-translate="ai-premium-tab">⭐ AI พรีเมียม</span>
+                    <span data-translate="ai-premium-tab">🟠 ต้องสมัคร</span>
                 </button>
             </div>
 
             <!-- Search Box -->
             <div class="ai-search">
-                <input type="text" id="ai-search-input" placeholder="ค้นหา AI Tools..." onkeyup="searchAITools()">
+                <input type="text" id="ai-search-input" data-placeholder-th="ค้นหา AI Tools..." data-placeholder-en="Search AI tools..." placeholder="ค้นหา AI Tools..." onkeyup="searchAITools()" aria-label="AI Tools Search">
                 <span class="search-icon">🔍</span>
             </div>
 
-            <!-- Free AI Tools Tab -->
+            <!-- Free (No-signup) AI Tools Tab -->
             <div id="free-tab" class="tab-content active">
                 <div class="ai-tools-grid" id="free-tools-grid">
-                    <!-- AI Search & Research -->
+                    <!-- START: No-signup tools -->
+                    <!-- 1. Perplexity AI -->
                     <div class="ai-tool-card" data-category="search">
                         <div class="tool-header">
                             <h3>Perplexity AI</h3>
-                            <span class="tool-badge free">ฟรี</span>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description">ถามตอบ / หาข้อมูลทันใจ ใช้แทน Google</p>
-                        <p class="tool-suitable">เหมาะกับ: นักวิจัย, นักเรียน, คนทำงาน</p>
-                        <a href="https://www.perplexity.ai" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="ถามตอบ / หาข้อมูลทันใจ ใช้แทน Google" data-i18n-en="AI Chat, Search, Q&A — Find info, summarize, synthesize">ถามตอบ / หาข้อมูลทันใจ ใช้แทน Google</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักวิจัย, นักเรียน, คนทำงาน" data-i18n-en="Best for: Researchers, Students, Working professionals">เหมาะกับ: นักวิจัย, นักเรียน, คนทำงาน</p>
+                        <a href="https://www.perplexity.ai" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 2. You.com -->
                     <div class="ai-tool-card" data-category="search">
                         <div class="tool-header">
                             <h3>You.com</h3>
-                            <span class="tool-badge free">ฟรี</span>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description">รวมหลาย AI ในเว็บเดียว เช่น Code / Write / Chat</p>
-                        <p class="tool-suitable">เหมาะกับ: โปรแกรมเมอร์, นักเขียน</p>
-                        <a href="https://you.com" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="รวมหลาย AI ในเว็บเดียว เช่น Code / Write / Chat" data-i18n-en="Many AI features in one website, like Code / Write / Chat">รวมหลาย AI ในเว็บเดียว เช่น Code / Write / Chat</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: โปรแกรมเมอร์, นักเขียน" data-i18n-en="Best for: Programmers, Writers">เหมาะกับ: โปรแกรมเมอร์, นักเขียน</p>
+                        <a href="https://you.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
-                    <!-- AI Voice & Audio -->
-                    <div class="ai-tool-card" data-category="voice">
-                        <div class="tool-header">
-                            <h3>TTSMP3</h3>
-                            <span class="tool-badge free">ฟรี</span>
-                        </div>
-                        <p class="tool-description">พิมพ์แล้วพูดได้ทันที เหมาะกับทำคลิป TikTok</p>
-                        <p class="tool-suitable">เหมาะกับ: YouTuber, TikToker</p>
-                        <a href="https://ttsmp3.com" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
-                    </div>
-
-                    <div class="ai-tool-card" data-category="voice">
-                        <div class="tool-header">
-                            <h3>TTSMaker</h3>
-                            <span class="tool-badge free">ฟรี</span>
-                        </div>
-                        <p class="tool-description">พากย์เสียงฟรี เสียง TikTok, YouTube</p>
-                        <p class="tool-suitable">เหมาะกับ: Content Creator</p>
-                        <a href="https://ttsmaker.com" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
-                    </div>
-
-                    <!-- AI Image & Design -->
+                    <!-- 3. Magic Studio -->
                     <div class="ai-tool-card" data-category="image">
                         <div class="tool-header">
                             <h3>Magic Studio</h3>
-                            <span class="tool-badge free">ฟรี</span>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description">ลบฉากหลัง ปรับภาพอัตโนมัติ ใช้ทำ content ขายของ</p>
-                        <p class="tool-suitable">เหมาะกับ: นักขายออนไลน์, SME</p>
-                        <a href="https://magicstudio.com" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="ลบฉากหลัง ปรับภาพอัตโนมัติ ใช้ทำ content ขายของ" data-i18n-en="Remove background, AI edits">ลบฉากหลัง ปรับภาพอัตโนมัติ ใช้ทำ content ขายของ</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักขายออนไลน์, SME" data-i18n-en="Best for: Online sellers, SMEs">เหมาะกับ: นักขายออนไลน์, SME</p>
+                        <a href="https://magicstudio.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 4. TTSMP3 -->
+                    <div class="ai-tool-card" data-category="voice">
+                        <div class="tool-header">
+                            <h3>TTSMP3</h3>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
+                        </div>
+                        <p class="tool-description" data-i18n-th="พิมพ์แล้วพูดได้ทันที เหมาะกับทำคลิป TikTok" data-i18n-en="Instant voice from text">พิมพ์แล้วพูดได้ทันที เหมาะกับทำคลิป TikTok</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: YouTuber, TikToker" data-i18n-en="Best for: YouTubers, TikTokers">เหมาะกับ: YouTuber, TikToker</p>
+                        <a href="https://ttsmp3.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
+                    </div>
+
+                    <!-- 5. TTSMaker -->
+                    <div class="ai-tool-card" data-category="voice">
+                        <div class="tool-header">
+                            <h3>TTSMaker</h3>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
+                        </div>
+                        <p class="tool-description" data-i18n-th="พากย์เสียงฟรี เสียง TikTok, YouTube" data-i18n-en="Free voiceover, TikTok, YouTube">พากย์เสียงฟรี เสียง TikTok, YouTube</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: Content Creator" data-i18n-en="Best for: Content creators">เหมาะกับ: Content Creator</p>
+                        <a href="https://ttsmaker.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
+                    </div>
+
+                    <!-- 6. Remove.bg -->
                     <div class="ai-tool-card" data-category="image">
                         <div class="tool-header">
                             <h3>Remove.bg</h3>
-                            <span class="tool-badge free">ฟรี</span>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description">ลบพื้นหลังอัตโนมัติ เตรียมภาพสินค้า, คน, AI</p>
-                        <p class="tool-suitable">เหมาะกับ: E-commerce, นักขายออนไลน์</p>
-                        <a href="https://www.remove.bg" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="ลบพื้นหลังอัตโนมัติ เตรียมภาพสินค้า, คน, AI" data-i18n-en="Auto remove image background">ลบพื้นหลังอัตโนมัติ เตรียมภาพสินค้า, คน, AI</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: E-commerce, นักขายออนไลน์" data-i18n-en="Best for: E-commerce, Online sellers">เหมาะกับ: E-commerce, นักขายออนไลน์</p>
+                        <a href="https://www.remove.bg" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 7. Cleanup.pictures -->
                     <div class="ai-tool-card" data-category="image">
                         <div class="tool-header">
                             <h3>Cleanup.pictures</h3>
-                            <span class="tool-badge free">ฟรี</span>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description">ลบโลโก้ ลบสิ่งเกะกะออกจากรูปภาพต่างๆ</p>
-                        <p class="tool-suitable">เหมาะกับ: Photographer, Graphic Designer</p>
-                        <a href="https://cleanup.pictures" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="ลบโลโก้ ลบสิ่งเกะกะออกจากรูปภาพต่างๆ" data-i18n-en="Remove logos, remove objects from images">ลบโลโก้ ลบสิ่งเกะกะออกจากรูปภาพต่างๆ</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: Photographer, Graphic Designer" data-i18n-en="Best for: Photographers, Graphic designers">เหมาะกับ: Photographer, Graphic Designer</p>
+                        <a href="https://cleanup.pictures" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 8. Craiyon -->
                     <div class="ai-tool-card" data-category="image">
                         <div class="tool-header">
                             <h3>Craiyon</h3>
-                            <span class="tool-badge free">ฟรี</span>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description">วาดภาพจากข้อความ ทำปก, คอนเทนต์ภาพ</p>
-                        <p class="tool-suitable">เหมาะกับ: Blogger, Content Creator</p>
-                        <a href="https://www.craiyon.com" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="วาดภาพจากข้อความ ทำปก, คอนเทนต์ภาพ" data-i18n-en="Turn sketch to image">วาดภาพจากข้อความ ทำปก, คอนเทนต์ภาพ</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: Blogger, Content Creator" data-i18n-en="Best for: Bloggers, Content creators">เหมาะกับ: Blogger, Content Creator</p>
+                        <a href="https://www.craiyon.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
-                    <!-- AI Video -->
+                    <!-- 9. Unscreen -->
                     <div class="ai-tool-card" data-category="video">
                         <div class="tool-header">
                             <h3>Unscreen</h3>
-                            <span class="tool-badge free">ฟรี</span>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description">ลบพื้นหลังจากวิดีโอแบบอัตโนมัติ ไม่ต้องใช้ green screen</p>
-                        <p class="tool-suitable">เหมาะกับ: Video Editor, YouTuber</p>
-                        <a href="https://www.unscreen.com" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="ลบพื้นหลังจากวิดีโอแบบอัตโนมัติ ไม่ต้องใช้ green screen" data-i18n-en="Remove video background">ลบพื้นหลังจากวิดีโอแบบอัตโนมัติ ไม่ต้องใช้ green screen</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: Video Editor, YouTuber" data-i18n-en="Best for: Video editors, YouTubers">เหมาะกับ: Video Editor, YouTuber</p>
+                        <a href="https://www.unscreen.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
-                    <!-- AI Presentation -->
+                    <!-- 10. Tome -->
                     <div class="ai-tool-card" data-category="presentation">
                         <div class="tool-header">
                             <h3>Tome</h3>
-                            <span class="tool-badge free">ฟรี</span>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description">พิมพ์หัวข้อ AI สร้างสไลด์ให้อัตโนมัติทันที</p>
-                        <p class="tool-suitable">เหมาะกับ: นักเรียน, นักธุรกิจ</p>
-                        <a href="https://tome.app" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="พิมพ์หัวข้อ AI สร้างสไลด์ให้อัตโนมัติทันที" data-i18n-en="Auto-generate slides from AI">พิมพ์หัวข้อ AI สร้างสไลด์ให้อัตโนมัติทันที</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักเรียน, นักธุรกิจ" data-i18n-en="Best for: Students, Business professionals">เหมาะกับ: นักเรียน, นักธุรกิจ</p>
+                        <a href="https://tome.app" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
-                    <!-- More Free Tools (แสดงเพิ่มเติม 80+ ตัว) -->
+                    <!-- 11. DeepL Translator -->
                     <div class="ai-tool-card" data-category="translation">
                         <div class="tool-header">
                             <h3>DeepL Translator</h3>
-                            <span class="tool-badge free">ฟรี</span>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description">แปลภาษาแม่นยำ ใช้ทำเว็บหลายภาษา</p>
-                        <p class="tool-suitable">เหมาะกับ: นักแปล, นักธุรกิจ</p>
-                        <a href="https://www.deepl.com" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="แปลภาษาแม่นยำ ใช้ทำเว็บหลายภาษา" data-i18n-en="Highly accurate AI translation">แปลภาษาแม่นยำ ใช้ทำเว็บหลายภาษา</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักแปล, นักธุรกิจ" data-i18n-en="Best for: Translators, Business professionals">เหมาะกับ: นักแปล, นักธุรกิจ</p>
+                        <a href="https://www.deepl.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 12. AutoDraw -->
                     <div class="ai-tool-card" data-category="drawing">
                         <div class="tool-header">
                             <h3>AutoDraw</h3>
-                            <span class="tool-badge free">ฟรี</span>
+                            <span class="tool-badge free" data-i18n-th="ฟรีทันที" data-i18n-en="Free now">ฟรีทันที</span>
                         </div>
-                        <p class="tool-description">วาดเร็วด้วย AI ช่วย ทำโลโก้หรือภาพร่าง</p>
-                        <p class="tool-suitable">เหมาะกับ: Designer, เด็ก</p>
-                        <a href="https://www.autodraw.com" target="_blank" class="tool-link">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="วาดเร็วด้วย AI ช่วย ทำโลโก้หรือภาพร่าง" data-i18n-en="Fast AI drawing with help">วาดเร็วด้วย AI ช่วย ทำโลโก้หรือภาพร่าง</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: Designer, เด็ก" data-i18n-en="Best for: Designers, Kids">เหมาะกับ: Designer, เด็ก</p>
+                        <a href="https://www.autodraw.com" target="_blank" class="tool-link" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
-                    <!-- แสดงข้อความว่ามี AI Tools เพิ่มเติม -->
+                    <!-- Notice of more tools -->
                     <div class="more-tools-notice">
-                        <h3>🎯 AI Tools เพิ่มเติม</h3>
-                        <p>มี AI Tools ฟรีอีก 80+ ตัว รวมทั้งหมด 90 เครื่องมือ</p>
-                        <p>หมวดหมู่: การเขียน, การวิเคราะห์, การออกแบบ, การเรียนรู้, และอื่นๆ อีกมากมาย</p>
-                        <small>เร็วๆ นี้จะเพิ่มรายละเอียดครบทุกตัว!</small>
+                        <h3 data-i18n-th="🎯 AI Tools เพิ่มเติม" data-i18n-en="🎯 More AI Tools">🎯 AI Tools เพิ่มเติม</h3>
+                        <p data-i18n-th="มี AI Tools ฟรีอีกจำนวนมาก รวมทั้งหมด 90 เครื่องมือ" data-i18n-en="There are many more free tools, totaling 90.">มี AI Tools ฟรีอีกจำนวนมาก รวมทั้งหมด 90 เครื่องมือ</p>
+                        <p data-i18n-th="หมวดหมู่: การเขียน, การวิเคราะห์, การออกแบบ, การเรียนรู้, และอื่นๆ" data-i18n-en="Categories: Writing, Analysis, Design, Learning, and more">หมวดหมู่: การเขียน, การวิเคราะห์, การออกแบบ, การเรียนรู้, และอื่นๆ</p>
+                        <small data-i18n-th="จะทยอยเพิ่มรายละเอียดครบทุกตัว" data-i18n-en="We will keep adding the rest.">จะทยอยเพิ่มรายละเอียดครบทุกตัว</small>
                     </div>
+                    <!-- END: No-signup tools -->
                 </div>
             </div>
 
-            <!-- Premium AI Tools Tab -->
+            <!-- Requires-signup AI Tools Tab -->
             <div id="premium-tab" class="tab-content">
                 <div class="ai-tools-grid" id="premium-tools-grid">
+                    <!-- 1. ChatGPT -->
                     <div class="ai-tool-card premium" data-category="chat">
                         <div class="tool-header">
                             <h3>ChatGPT</h3>
-                            <span class="tool-badge premium">พรีเมียม</span>
+                            <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description">AI Chat, Coding, เขียน, Research ขั้นเทพ</p>
-                        <p class="tool-suitable">เหมาะกับ: นักเขียน, นักเรียน, Developer, นักธุรกิจ</p>
-                        <p class="signup-info">📝 วิธีสมัคร: ใช้ Google/Microsoft หรืออีเมล กรอกเบอร์มือถือ 1 นาที</p>
-                        <a href="https://chat.openai.com" target="_blank" class="tool-link premium">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="AI Chat, Coding, เขียน, Research" data-i18n-en="AI Chat, Coding, Writing, Research">AI Chat, Coding, เขียน, Research</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: สายเขียนบท, นักเรียน, dev, นักธุรกิจ" data-i18n-en="Best for: Writers, Students, Devs, Business">เหมาะกับ: สายเขียนบท, นักเรียน, dev, นักธุรกิจ</p>
+                        <p class="signup-info" data-i18n-th="วิธีสมัคร: Google/Microsoft หรืออีเมล + เบอร์มือถือ" data-i18n-en="Signup: Google/Microsoft or email + phone">วิธีสมัคร: Google/Microsoft หรืออีเมล + เบอร์มือถือ</p>
+                        <a href="https://chat.openai.com" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 2. Gemini (Google AI) -->
                     <div class="ai-tool-card premium" data-category="chat">
                         <div class="tool-header">
                             <h3>Gemini (Google AI)</h3>
-                            <span class="tool-badge premium">พรีเมียม</span>
+                            <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description">AI Chat จาก Google, สรุป ค้นหา วิเคราะห์</p>
-                        <p class="tool-suitable">เหมาะกับ: นักวิจัย, สาย Tech, คนชอบใช้ Google</p>
-                        <p class="signup-info">📝 วิธีสมัคร: Gmail Account ทุกคนสมัครได้</p>
-                        <a href="https://gemini.google.com" target="_blank" class="tool-link premium">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="AI Chat จาก Google, สรุป ค้นหา วิเคราะห์" data-i18n-en="AI Chat from Google: summarize, search, analyze">AI Chat จาก Google, สรุป ค้นหา วิเคราะห์</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักวิจัย, สาย tech, คนชอบใช้ Google" data-i18n-en="Best for: Researchers, Tech, Google fans">เหมาะกับ: นักวิจัย, สาย tech, คนชอบใช้ Google</p>
+                        <p class="signup-info" data-i18n-th="วิธีสมัคร: Gmail Account ทุกคนสมัครได้" data-i18n-en="Signup: Gmail account for everyone">วิธีสมัคร: Gmail Account ทุกคนสมัครได้</p>
+                        <a href="https://gemini.google.com" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 3. Claude AI -->
                     <div class="ai-tool-card premium" data-category="chat">
                         <div class="tool-header">
                             <h3>Claude AI</h3>
-                            <span class="tool-badge premium">พรีเมียม</span>
+                            <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description">AI Chat, อ่านไฟล์, สรุป PDF ยาวๆ</p>
-                        <p class="tool-suitable">เหมาะกับ: คนต้องสรุปเปเปอร์/ไฟล์เยอะๆ</p>
-                        <p class="signup-info">📝 วิธีสมัคร: ใช้อีเมลหรือ Google</p>
-                        <a href="https://claude.ai" target="_blank" class="tool-link premium">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="AI Chat, อ่านไฟล์, สรุป PDF ยาวๆ" data-i18n-en="AI Chat, file reading, long PDF summarizing">AI Chat, อ่านไฟล์, สรุป PDF ยาวๆ</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: คนต้องสรุปเปเปอร์/ไฟล์เยอะๆ" data-i18n-en="Best for: Heavy doc summarizing">เหมาะกับ: คนต้องสรุปเปเปอร์/ไฟล์เยอะๆ</p>
+                        <p class="signup-info" data-i18n-th="วิธีสมัคร: ใช้อีเมลหรือ Google" data-i18n-en="Signup: Email or Google">วิธีสมัคร: ใช้อีเมลหรือ Google</p>
+                        <a href="https://claude.ai" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 4. Canva AI -->
                     <div class="ai-tool-card premium" data-category="design">
                         <div class="tool-header">
                             <h3>Canva AI</h3>
-                            <span class="tool-badge premium">พรีเมียม</span>
+                            <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description">AI ออกแบบโปสเตอร์, Presentation, วิดีโอ</p>
-                        <p class="tool-suitable">เหมาะกับ: Content Creator, ขายของออนไลน์, นักเรียน</p>
-                        <p class="signup-info">📝 วิธีสมัคร: Google/FB/Email ง่ายสุดๆ</p>
-                        <a href="https://www.canva.com" target="_blank" class="tool-link premium">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="AI ออกแบบโปสเตอร์, Presentation, วิดีโอ" data-i18n-en="AI for posters, presentations, videos">AI ออกแบบโปสเตอร์, Presentation, วิดีโอ</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: คอนเทนต์ครีเอเตอร์, ขายของออนไลน์, นักเรียน" data-i18n-en="Best for: Content creators, E-commerce, Students">เหมาะกับ: คอนเทนต์ครีเอเตอร์, ขายของออนไลน์, นักเรียน</p>
+                        <p class="signup-info" data-i18n-th="วิธีสมัคร: Google/FB/Email ง่ายสุดๆ" data-i18n-en="Signup: Google/FB/Email very easy">วิธีสมัคร: Google/FB/Email ง่ายสุดๆ</p>
+                        <a href="https://www.canva.com" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 5. Leonardo.Ai -->
                     <div class="ai-tool-card premium" data-category="image">
                         <div class="tool-header">
                             <h3>Leonardo.Ai</h3>
-                            <span class="tool-badge premium">พรีเมียม</span>
+                            <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description">วาดภาพ AI คุณภาพสูง, ปรับสไตล์</p>
-                        <p class="tool-suitable">เหมาะกับ: นักวาด, NFT, ดีไซเนอร์</p>
-                        <p class="signup-info">📝 วิธีสมัคร: Google หรือ Email</p>
-                        <a href="https://app.leonardo.ai" target="_blank" class="tool-link premium">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="วาดภาพ AI คุณภาพสูง, ปรับสไตล์" data-i18n-en="High-quality AI art, styling">วาดภาพ AI คุณภาพสูง, ปรับสไตล์</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักวาด, NFT, ดีไซเนอร์" data-i18n-en="Best for: Artists, NFT, Designers">เหมาะกับ: นักวาด, NFT, ดีไซเนอร์</p>
+                        <p class="signup-info" data-i18n-th="วิธีสมัคร: Google หรือ Email" data-i18n-en="Signup: Google or Email">วิธีสมัคร: Google หรือ Email</p>
+                        <a href="https://app.leonardo.ai" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 6. RunwayML -->
                     <div class="ai-tool-card premium" data-category="video">
                         <div class="tool-header">
                             <h3>RunwayML</h3>
-                            <span class="tool-badge premium">พรีเมียม</span>
+                            <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description">AI Video Editor ตัดต่อคลิป, ลบวัตถุ, ทำคลิปไวรัล</p>
-                        <p class="tool-suitable">เหมาะกับ: YouTuber, คนตัดคลิป, Creator</p>
-                        <p class="signup-info">📝 วิธีสมัคร: Google/Apple ID</p>
-                        <a href="https://runwayml.com" target="_blank" class="tool-link premium">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="AI Video Editor ตัดต่อคลิป, ลบวัตถุ, ทำคลิปไวรัล" data-i18n-en="AI video editor, object removal, viral clips">AI Video Editor ตัดต่อคลิป, ลบวัตถุ, ทำคลิปไวรัล</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: Youtuber, คนตัดคลิป, Creator" data-i18n-en="Best for: YouTubers, Editors, Creators">เหมาะกับ: Youtuber, คนตัดคลิป, Creator</p>
+                        <p class="signup-info" data-i18n-th="วิธีสมัคร: Google/Apple ID" data-i18n-en="Signup: Google/Apple ID">วิธีสมัคร: Google/Apple ID</p>
+                        <a href="https://runwayml.com" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 7. ElevenLabs -->
                     <div class="ai-tool-card premium" data-category="voice">
                         <div class="tool-header">
                             <h3>ElevenLabs</h3>
-                            <span class="tool-badge premium">พรีเมียม</span>
+                            <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description">AI สร้างเสียงพูด/พากย์เหมือนคนจริง</p>
-                        <p class="tool-suitable">เหมาะกับ: คนทำคลิปเสียง, Podcast, TikTok</p>
-                        <p class="signup-info">📝 วิธีสมัคร: Email/Google สมัคร 1 นาที</p>
-                        <a href="https://www.elevenlabs.io" target="_blank" class="tool-link premium">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="AI สร้างเสียงพูด/พากย์เหมือนคนจริง" data-i18n-en="AI speech/voiceover very realistic">AI สร้างเสียงพูด/พากย์เหมือนคนจริง</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: คนทำคลิปเสียง, Podcast, TikTok" data-i18n-en="Best for: Voice clips, Podcasts, TikTok">เหมาะกับ: คนทำคลิปเสียง, Podcast, TikTok</p>
+                        <p class="signup-info" data-i18n-th="วิธีสมัคร: Email/Google สมัคร 1 นาที" data-i18n-en="Signup: Email/Google ~1 min">วิธีสมัคร: Email/Google สมัคร 1 นาที</p>
+                        <a href="https://www.elevenlabs.io" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 8. Otter.ai -->
                     <div class="ai-tool-card premium" data-category="transcription">
                         <div class="tool-header">
                             <h3>Otter.ai</h3>
-                            <span class="tool-badge premium">พรีเมียม</span>
+                            <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description">ถอดเสียงพูด ประชุม/สัมภาษณ์ ภาษาไทย+อังกฤษ</p>
-                        <p class="tool-suitable">เหมาะกับ: นักเรียน, อาจารย์, สายพอดแคสต์</p>
-                        <p class="signup-info">📝 วิธีสมัคร: Email/Google</p>
-                        <a href="https://otter.ai" target="_blank" class="tool-link premium">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="ถอดเสียง ประชุม/สัมภาษณ์ ภาษาไทย+อังกฤษ" data-i18n-en="Meeting/interview transcription TH+EN">ถอดเสียง ประชุม/สัมภาษณ์ ภาษาไทย+อังกฤษ</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักเรียน, อาจารย์, สายพอดแคสต์" data-i18n-en="Best for: Students, Teachers, Podcasts">เหมาะกับ: นักเรียน, อาจารย์, สายพอดแคสต์</p>
+                        <p class="signup-info" data-i18n-th="วิธีสมัคร: Email/Google" data-i18n-en="Signup: Email/Google">วิธีสมัคร: Email/Google</p>
+                        <a href="https://otter.ai" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 9. Copy.ai -->
                     <div class="ai-tool-card premium" data-category="writing">
                         <div class="tool-header">
                             <h3>Copy.ai</h3>
-                            <span class="tool-badge premium">พรีเมียม</span>
+                            <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description">AI เขียนข้อความ, โฆษณา, content SEO</p>
-                        <p class="tool-suitable">เหมาะกับ: นักเขียนโฆษณา, Blogger</p>
-                        <p class="signup-info">📝 วิธีสมัคร: Email/Google</p>
-                        <a href="https://copy.ai" target="_blank" class="tool-link premium">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="AI เขียนข้อความ, โฆษณา, content SEO" data-i18n-en="AI copywriting, ads, SEO content">AI เขียนข้อความ, โฆษณา, content SEO</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: นักเขียนโฆษณา, Blogger" data-i18n-en="Best for: Copywriters, Bloggers">เหมาะกับ: นักเขียนโฆษณา, Blogger</p>
+                        <p class="signup-info" data-i18n-th="วิธีสมัคร: Email/Google" data-i18n-en="Signup: Email/Google">วิธีสมัคร: Email/Google</p>
+                        <a href="https://copy.ai" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
 
+                    <!-- 10. Descript -->
                     <div class="ai-tool-card premium" data-category="video">
                         <div class="tool-header">
                             <h3>Descript</h3>
-                            <span class="tool-badge premium">พรีเมียม</span>
+                            <span class="tool-badge premium" data-i18n-th="ต้องสมัคร" data-i18n-en="Sign up">ต้องสมัคร</span>
                         </div>
-                        <p class="tool-description">AI ตัดต่อวิดีโอ+เสียงจากข้อความ</p>
-                        <p class="tool-suitable">เหมาะกับ: Podcast, YouTuber, Content Creator</p>
-                        <p class="signup-info">📝 วิธีสมัคร: Google/Email</p>
-                        <a href="https://www.descript.com" target="_blank" class="tool-link premium">เยี่ยมชมเว็บไซต์</a>
+                        <p class="tool-description" data-i18n-th="AI ตัดต่อวิดีโอ+เสียงจากข้อความ" data-i18n-en="AI edit video+audio from text">AI ตัดต่อวิดีโอ+เสียงจากข้อความ</p>
+                        <p class="tool-suitable" data-i18n-th="เหมาะกับ: Podcast, YouTuber, Content Creator" data-i18n-en="Best for: Podcasts, YouTubers, Creators">เหมาะกับ: Podcast, YouTuber, Content Creator</p>
+                        <p class="signup-info" data-i18n-th="วิธีสมัคร: Google/Email" data-i18n-en="Signup: Google/Email">วิธีสมัคร: Google/Email</p>
+                        <a href="https://www.descript.com" target="_blank" class="tool-link premium" data-i18n-th="ไปที่เว็บไซต์" data-i18n-en="Visit website">ไปที่เว็บไซต์</a>
                     </div>
                 </div>
             </div>
 
             <!-- Summary Section -->
             <div class="ai-summary">
-                <h3>📊 สรุป AI Tools ทั้งหมด</h3>
+                <h3 data-i18n-th="📊 สรุป AI Tools ทั้งหมด" data-i18n-en="📊 AI Tools Summary">📊 สรุป AI Tools ทั้งหมด</h3>
                 <div class="summary-stats">
                     <div class="stat-box">
                         <span class="stat-number">90</span>
-                        <span class="stat-label">AI ฟรี 100%</span>
+                        <span class="stat-label" data-i18n-th="AI ฟรี ไม่ต้องสมัคร" data-i18n-en="Free AI (No signup)">AI ฟรี ไม่ต้องสมัคร</span>
                     </div>
                     <div class="stat-box">
                         <span class="stat-number">10</span>
-                        <span class="stat-label">AI พรีเมียม</span>
+                        <span class="stat-label" data-i18n-th="AI ต้องสมัคร" data-i18n-en="Requires signup">AI ต้องสมัคร</span>
                     </div>
                     <div class="stat-box">
                         <span class="stat-number">100</span>
-                        <span class="stat-label">รวมทั้งหมด</span>
+                        <span class="stat-label" data-i18n-th="รวมทั้งหมด" data-i18n-en="Total">รวมทั้งหมด</span>
                     </div>
                 </div>
                 <p class="summary-note">
-                    ✅ ทุกตัวใช้ฟรี Tier พื้นฐาน (ไม่บังคับเสียเงิน)<br>
-                    ✅ สมัครง่าย ส่วนใหญ่รองรับ Google/Email<br>
-                    ✅ เหมาะกับทุกสายอาชีพ — ใช้จริงคุ้มค่า
+                    <span data-i18n-th="✅ ทุกตัวใช้ฟรี Tier พื้นฐาน (ไม่บังคับเสียเงิน)" data-i18n-en="✅ All have free/basic tiers (no forced payment)">✅ ทุกตัวใช้ฟรี Tier พื้นฐาน (ไม่บังคับเสียเงิน)</span><br>
+                    <span data-i18n-th="✅ สมัครง่าย ส่วนใหญ่รองรับ Google/Email" data-i18n-en="✅ Easy signup, most support Google/Email">✅ สมัครง่าย ส่วนใหญ่รองรับ Google/Email</span><br>
+                    <span data-i18n-th="✅ เหมาะกับทุกสายอาชีพ — ใช้จริงคุ้มค่า" data-i18n-en="✅ Great for all professions — truly useful">✅ เหมาะกับทุกสายอาชีพ — ใช้จริงคุ้มค่า</span>
                 </p>
             </div>
         </div>
-    </div>l-hunter-modal" class="modal">
+    </div>
+
+    <!-- Deal Hunter Modal -->
+    <div id="deal-hunter-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title">
