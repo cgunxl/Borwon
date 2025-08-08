@@ -516,3 +516,287 @@ body {
     to { transform: rotate(360deg); }
 }
 
+
+
+/* AI Tools Styles */
+.ai-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    color: var(--primary-green);
+    border-bottom-color: var(--primary-green);
+}
+
+.tab-btn:hover {
+    color: var(--primary-green);
+    background: rgba(0, 255, 65, 0.05);
+}
+
+.ai-search {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.ai-search input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.ai-search input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.ai-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.ai-tool-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 255, 65, 0.1);
+    border-color: var(--secondary-blue);
+}
+
+.ai-tool-card.premium {
+    border-color: rgba(255, 215, 0, 0.3);
+    background: rgba(255, 215, 0, 0.02);
+}
+
+.ai-tool-card.premium:hover {
+    border-color: #ffd700;
+    box-shadow: 0 15px 30px rgba(255, 215, 0, 0.1);
+}
+
+.tool-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.tool-header h3 {
+    color: var(--primary-green);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.tool-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.tool-badge.free {
+    background: rgba(0, 255, 65, 0.2);
+    color: var(--primary-green);
+    border: 1px solid var(--primary-green);
+}
+
+.tool-badge.premium {
+    background: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+    border: 1px solid #ffd700;
+}
+
+.tool-description {
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.tool-suitable {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.signup-info {
+    color: var(--secondary-blue);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: rgba(0, 204, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--secondary-blue);
+}
+
+.tool-link {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--primary-green), var(--secondary-blue));
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.tool-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 255, 65, 0.3);
+}
+
+.tool-link.premium {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #000;
+}
+
+.tool-link.premium:hover {
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+}
+
+.more-tools-notice {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 255, 65, 0.03);
+    border: 2px dashed var(--border-color);
+    border-radius: 15px;
+    color: var(--text-secondary);
+}
+
+.more-tools-notice h3 {
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+
+.ai-summary {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.ai-summary h3 {
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.summary-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(0, 255, 65, 0.05);
+    border-radius: 15px;
+    min-width: 120px;
+}
+
+.stat-box .stat-number {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+}
+
+.stat-box .stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.summary-note {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Responsive Design for AI Tools */
+@media (max-width: 768px) {
+    .ai-tools-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .ai-tabs {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .tab-btn {
+        padding: 0.8rem 1rem;
+        text-align: left;
+    }
+    
+    .summary-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .tool-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
