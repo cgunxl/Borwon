@@ -126,35 +126,22 @@ body {
 }
 
 .flag.th {
-    background: linear-gradient(to bottom, 
-        #ed1c24 0%, #ed1c24 20%, 
-        #ffffff 20%, #ffffff 40%, 
-        #241f4f 40%, #241f4f 60%, 
-        #ffffff 60%, #ffffff 80%, 
-        #ed1c24 80%, #ed1c24 100%);
+    background-image: url('flag_thailand.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .flag.us {
-    background: 
-        /* Blue canton */
-        linear-gradient(to right, #3c3b6e 0%, #3c3b6e 40%, transparent 40%),
-        /* Red and white stripes */
-        repeating-linear-gradient(to bottom,
-            #b22234 0%, #b22234 7.7%,
-            #ffffff 7.7%, #ffffff 15.4%);
-    background-size: 100% 100%;
+    background-image: url('flag_usa.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     position: relative;
 }
 
 .flag.us::after {
-    content: '★';
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    font-size: 8px;
-    text-shadow: 0 0 2px rgba(0,0,0,0.5);
+    display: none;
 }
 
 .language-dropdown {
