@@ -183,3 +183,75 @@ document.addEventListener('DOMContentLoaded', function() {
 // Version Control Ready - All updates should be done through git
 console.log('Borwan Website v2.0 - Scalable Architecture Ready');
 
+
+// AI Tools Tab Functions
+function showAITab(tabName) {
+    // Hide all tabs
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    
+    // Remove active class from all buttons
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // Show selected tab
+    document.getElementById(tabName + '-tab').classList.add('active');
+    
+    // Add active class to clicked button
+    event.target.closest('.tab-btn').classList.add('active');
+}
+
+// AI Tools Search Function
+function searchAITools() {
+    const searchTerm = document.getElementById('ai-search-input').value.toLowerCase();
+    const activeTab = document.querySelector('.tab-content.active');
+    const toolCards = activeTab.querySelectorAll('.ai-tool-card');
+    
+    toolCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('.tool-description').textContent.toLowerCase();
+        const suitable = card.querySelector('.tool-suitable').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || description.includes(searchTerm) || suitable.includes(searchTerm)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    // Handle more-tools-notice
+    const moreToolsNotice = activeTab.querySelector('.more-tools-notice');
+    if (moreToolsNotice) {
+        if (searchTerm === '') {
+            moreToolsNotice.style.display = 'block';
+        } else {
+            moreToolsNotice.style.display = 'none';
+        }
+    }
+}
+
+// Update translations for AI Tools
+const aiTranslations = {
+    th: {
+        'ai-free-tab': '🆓 AI ฟรี 100%',
+        'ai-premium-tab': '⭐ AI พรีเมียม'
+    },
+    en: {
+        'ai-free-tab': '🆓 Free AI 100%',
+        'ai-premium-tab': '⭐ Premium AI'
+    }
+};
+
+// Merge AI translations with existing translations
+Object.keys(aiTranslations).forEach(lang => {
+    if (translations[lang]) {
+        Object.assign(translations[lang], aiTranslations[lang]);
+    }
+});
+
+// Initialize AI Tools when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Set default active tab
+    showAITab('free');
+});
+
