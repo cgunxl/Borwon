@@ -730,6 +730,12 @@ body {
     font-style: italic;
 }
 
+.tool-meta {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
 .signup-info {
     color: var(--secondary-blue);
     font-size: 0.9rem;
@@ -861,5 +867,89 @@ body {
         align-items: flex-start;
         gap: 0.5rem;
     }
+}
+
+/* Dashboard */
+.dashboard-section {
+    padding: 2rem 0 3rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.dashboard-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+}
+
+.dashboard-number {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary-green);
+}
+
+.dashboard-label {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.dashboard-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.action-group { 
+    background: rgba(0, 255, 65, 0.03);
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 0.9rem;
+}
+
+.action-label { 
+    display: block; 
+    color: var(--primary-green);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.action-row { 
+    display: flex; 
+    gap: 0.5rem;
+}
+
+.action-input {
+    flex: 1;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-primary);
+    padding: 0.6rem 0.8rem;
+}
+
+.action-input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+}
+
+.action-btn {
+    background: linear-gradient(45deg, var(--primary-green), var(--secondary-blue));
+    color: #000;
+    font-weight: 800;
+    border: none;
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .dashboard-number { font-size: 1.6rem; }
 }
 
