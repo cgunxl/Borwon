@@ -1,0 +1,127 @@
+{
+    "name": "advanced-cursor-ai",
+    "displayName": "Advanced Cursor AI System",
+    "description": "ระบบค้นหาความรู้ทั่วโลก + สร้างสคริปต์ + Auto Deploy GitHub",
+    "version": "1.0.0",
+    "publisher": "advanced-cursor-ai",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": [
+        "Other",
+        "Machine Learning",
+        "Snippets"
+    ],
+    "keywords": [
+        "ai",
+        "cursor",
+        "automation",
+        "code generation",
+        "web scraping",
+        "github deploy"
+    ],
+    "activationEvents": [
+        "onCommand:advanced-cursor-ai.create",
+        "onCommand:advanced-cursor-ai.confirm",
+        "onCommand:advanced-cursor-ai.edit",
+        "onCommand:advanced-cursor-ai.cancel",
+        "onCommand:advanced-cursor-ai.stats"
+    ],
+    "main": "./cursor_extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "advanced-cursor-ai.create",
+                "title": "🚀 สร้างโปรเจคใหม่",
+                "category": "Advanced Cursor AI"
+            },
+            {
+                "command": "advanced-cursor-ai.confirm",
+                "title": "✅ ยืนยัน & Deploy",
+                "category": "Advanced Cursor AI"
+            },
+            {
+                "command": "advanced-cursor-ai.edit",
+                "title": "✏️ แก้ไขโปรเจค",
+                "category": "Advanced Cursor AI"
+            },
+            {
+                "command": "advanced-cursor-ai.cancel",
+                "title": "🚫 ยกเลิกการทำงาน",
+                "category": "Advanced Cursor AI"
+            },
+            {
+                "command": "advanced-cursor-ai.stats",
+                "title": "📊 ดูสถิติการใช้งาน",
+                "category": "Advanced Cursor AI"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "advanced-cursor-ai.create",
+                "key": "ctrl+shift+a",
+                "mac": "cmd+shift+a",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "advanced-cursor-ai.confirm",
+                "key": "ctrl+shift+y",
+                "mac": "cmd+shift+y"
+            },
+            {
+                "command": "advanced-cursor-ai.edit",
+                "key": "ctrl+shift+e",
+                "mac": "cmd+shift+e"
+            },
+            {
+                "command": "advanced-cursor-ai.cancel",
+                "key": "ctrl+shift+x",
+                "mac": "cmd+shift+x"
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "advanced-cursor-ai.create",
+                    "when": "true"
+                },
+                {
+                    "command": "advanced-cursor-ai.confirm",
+                    "when": "true"
+                },
+                {
+                    "command": "advanced-cursor-ai.edit",
+                    "when": "true"
+                },
+                {
+                    "command": "advanced-cursor-ai.cancel",
+                    "when": "true"
+                },
+                {
+                    "command": "advanced-cursor-ai.stats",
+                    "when": "true"
+                }
+            ],
+            "editor/context": [
+                {
+                    "command": "advanced-cursor-ai.create",
+                    "group": "advanced-cursor-ai",
+                    "when": "editorTextFocus"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "test": "echo \"No tests specified\" && exit 0"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.60.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/advanced-cursor-ai/extension"
+    },
+    "license": "MIT",
+    "icon": "icon.png"
+}
+
