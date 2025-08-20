@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Main Categories -->
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/apps</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/channels</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/fanpages</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/products</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/news</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/advice</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/locations</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/money</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Apps Subcategories -->
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/apps/travel-booking</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/apps/productivity</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/apps/entertainment</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Channels Subcategories -->
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/channels/investment-trading</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/channels/education</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/channels/technology</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Fanpages Subcategories -->
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/fanpages/game-topup</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/fanpages/entertainment</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/fanpages/lifestyle</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Products Subcategories -->
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/products/beauty-influencer</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/products/tech-gadgets</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/products/home-living</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- News Subcategories -->
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/news/crypto-tech</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/news/business</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/news/technology</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Advice Subcategories -->
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/advice/affiliate-business</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/advice/online-business</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/advice/personal-development</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Locations Subcategories -->
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/locations/travel-gems</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/locations/local-businesses</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/locations/hidden-spots</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Money Subcategories -->
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/money/passive-income</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/money/investment-strategies</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cgunxl.github.io/Borwon/money/side-hustles</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

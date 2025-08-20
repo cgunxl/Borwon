@@ -173,106 +173,170 @@
 @layer components {
   /* Bwn X Specific Components */
   .bwn-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .bwn-section {
-    @apply py-16 sm:py-20 lg:py-24;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
   .bwn-card {
-    @apply bg-bwn-dark-gray rounded-2xl p-6 border border-bwn-medium-gray hover:border-bwn-accent transition-all duration-300 hover:shadow-glow;
+    background-color: var(--bwn-dark-gray);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--bwn-medium-gray);
+    transition: all 0.3s ease;
+  }
+
+  .bwn-card:hover {
+    border-color: var(--bwn-accent);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
   }
 
   .bwn-button {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-bwn-accent focus:ring-offset-2 focus:ring-offset-bwn-deep-black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
   }
 
   .bwn-button-primary {
-    @apply bwn-button bg-bwn-accent text-bwn-deep-black hover:bg-bwn-accent-light hover:shadow-glow-lg transform hover:-translate-y-1;
+    background-color: var(--bwn-accent);
+    color: var(--bwn-deep-black);
+  }
+
+  .bwn-button-primary:hover {
+    background-color: var(--bwn-accent-light);
+    transform: translateY(-2px);
   }
 
   .bwn-button-secondary {
-    @apply bwn-button bg-transparent border-2 border-bwn-accent text-bwn-accent hover:bg-bwn-accent hover:text-bwn-deep-black;
+    background-color: transparent;
+    border: 2px solid var(--bwn-accent);
+    color: var(--bwn-accent);
   }
 
-  .bwn-button-ghost {
-    @apply bwn-button text-bwn-accent hover:bg-bwn-accent hover:text-bwn-deep-black hover:bg-opacity-10;
+  .bwn-button-secondary:hover {
+    background-color: var(--bwn-accent);
+    color: var(--bwn-deep-black);
   }
 
   /* Navigation */
   .bwn-nav-link {
-    @apply text-bwn-white hover:text-bwn-accent transition-colors duration-200 font-medium;
+    color: var(--bwn-white);
+    transition: color 0.2s ease;
+    font-weight: 500;
+  }
+
+  .bwn-nav-link:hover {
+    color: var(--bwn-accent);
   }
 
   .bwn-nav-link-active {
-    @apply text-bwn-accent font-semibold;
+    color: var(--bwn-accent);
+    font-weight: 600;
   }
 
   /* Hero Section */
   .bwn-hero-title {
-    @apply text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
   }
 
   .bwn-hero-subtitle {
-    @apply text-lg sm:text-xl lg:text-2xl text-bwn-accent font-medium;
+    font-size: 1.125rem;
+    color: var(--bwn-accent);
+    font-weight: 500;
+    margin-bottom: 2rem;
   }
 
   /* Category Cards */
   .bwn-category-card {
-    @apply bwn-card group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-glow-xl;
+    background-color: var(--bwn-dark-gray);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--bwn-medium-gray);
+    cursor: pointer;
+    transition: all 0.5s ease;
+  }
+
+  .bwn-category-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.4);
   }
 
   .bwn-category-icon {
-    @apply w-16 h-16 text-bwn-accent group-hover:text-bwn-accent-light transition-colors duration-300;
+    width: 4rem;
+    height: 4rem;
+    color: var(--bwn-accent);
+    transition: color 0.3s ease;
   }
 
   /* Animations */
   .bwn-fade-in {
-    @apply animate-fade-in;
+    animation: fadeIn 0.5s ease-in-out;
   }
 
   .bwn-slide-up {
-    @apply animate-slide-up;
+    animation: slideUp 0.5s ease-out;
   }
 
   .bwn-scale-in {
-    @apply animate-scale-in;
+    animation: scaleIn 0.3s ease-out;
   }
 
   .bwn-float {
-    @apply animate-float;
+    animation: float 6s ease-in-out infinite;
   }
 
   .bwn-morph {
-    @apply animate-morph;
+    animation: morph 8s ease-in-out infinite;
   }
 
   .bwn-fluid {
-    @apply animate-fluid;
+    animation: fluid 20s ease-in-out infinite;
   }
 
   /* Scroll Reveal */
   .bwn-scroll-reveal {
-    @apply opacity-0 translate-y-10 transition-all duration-1000;
+    opacity: 0;
+    transform: translateY(2.5rem);
+    transition: all 1s ease;
   }
 
   .bwn-scroll-reveal.revealed {
-    @apply opacity-100 translate-y-0;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* Background Effects */
   .bwn-main-bg {
-    @apply bg-gradient-to-br from-bwn-deep-black via-bwn-dark-gray to-bwn-deep-black;
+    background: linear-gradient(135deg, var(--bwn-deep-black) 0%, var(--bwn-dark-gray) 50%, var(--bwn-deep-black) 100%);
   }
 
   .bwn-fluid-particles {
-    @apply relative overflow-hidden;
+    position: relative;
+    overflow: hidden;
   }
 
   .bwn-fluid-particles::before {
     content: '';
-    @apply absolute inset-0 opacity-20;
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
     background-image: 
       radial-gradient(circle at 20% 80%, var(--bwn-accent) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, var(--bwn-ocean-blue) 0%, transparent 50%),
@@ -282,20 +346,30 @@
 
   /* Glass Effect */
   .bwn-glass {
-    @apply backdrop-blur-md bg-white bg-opacity-10 border border-white border-opacity-20;
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .bwn-glass-dark {
-    @apply backdrop-blur-md bg-black bg-opacity-20 border border-white border-opacity-10;
+    backdrop-filter: blur(12px);
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   /* Text Gradients */
   .bwn-text-gradient {
-    @apply bg-gradient-to-r from-bwn-accent via-bwn-ocean-blue to-bwn-accent bg-clip-text text-transparent;
+    background: linear-gradient(135deg, var(--bwn-accent) 0%, var(--bwn-ocean-blue) 50%, var(--bwn-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .bwn-text-gradient-ocean {
-    @apply bg-gradient-to-r from-bwn-ocean-blue via-bwn-accent to-bwn-ocean-light bg-clip-text text-transparent;
+    background: linear-gradient(135deg, var(--bwn-ocean-blue) 0%, var(--bwn-accent) 50%, var(--bwn-ocean-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 
@@ -315,28 +389,28 @@
 
   /* Responsive Text */
   .bwn-text-responsive {
-    @apply text-sm sm:text-base lg:text-lg xl:text-xl;
+    font-size: 0.875rem;
   }
 
   .bwn-text-responsive-lg {
-    @apply text-lg sm:text-xl lg:text-2xl xl:text-3xl;
+    font-size: 1.125rem;
   }
 
   .bwn-text-responsive-xl {
-    @apply text-xl sm:text-2xl lg:text-3xl xl:text-4xl;
+    font-size: 1.25rem;
   }
 
   /* Spacing Utilities */
   .bwn-space-y > * + * {
-    @apply mt-4;
+    margin-top: 1rem;
   }
 
   .bwn-space-y-lg > * + * {
-    @apply mt-8;
+    margin-top: 2rem;
   }
 
   .bwn-space-y-xl > * + * {
-    @apply mt-12;
+    margin-top: 3rem;
   }
 
   /* Grid Utilities */
@@ -383,5 +457,70 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  .bwn-hero-title {
+    font-size: 3rem;
+  }
+  
+  .bwn-hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .bwn-text-responsive {
+    font-size: 1rem;
+  }
+  
+  .bwn-text-responsive-lg {
+    font-size: 1.25rem;
+  }
+  
+  .bwn-text-responsive-xl {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .bwn-hero-title {
+    font-size: 3.75rem;
+  }
+  
+  .bwn-hero-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .bwn-text-responsive-lg {
+    font-size: 1.5rem;
+  }
+  
+  .bwn-text-responsive-xl {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bwn-hero-title {
+    font-size: 4.5rem;
+  }
+  
+  .bwn-hero-subtitle {
+    font-size: 1.875rem;
+  }
+  
+  .bwn-text-responsive-xl {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .bwn-hero-title {
+    font-size: 5.25rem;
+  }
+  
+  .bwn-hero-subtitle {
+    font-size: 2.25rem;
   }
 }

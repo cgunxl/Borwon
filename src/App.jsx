@@ -17,9 +17,6 @@ import LocationsPage from './pages/LocationsPage';
 import MoneyPage from './pages/MoneyPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-// Import global styles
-import './App.css';
-
 function App() {
   useEffect(() => {
     // Scroll reveal animation
