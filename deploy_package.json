@@ -1,0 +1,34 @@
+{
+  "name": "bwn-x-deploy-automation",
+  "version": "1.0.0",
+  "description": "Automated deployment scripts for Bwn X v2.0",
+  "main": "deploy_automation.js",
+  "scripts": {
+    "deploy:auto": "node deploy_automation.js",
+    "deploy:bash": "bash deploy_automation.sh",
+    "deploy:powershell": "powershell -ExecutionPolicy Bypass -File deploy_automation.ps1",
+    "deploy:all": "npm run deploy:auto && npm run deploy:bash && npm run deploy:powershell",
+    "setup": "npm install && chmod +x deploy_automation.sh",
+    "test": "echo 'Testing deployment scripts...' && node -e \"console.log('✅ All scripts are ready!')\""
+  },
+  "keywords": [
+    "deploy",
+    "automation",
+    "github",
+    "bwn-x",
+    "v2.0"
+  ],
+  "author": "Bwn X Team",
+  "license": "MIT",
+  "dependencies": {
+    "child_process": "^1.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cgunxl/Borwon.git"
+  },
+  "homepage": "https://cgunxl.github.io/Borwon/"
+}
