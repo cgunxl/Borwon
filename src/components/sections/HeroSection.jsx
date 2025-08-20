@@ -1,127 +1,203 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles, Zap, Waves, Globe, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { 
+  ArrowRight, 
+  TrendingUp, 
+  Users, 
+  Star, 
+  Zap,
+  Play,
+  Download,
+  Globe
+} from 'lucide-react';
 
 const HeroSection = () => {
+  // Statistics data
+  const stats = [
+    { icon: Users, value: '50K+', label: 'ผู้ใช้งาน', color: 'text-bwn-accent' },
+    { icon: TrendingUp, value: '95%', label: 'ความพึงพอใจ', color: 'text-bwn-ocean-blue' },
+    { icon: Star, value: '4.9', label: 'คะแนนรีวิว', color: 'text-bwn-accent-light' },
+    { icon: Globe, value: '8', label: 'หมวดหมู่หลัก', color: 'text-bwn-ocean-light' }
+  ];
+
+  // Featured categories for quick access
+  const featuredCategories = [
+    {
+      name: 'แอปท่องเที่ยว',
+      path: '/apps/travel-booking',
+      icon: '✈️',
+      description: 'Agoda, Booking.com, Airbnb',
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      name: 'การลงทุนคริปโต',
+      path: '/channels/investment-trading',
+      icon: '₿',
+      description: 'Bitcoin, Ethereum, Trading',
+      color: 'from-yellow-500 to-orange-500'
+    },
+    {
+      name: 'เกมเติมเงิน',
+      path: '/fanpages/game-topup',
+      icon: '🎮',
+      description: 'Robux, Free Fire, PUBG',
+      color: 'from-green-500 to-emerald-500'
+    }
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bwn-ocean-bg bwn-fluid-particles overflow-hidden">
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large Morphing Shapes */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bwn-morph-shape bg-gradient-to-br from-teal-500/10 to-cyan-500/10 blur-2xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-128 h-128 bwn-morph-shape bg-gradient-to-br from-blue-500/5 to-purple-500/5 blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-160 h-160 bwn-morph-shape bg-gradient-to-br from-cyan-500/3 to-teal-500/3 blur-3xl"></div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-bwn-deep-black via-bwn-dark-gray to-bwn-deep-black" />
         
-        {/* Floating Icons */}
-        <div className="absolute top-20 left-20 animate-bounce delay-1000">
-          <div className="w-12 h-12 rounded-full bwn-surface-glass flex items-center justify-center">
-            <Sparkles size={20} className="text-teal-400" />
-          </div>
+        {/* Floating Particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-bwn-accent/30 rounded-full animate-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${3 + Math.random() * 4}s`
+              }}
+            />
+          ))}
         </div>
-        <div className="absolute top-32 right-32 animate-bounce delay-2000">
-          <div className="w-10 h-10 rounded-full bwn-surface-glass flex items-center justify-center">
-            <Star size={16} className="text-cyan-400" />
-          </div>
-        </div>
-        <div className="absolute bottom-32 left-32 animate-bounce delay-3000">
-          <div className="w-14 h-14 rounded-full bwn-surface-glass flex items-center justify-center">
-            <Globe size={24} className="text-blue-400" />
-          </div>
-        </div>
-        <div className="absolute bottom-20 right-20 animate-bounce delay-500">
-          <div className="w-8 h-8 rounded-full bwn-surface-glass flex items-center justify-center">
-            <Waves size={14} className="text-purple-400" />
-          </div>
-        </div>
+
+        {/* Morphing Shapes */}
+        <div className="absolute top-20 left-10 w-64 h-64 bg-bwn-accent/10 rounded-full blur-3xl animate-morph" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-bwn-ocean-blue/10 rounded-full blur-3xl animate-morph" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-bwn-accent-light/5 rounded-full blur-3xl animate-fluid" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        {/* Badge */}
-        <div className="mb-8 bwn-scroll-reveal">
-          <div className="inline-flex items-center space-x-3 mb-6 px-6 py-3 rounded-full bwn-surface-glass border border-white/20 backdrop-blur-xl bwn-deep-glow">
-            <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
-            <Sparkles size={18} className="text-teal-400" />
-            <span className="text-sm font-medium text-gray-300">ศูนย์กลางแนะนำหลายภาษา</span>
-            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-500"></div>
-          </div>
-        </div>
-        
-        {/* Main Heading */}
-        <div className="mb-12 bwn-scroll-reveal">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 leading-none">
-            <div className="relative inline-block">
-              <span className="bwn-gradient-text">Bwn</span>
-              <div className="absolute -inset-4 bwn-morph-shape bg-gradient-to-r from-teal-400/20 to-cyan-400/20 blur-xl -z-10"></div>
+      {/* Main Content */}
+      <div className="relative z-10 bwn-container text-center">
+        <div className="max-w-6xl mx-auto">
+          {/* Hero Title */}
+          <div className="mb-8 bwn-scroll-reveal">
+            <h1 className="bwn-hero-title mb-6">
+              <span className="bwn-text-gradient">Bwn X</span>
+              <br />
+              <span className="text-bwn-white">ศูนย์กลางแนะนำหลายภาษา</span>
+            </h1>
+            
+            <p className="bwn-hero-subtitle mb-8 max-w-3xl mx-auto leading-relaxed">
+              ค้นพบแอป เครื่องมือ ช่องทาง และโอกาสหาเงินออนไลน์ที่ดีที่สุด 
+              ที่เราได้คัดสรรมาให้คุณแล้ว พร้อมคำแนะนำและรีวิวที่เชื่อถือได้
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Link
+                to="/apps"
+                className="bwn-button-primary group"
+              >
+                <span>เริ่มต้นตอนนี้</span>
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+              </Link>
+              
+              <Link
+                to="/advice"
+                className="bwn-button-secondary group"
+              >
+                <Play className="w-5 h-5 mr-2" />
+                <span>ดูคำแนะนำ</span>
+              </Link>
             </div>
-            <span className="text-gray-500 ml-2">X</span>
-          </h1>
-          
-          <div className="max-w-4xl mx-auto space-y-4">
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 font-light leading-relaxed">
-              ค้นพบ <span className="bwn-gradient-text font-semibold">แอป เครื่องมือ ช่องทาง</span> และ
-            </p>
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 font-light leading-relaxed">
-              <span className="bwn-gradient-text font-semibold">โอกาสหาเงินออนไลน์</span> ที่ดีที่สุด
-            </p>
-            <p className="text-lg md:text-xl text-gray-400 mt-6">
-              พร้อมคำแนะนำเชิงลึกและข้อมูลล่าสุดจากผู้เชี่ยวชาญ
-            </p>
           </div>
-        </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-16 bwn-scroll-reveal">
-          <Button 
-            size="lg" 
-            className="group px-10 py-6 text-xl font-semibold bg-gradient-to-r from-teal-500 to-cyan-500 text-black hover:from-teal-400 hover:to-cyan-400 bwn-deep-glow bwn-smooth-transition rounded-2xl shadow-2xl"
-          >
-            <Zap size={24} className="mr-3 group-hover:rotate-12 transition-transform" />
-            เริ่มสำรวจ
-            <ArrowRight size={24} className="ml-3 group-hover:translate-x-2 transition-transform" />
-          </Button>
-          
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="px-10 py-6 text-xl font-semibold border-2 border-white/30 text-white hover:bg-white/10 bwn-surface-glass bwn-smooth-transition rounded-2xl backdrop-blur-xl"
-          >
-            <Globe size={24} className="mr-3" />
-            หมวดยอดนิยม
-          </Button>
-        </div>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto bwn-scroll-reveal">
-          {[
-            { number: '1000+', label: 'แอปและเครื่องมือ', icon: Sparkles },
-            { number: '10', label: 'ภาษาที่รองรับ', icon: Globe },
-            { number: '8', label: 'หมวดหมู่หลัก', icon: Star },
-            { number: '24/7', label: 'อัปเดตข้อมูล', icon: Zap }
-          ].map((stat, index) => (
-            <div key={index} className="text-center group bwn-hover-lift">
-              <div className="bwn-surface-glass rounded-2xl p-6 border border-white/10 bwn-smooth-transition">
-                <div className="flex justify-center mb-3">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500/20 to-cyan-500/20 flex items-center justify-center">
-                    <stat.icon size={24} className="text-teal-400" />
-                  </div>
+          {/* Statistics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 bwn-scroll-reveal">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className={`w-16 h-16 bg-bwn-medium-gray rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                  <stat.icon className={`w-8 h-8 ${stat.color}`} />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold bwn-gradient-text mb-2">{stat.number}</div>
-                <div className="text-sm text-gray-400 font-medium">{stat.label}</div>
+                <div className={`text-2xl md:text-3xl font-bold ${stat.color} mb-1`}>
+                  {stat.value}
+                </div>
+                <div className="text-bwn-white/70 text-sm">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Featured Categories */}
+          <div className="bwn-scroll-reveal">
+            <h3 className="text-2xl font-bold text-bwn-white mb-8">
+              หมวดหมู่ยอดนิยม
+            </h3>
+            
+            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {featuredCategories.map((category, index) => (
+                <Link
+                  key={index}
+                  to={category.path}
+                  className="group relative overflow-hidden rounded-2xl bg-bwn-dark-gray border border-bwn-medium-gray hover:border-bwn-accent transition-all duration-300 hover:scale-105 hover:shadow-glow"
+                >
+                  {/* Background Gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                  
+                  {/* Content */}
+                  <div className="relative p-6 text-center">
+                    <div className="text-4xl mb-3">{category.icon}</div>
+                    <h4 className="text-lg font-semibold text-bwn-white mb-2 group-hover:text-bwn-accent transition-colors duration-200">
+                      {category.name}
+                    </h4>
+                    <p className="text-sm text-bwn-white/70 mb-4">
+                      {category.description}
+                    </p>
+                    
+                    {/* Hover Effect */}
+                    <div className="flex items-center justify-center text-bwn-accent opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                      <span className="text-sm font-medium mr-2">ดูเพิ่มเติม</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-16 bwn-scroll-reveal">
+            <div className="bg-bwn-dark-gray/50 backdrop-blur-sm rounded-2xl p-6 border border-bwn-medium-gray">
+              <h4 className="text-lg font-semibold text-bwn-white mb-4">
+                ทำไมต้องเชื่อถือเรา?
+              </h4>
+              <div className="grid md:grid-cols-3 gap-4 text-sm text-bwn-white/70">
+                <div className="flex items-center space-x-2">
+                  <Zap className="w-4 h-4 text-bwn-accent" />
+                  <span>อัปเดตข้อมูลล่าสุดเสมอ</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Download className="w-4 h-4 text-bwn-ocean-blue" />
+                  <span>รีวิวจากผู้ใช้จริง</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Star className="w-4 h-4 text-bwn-accent-light" />
+                  <span>คัดสรรเฉพาะของดี</span>
+                </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center bwn-surface-glass backdrop-blur-xl">
-          <div className="w-1 h-4 bg-gradient-to-b from-teal-400 to-cyan-400 rounded-full mt-2 animate-pulse"></div>
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bwn-scroll-reveal">
+        <div className="flex flex-col items-center text-bwn-white/60">
+          <span className="text-sm mb-2">เลื่อนลง</span>
+          <div className="w-6 h-10 border-2 border-bwn-accent rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-bwn-accent rounded-full mt-2 animate-bounce" />
+          </div>
         </div>
       </div>
-
-      {/* Background Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none"></div>
     </section>
   );
 };

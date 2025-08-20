@@ -1,187 +1,235 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import { 
-  Zap, 
-  Globe, 
-  Mail, 
-  MessageCircle, 
-  Twitter, 
   Instagram, 
-  Youtube,
+  Facebook, 
+  Twitter, 
+  Youtube, 
+  Mail, 
+  Phone, 
+  MapPin,
+  ExternalLink,
   Heart,
-  ArrowUp,
-  Sparkles,
-  Facebook
+  Zap
 } from 'lucide-react';
 
 const Footer = () => {
-  const categories = [
-    { name: 'Apps', href: '#apps' },
-    { name: 'Channel', href: '#channel' },
-    { name: 'Fanpage', href: '#fanpage' },
-    { name: 'Product', href: '#product' },
-    { name: 'News', href: '#news' },
-    { name: 'Advice', href: '#advice' },
-    { name: 'Location', href: '#location' },
-    { name: 'Money', href: '#money' }
+  const currentYear = new Date().getFullYear();
+
+  // Footer sections
+  const footerSections = [
+    {
+      title: 'หมวดหมู่หลัก',
+      links: [
+        { name: 'แอปและเครื่องมือ', path: '/apps' },
+        { name: 'ช่องทางการลงทุน', path: '/channels' },
+        { name: 'เพจแนะนำ', path: '/fanpages' },
+        { name: 'สินค้า', path: '/products' },
+        { name: 'ข่าวสาร', path: '/news' },
+        { name: 'คำแนะนำ', path: '/advice' },
+        { name: 'สถานที่', path: '/locations' },
+        { name: 'หาเงิน', path: '/money' }
+      ]
+    },
+    {
+      title: 'หมวดหมู่ยอดนิยม',
+      links: [
+        { name: 'แอปท่องเที่ยว', path: '/apps/travel-booking' },
+        { name: 'การลงทุนคริปโต', path: '/channels/investment-trading' },
+        { name: 'เกมเติมเงิน', path: '/fanpages/game-topup' },
+        { name: 'สินค้าความงาม', path: '/products/beauty-influencer' },
+        { name: 'ข่าวเทคโนโลยี', path: '/news/crypto-tech' },
+        { name: 'Affiliate Marketing', path: '/advice/affiliate-business' }
+      ]
+    },
+    {
+      title: 'ข้อมูลเพิ่มเติม',
+      links: [
+        { name: 'เกี่ยวกับเรา', path: '/about' },
+        { name: 'นโยบายความเป็นส่วนตัว', path: '/privacy' },
+        { name: 'ข้อกำหนดการใช้งาน', path: '/terms' },
+        { name: 'ติดต่อเรา', path: '/contact' },
+        { name: 'ช่วยเหลือ', path: '/help' },
+        { name: 'แผนผังเว็บไซต์', path: '/sitemap' }
+      ]
+    }
   ];
 
+  // Social media links
   const socialLinks = [
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Instagram, href: 'https://www.instagram.com/bouaonpanat_?igsh=OHVrcHd3YWoycGlx&utm_source=qr', label: 'Instagram' },
-    { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
-    { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' }
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/bouaonpanat_?igsh=OHVrcHd3YWoycGlx&utm_source=qr',
+      icon: Instagram,
+      color: 'hover:text-pink-400'
+    },
+    {
+      name: 'Facebook',
+      url: 'https://facebook.com',
+      icon: Facebook,
+      color: 'hover:text-blue-500'
+    },
+    {
+      name: 'Twitter',
+      url: 'https://twitter.com',
+      icon: Twitter,
+      color: 'hover:text-sky-400'
+    },
+    {
+      name: 'YouTube',
+      url: 'https://youtube.com',
+      icon: Youtube,
+      color: 'hover:text-red-500'
+    }
   ];
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
-    <footer className="relative bwn-ocean-bg border-t border-white/10 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bwn-fluid-particles opacity-20"></div>
-      <div className="absolute top-0 left-1/4 w-96 h-96 bwn-morph-shape bg-gradient-to-br from-teal-500/5 to-cyan-500/5 blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-128 h-128 bwn-morph-shape bg-gradient-to-br from-blue-500/3 to-purple-500/3 blur-3xl"></div>
-
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand Section */}
-          <div className="lg:col-span-2">
+    <footer className="bg-bwn-dark-gray border-t border-bwn-medium-gray">
+      {/* Main Footer Content */}
+      <div className="bwn-container py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="relative">
-                <div className="w-12 h-12 bwn-morph-shape bg-gradient-to-br from-teal-400 to-cyan-400 flex items-center justify-center">
-                  <Zap size={24} className="text-black" />
-                </div>
-                <div className="absolute inset-0 bwn-morph-shape bg-gradient-to-br from-teal-400/30 to-cyan-400/30 blur-md"></div>
+              <div className="w-12 h-12 bg-gradient-to-br from-bwn-accent to-bwn-ocean-blue rounded-xl flex items-center justify-center">
+                <span className="text-2xl font-bold text-bwn-deep-black">BX</span>
               </div>
-              <div className="text-3xl font-bold">
-                <span className="bwn-gradient-text">Bwn</span>
-                <span className="text-gray-400">X</span>
+              <div>
+                <h3 className="text-xl font-bold text-bwn-white">Bwn X</h3>
+                <p className="text-sm text-bwn-accent">ศูนย์กลางแนะนำหลายภาษา</p>
               </div>
             </div>
             
-            <p className="text-gray-300 text-lg mb-6 leading-relaxed max-w-md">
-              ศูนย์กลางแนะนำหลายภาษาที่รวบรวมแอป เครื่องมือ ช่องทาง และโอกาสหาเงินออนไลน์ที่ดีที่สุด
+            <p className="text-bwn-white/80 mb-6 leading-relaxed">
+              เรารวบรวมแอป เครื่องมือ ช่องทาง และโอกาสหาเงินออนไลน์ที่ดีที่สุด 
+              เพื่อให้คุณได้ประโยชน์สูงสุดจากโลกดิจิทัล
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                className="bg-gradient-to-r from-teal-500 to-cyan-500 text-black hover:from-teal-400 hover:to-cyan-400 bwn-deep-glow rounded-xl font-medium"
-              >
-                <Mail size={16} className="mr-2" />
-                ติดต่อเรา
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                className="border-white/30 text-white hover:bg-white/10 bwn-surface-glass rounded-xl font-medium"
-              >
-                <Globe size={16} className="mr-2" />
-                เปลี่ยนภาษา
-              </Button>
+            {/* Contact Info */}
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3 text-bwn-white/70">
+                <Mail className="w-4 h-4 text-bwn-accent" />
+                <span className="text-sm">support@bwnx.com</span>
+              </div>
+              <div className="flex items-center space-x-3 text-bwn-white/70">
+                <Phone className="w-4 h-4 text-bwn-accent" />
+                <span className="text-sm">+66 81-234-5678</span>
+              </div>
+              <div className="flex items-center space-x-3 text-bwn-white/70">
+                <MapPin className="w-4 h-4 text-bwn-accent" />
+                <span className="text-sm">กรุงเทพมหานคร, ประเทศไทย</span>
+              </div>
             </div>
           </div>
 
-          {/* Categories */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center">
-              <Sparkles size={20} className="mr-2 text-teal-400" />
-              หมวดหมู่
-            </h3>
-            <ul className="space-y-3">
-              {categories.map((category) => (
-                <li key={category.name}>
-                  <a 
-                    href={category.href}
-                    className="text-gray-300 hover:text-white bwn-smooth-transition hover:translate-x-1 inline-block"
+          {/* Footer Sections */}
+          {footerSections.map((section, index) => (
+            <div key={index}>
+              <h4 className="text-lg font-semibold text-bwn-white mb-4">
+                {section.title}
+              </h4>
+              <ul className="space-y-2">
+                {section.links.map((link, linkIndex) => (
+                  <li key={linkIndex}>
+                    <Link
+                      to={link.path}
+                      className="text-bwn-white/70 hover:text-bwn-accent transition-colors duration-200 text-sm flex items-center group"
+                    >
+                      <span className="group-hover:translate-x-1 transition-transform duration-200">
+                        {link.name}
+                      </span>
+                      <ExternalLink className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Social Media & Newsletter */}
+        <div className="mt-12 pt-8 border-t border-bwn-medium-gray">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+            {/* Social Media */}
+            <div className="flex items-center space-x-4">
+              <span className="text-bwn-white/70 text-sm font-medium">ติดตามเรา:</span>
+              <div className="flex space-x-3">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-10 h-10 bg-bwn-medium-gray rounded-full flex items-center justify-center text-bwn-white/70 transition-all duration-200 hover:bg-bwn-accent hover:text-bwn-deep-black ${social.color}`}
+                    aria-label={`ติดตามเราใน ${social.name}`}
                   >
-                    {category.name}
+                    <social.icon className="w-5 h-5" />
                   </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Social & Contact */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center">
-              <MessageCircle size={20} className="mr-2 text-cyan-400" />
-              ติดตาม
-            </h3>
-            
-            <div className="grid grid-cols-2 gap-3 mb-6">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 p-3 rounded-xl bwn-surface-glass border border-white/10 hover:border-white/30 bwn-smooth-transition group"
-                >
-                  <social.icon size={16} className="text-gray-400 group-hover:text-white" />
-                  <span className="text-sm text-gray-400 group-hover:text-white">{social.label}</span>
-                </a>
-              ))}
+                ))}
+              </div>
             </div>
 
-            <div className="bwn-surface-glass rounded-xl p-4 border border-white/10">
-              <p className="text-sm text-gray-400 mb-2">อัปเดตล่าสุด</p>
-              <p className="text-white font-medium">ทุกวัน 24/7</p>
+            {/* Newsletter Signup */}
+            <div className="flex items-center space-x-3">
+              <span className="text-bwn-white/70 text-sm font-medium">รับข่าวสารล่าสุด:</span>
+              <div className="flex">
+                <input
+                  type="email"
+                  placeholder="อีเมลของคุณ"
+                  className="px-4 py-2 bg-bwn-medium-gray border border-bwn-light-gray rounded-l-xl text-bwn-white placeholder-bwn-white/50 focus:outline-none focus:border-bwn-accent focus:ring-1 focus:ring-bwn-accent"
+                />
+                <button className="px-4 py-2 bg-bwn-accent text-bwn-deep-black font-medium rounded-r-xl hover:bg-bwn-accent-light transition-colors duration-200">
+                  สมัคร
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-
-        {/* Newsletter Section */}
-        <div className="bwn-surface-glass rounded-2xl p-8 border border-white/10 mb-12">
-          <div className="text-center max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              รับข้อมูลล่าสุด
-            </h3>
-            <p className="text-gray-300 mb-6">
-              สมัครรับข่าวสารและคำแนะนำใหม่ๆ ส่งตรงถึงอีเมลของคุณ
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="อีเมลของคุณ"
-                className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 bwn-smooth-transition"
-              />
-              <Button className="bg-gradient-to-r from-teal-500 to-cyan-500 text-black hover:from-teal-400 hover:to-cyan-400 bwn-deep-glow rounded-xl font-medium">
-                สมัคร
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10">
-          <div className="flex items-center space-x-2 text-gray-400 mb-4 md:mb-0">
-            <span>© 2024 Bwn X. สร้างด้วย</span>
-            <Heart size={16} className="text-red-400" />
-            <span>ในประเทศไทย</span>
-          </div>
-
-          <div className="flex items-center space-x-6">
-            <a href="#" className="text-gray-400 hover:text-white bwn-smooth-transition text-sm">
-              นโยบายความเป็นส่วนตัว
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white bwn-smooth-transition text-sm">
-              เงื่อนไขการใช้งาน
-            </a>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={scrollToTop}
-              className="text-gray-400 hover:text-white bwn-deep-glow rounded-xl"
-            >
-              <ArrowUp size={16} className="mr-1" />
-              กลับขึ้นบน
-            </Button>
           </div>
         </div>
       </div>
+
+      {/* Bottom Footer */}
+      <div className="border-t border-bwn-medium-gray">
+        <div className="bwn-container py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            {/* Copyright */}
+            <div className="flex items-center space-x-2 text-bwn-white/60 text-sm">
+              <span>© {currentYear} Bwn X. สงวนลิขสิทธิ์.</span>
+              <span>•</span>
+              <span>สร้างด้วย</span>
+              <Heart className="w-4 h-4 text-red-500 fill-current" />
+              <span>และ</span>
+              <Zap className="w-4 h-4 text-yellow-500 fill-current" />
+            </div>
+
+            {/* Additional Links */}
+            <div className="flex items-center space-x-6 text-sm">
+              <Link to="/sitemap" className="text-bwn-white/60 hover:text-bwn-accent transition-colors duration-200">
+                แผนผังเว็บไซต์
+              </Link>
+              <Link to="/privacy" className="text-bwn-white/60 hover:text-bwn-accent transition-colors duration-200">
+                ความเป็นส่วนตัว
+              </Link>
+              <Link to="/terms" className="text-bwn-white/60 hover:text-bwn-accent transition-colors duration-200">
+                ข้อกำหนด
+              </Link>
+              <Link to="/cookies" className="text-bwn-white/60 hover:text-bwn-accent transition-colors duration-200">
+                คุกกี้
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Back to Top Button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed bottom-6 right-6 w-12 h-12 bg-bwn-accent text-bwn-deep-black rounded-full shadow-lg hover:bg-bwn-accent-light hover:scale-110 transition-all duration-300 z-40 flex items-center justify-center"
+        aria-label="กลับขึ้นด้านบน"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </button>
     </footer>
   );
 };

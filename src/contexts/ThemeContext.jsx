@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const ThemeContext = createContext();
 
@@ -11,38 +11,55 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [theme, setTheme] = useState('dark'); // Default to dark mode
+  const [isLoaded, setIsLoaded] = useState(false);
 
+  // Load theme from localStorage on mount
   useEffect(() => {
-    // Load theme from localStorage
     const savedTheme = localStorage.getItem('bwn-theme');
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === 'dark');
+    if (savedTheme && ['light', 'dark'].includes(savedTheme)) {
+      setTheme(savedTheme);
     }
+    setIsLoaded(true);
   }, []);
 
+  // Apply theme to document
   useEffect(() => {
-    // Apply theme to document
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    } else {
-      document.documentElement.classList.add('light');
-      document.documentElement.classList.remove('dark');
-    }
-    
-    // Save to localStorage
-    localStorage.setItem('bwn-theme', isDarkMode ? 'dark' : 'light');
-  }, [isDarkMode]);
+    if (!isLoaded) return;
 
+    const root = document.documentElement;
+    
+    if (theme === 'light') {
+      root.classList.add('light');
+      root.classList.remove('dark');
+    } else {
+      root.classList.remove('light');
+      root.classList.add('dark');
+    }
+
+    // Save to localStorage
+    localStorage.setItem('bwn-theme', theme);
+  }, [theme, isLoaded]);
+
+  // Toggle theme function
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+  };
+
+  // Set specific theme
+  const setSpecificTheme = (newTheme) => {
+    if (['light', 'dark'].includes(newTheme)) {
+      setTheme(newTheme);
+    }
   };
 
   const value = {
-    isDarkMode,
+    theme,
+    isDark: theme === 'dark',
+    isLight: theme === 'light',
     toggleTheme,
-    theme: isDarkMode ? 'dark' : 'light'
+    setTheme: setSpecificTheme,
+    isLoaded
   };
 
   return (
