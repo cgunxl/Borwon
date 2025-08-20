@@ -1,179 +1,157 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Bell, X, Check, AlertTriangle, Info, Settings, Volume2, VolumeX, Clock, Star, Heart, Share2, Download, TrendingUp } from 'lucide-react';
+import { 
+  Bell, 
+  X, 
+  Check, 
+  AlertCircle, 
+  Info, 
+  CheckCircle, 
+  Clock,
+  Settings,
+  Filter,
+  Trash2,
+  Eye,
+  EyeOff
+} from 'lucide-react';
 
-const NotificationSystem = ({
-  notifications = [],
-  onNotificationClick,
-  onNotificationDismiss,
-  onNotificationAction,
-  showSettings = true,
+const NotificationSystem = ({ 
+  notifications = [], 
+  onNotificationAction = () => {},
+  onMarkAllRead = () => {},
+  onClearAll = () => {},
   className = "",
-  position = 'top-right'
+  showSettings = true,
+  maxNotifications = 5
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showSettingsPanel, setShowSettingsPanel] = useState(false);
-  const [unreadCount, setUnreadCount] = useState(0);
-  const [notificationSettings, setNotificationSettings] = useState({
-    enabled: true,
-    sound: true,
-    desktop: true,
-    categories: {
-      system: true,
-      updates: true,
-      recommendations: true,
-      promotions: true,
-      social: true
-    },
-    frequency: 'immediate' // immediate, hourly, daily
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [showRead, setShowRead] = useState(true);
+  const [userPreferences, setUserPreferences] = useState({
+    email: true,
+    push: true,
+    sound: false,
+    categories: ['important', 'updates', 'promotions']
   });
+  const [unreadCount, setUnreadCount] = useState(0);
 
-  // Mock notifications for demonstration
+  const notificationRef = useRef(null);
+
+  // Mock notifications - ในระบบจริงจะมาจาก API
   const mockNotifications = [
     {
       id: 1,
-      type: 'info',
       title: 'อัปเดตระบบใหม่',
-      message: 'ระบบได้รับการอัปเดตเพื่อประสิทธิภาพที่ดีขึ้น',
-      category: 'system',
-      timestamp: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
-      read: false,
-      actions: [
-        { label: 'ดูรายละเอียด', action: 'view_details' },
-        { label: 'ไม่สนใจ', action: 'dismiss' }
-      ]
+      message: 'ระบบค้นหาและตัวกรองได้รับการปรับปรุงแล้ว',
+      type: 'info',
+      category: 'updates',
+      timestamp: new Date(Date.now() - 1000 * 60 * 30), // 30 นาทีที่แล้ว
+      isRead: false,
+      priority: 'medium'
     },
     {
       id: 2,
-      type: 'success',
-      title: 'แนะนำแอปใหม่',
-      message: 'แอปท่องเที่ยวใหม่ที่คุณอาจสนใจ',
-      category: 'recommendations',
-      timestamp: new Date(Date.now() - 15 * 60 * 1000), // 15 minutes ago
-      read: false,
-      actions: [
-        { label: 'ดูแอป', action: 'view_app' },
-        { label: 'ไม่สนใจ', action: 'dismiss' }
-      ]
+      title: 'โปรโมชั่นพิเศษ',
+      message: 'ลดราคา 50% สำหรับสมาชิกใหม่',
+      type: 'promotion',
+      category: 'promotions',
+      timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2), // 2 ชั่วโมงที่แล้ว
+      isRead: false,
+      priority: 'high'
     },
     {
       id: 3,
+      title: 'การบำรุงรักษาระบบ',
+      message: 'ระบบจะหยุดให้บริการในวันที่ 15 มกราคม 2025 เวลา 02:00-04:00',
       type: 'warning',
-      title: 'การบำรุงรักษา',
-      message: 'ระบบจะปิดให้บริการในวันที่ 15 มกราคม เวลา 02:00-04:00',
-      category: 'system',
-      timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
-      read: true,
-      actions: [
-        { label: 'ตั้งการแจ้งเตือน', action: 'set_reminder' }
-      ]
+      category: 'important',
+      timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24), // 1 วันที่แล้ว
+      isRead: true,
+      priority: 'high'
     },
     {
       id: 4,
-      type: 'promotion',
-      title: 'โปรโมชั่นพิเศษ',
-      message: 'ส่วนลด 20% สำหรับสมาชิกใหม่',
-      category: 'promotions',
-      timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000), // 4 hours ago
-      read: true,
-      actions: [
-        { label: 'ดูโปรโมชั่น', action: 'view_promotion' },
-        { label: 'ไม่สนใจ', action: 'dismiss' }
-      ]
+      title: 'ยินดีต้อนรับ',
+      message: 'ขอบคุณที่สมัครสมาชิกกับเรา',
+      type: 'success',
+      category: 'welcome',
+      timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2), // 2 วันที่แล้ว
+      isRead: true,
+      priority: 'low'
+    },
+    {
+      id: 5,
+      title: 'การอัปเดตความปลอดภัย',
+      message: 'ระบบความปลอดภัยได้รับการปรับปรุงแล้ว',
+      type: 'info',
+      category: 'security',
+      timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3), // 3 วันที่แล้ว
+      isRead: true,
+      priority: 'medium'
     }
   ];
 
-  const currentNotifications = notifications.length > 0 ? notifications : mockNotifications;
+  // Merge with real notifications
+  const allNotifications = [...mockNotifications, ...notifications];
 
   // Calculate unread count
   useEffect(() => {
-    const count = currentNotifications.filter(n => !n.read).length;
+    const count = allNotifications.filter(n => !n.isRead).length;
     setUnreadCount(count);
-  }, [currentNotifications]);
+  }, [allNotifications]);
 
-  // Notification types configuration
-  const notificationTypes = {
-    info: {
-      icon: Info,
-      color: 'text-blue-400',
-      bgColor: 'bg-blue-400/10',
-      borderColor: 'border-blue-400/20'
-    },
-    success: {
-      icon: Check,
-      color: 'text-green-400',
-      bgColor: 'bg-green-400/10',
-      borderColor: 'border-green-400/20'
-    },
-    warning: {
-      icon: AlertTriangle,
-      color: 'text-yellow-400',
-      bgColor: 'bg-yellow-400/10',
-      borderColor: 'border-yellow-400/20'
-    },
-    error: {
-      icon: X,
-      color: 'text-red-400',
-      bgColor: 'bg-red-400/10',
-      borderColor: 'border-red-400/20'
-    },
-    promotion: {
-      icon: Star,
-      color: 'text-purple-400',
-      bgColor: 'bg-purple-400/10',
-      borderColor: 'border-purple-400/20'
-    }
-  };
-
-  // Category icons
-  const categoryIcons = {
-    system: Settings,
-    updates: TrendingUp,
-    recommendations: Heart,
-    promotions: Star,
-    social: Share2
-  };
-
-  // Handle notification click
-  const handleNotificationClick = (notification) => {
-    if (onNotificationClick) {
-      onNotificationClick(notification);
-    }
-    setIsOpen(false);
-  };
-
-  // Handle notification dismiss
-  const handleNotificationDismiss = (notificationId, e) => {
-    e.stopPropagation();
-    if (onNotificationDismiss) {
-      onNotificationDismiss(notificationId);
-    }
-  };
-
-  // Handle notification action
-  const handleNotificationAction = (notification, action, e) => {
-    e.stopPropagation();
-    if (onNotificationAction) {
-      onNotificationAction(notification, action);
-    }
-  };
-
-  // Toggle notification settings
-  const toggleNotificationSettings = (key, value) => {
-    setNotificationSettings(prev => ({
-      ...prev,
-      [key]: value
-    }));
-  };
-
-  // Toggle category setting
-  const toggleCategorySetting = (category) => {
-    setNotificationSettings(prev => ({
-      ...prev,
-      categories: {
-        ...prev.categories,
-        [category]: !prev.categories[category]
+  // Click outside to close
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setIsOpen(false);
+        setShowSettingsPanel(false);
       }
-    }));
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Filter notifications
+  const filteredNotifications = allNotifications.filter(notification => {
+    if (selectedCategory !== 'all' && notification.category !== selectedCategory) {
+      return false;
+    }
+    if (!showRead && notification.isRead) {
+      return false;
+    }
+    return true;
+  });
+
+  // Get notification icon
+  const getNotificationIcon = (type) => {
+    switch (type) {
+      case 'success':
+        return <CheckCircle className="w-5 h-5 text-green-500" />;
+      case 'warning':
+        return <AlertCircle className="w-5 h-5 text-yellow-500" />;
+      case 'error':
+        return <AlertCircle className="w-5 h-5 text-red-500" />;
+      case 'promotion':
+        return <Bell className="w-5 h-5 text-purple-500" />;
+      default:
+        return <Info className="w-5 h-5 text-blue-500" />;
+    }
+  };
+
+  // Get notification priority color
+  const getPriorityColor = (priority) => {
+    switch (priority) {
+      case 'high':
+        return 'border-l-red-500';
+      case 'medium':
+        return 'border-l-yellow-500';
+      case 'low':
+        return 'border-l-green-500';
+      default:
+        return 'border-l-gray-500';
+    }
   };
 
   // Format timestamp
@@ -184,45 +162,76 @@ const NotificationSystem = ({
     const hours = Math.floor(diff / (1000 * 60 * 60));
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-    if (minutes < 1) return 'เมื่อสักครู่';
-    if (minutes < 60) return `${minutes} นาทีที่แล้ว`;
-    if (hours < 24) return `${hours} ชั่วโมงที่แล้ว`;
-    if (days < 7) return `${days} วันที่แล้ว`;
-    
-    return timestamp.toLocaleDateString('th-TH');
-  };
-
-  // Get notification type config
-  const getNotificationTypeConfig = (type) => {
-    return notificationTypes[type] || notificationTypes.info;
-  };
-
-  // Position classes
-  const getPositionClasses = () => {
-    switch (position) {
-      case 'top-left':
-        return 'top-4 left-4';
-      case 'top-right':
-        return 'top-4 right-4';
-      case 'bottom-left':
-        return 'bottom-4 left-4';
-      case 'bottom-right':
-        return 'bottom-4 right-4';
-      default:
-        return 'top-4 right-4';
+    if (minutes < 60) {
+      return `${minutes} นาทีที่แล้ว`;
+    } else if (hours < 24) {
+      return `${hours} ชั่วโมงที่แล้ว`;
+    } else {
+      return `${days} วันที่แล้ว`;
     }
   };
 
+  // Handle notification action
+  const handleNotificationAction = (action, notification) => {
+    onNotificationAction(action, notification);
+    
+    if (action === 'markRead' && !notification.isRead) {
+      // Mark as read locally
+      notification.isRead = true;
+      setUnreadCount(prev => Math.max(0, prev - 1));
+    }
+  };
+
+  // Handle mark all as read
+  const handleMarkAllRead = () => {
+    allNotifications.forEach(n => n.isRead = true);
+    setUnreadCount(0);
+    onMarkAllRead();
+  };
+
+  // Handle clear all
+  const handleClearAll = () => {
+    onClearAll();
+  };
+
+  // Handle preference change
+  const handlePreferenceChange = (key, value) => {
+    setUserPreferences(prev => ({
+      ...prev,
+      [key]: value
+    }));
+  };
+
+  // Handle category preference change
+  const handleCategoryPreferenceChange = (category, enabled) => {
+    setUserPreferences(prev => ({
+      ...prev,
+      categories: enabled 
+        ? [...prev.categories, category]
+        : prev.categories.filter(c => c !== category)
+    }));
+  };
+
+  // Notification categories
+  const categories = [
+    { value: 'all', label: 'ทั้งหมด', icon: Bell },
+    { value: 'important', label: 'สำคัญ', icon: AlertCircle },
+    { value: 'updates', label: 'อัปเดต', icon: Info },
+    { value: 'promotions', label: 'โปรโมชั่น', icon: CheckCircle },
+    { value: 'security', label: 'ความปลอดภัย', icon: AlertCircle },
+    { value: 'welcome', label: 'ต้อนรับ', icon: CheckCircle }
+  ];
+
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${className}`} ref={notificationRef}>
       {/* Notification Bell */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 text-bwn-white hover:text-bwn-accent hover:bg-bwn-accent/10 rounded-xl transition-all duration-200"
+        className="relative p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
       >
         <Bell className="w-6 h-6" />
         {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-medium">
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
             {unreadCount > 99 ? '99+' : unreadCount}
           </span>
         )}
@@ -230,32 +239,30 @@ const NotificationSystem = ({
 
       {/* Notification Panel */}
       {isOpen && (
-        <div className={`absolute ${getPositionClasses()} w-96 bg-bwn-dark-gray border border-bwn-medium-gray rounded-2xl shadow-2xl z-50 max-h-[80vh] overflow-hidden`}>
+        <div className="absolute top-full right-0 mt-2 w-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-bwn-medium-gray">
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center space-x-2">
-              <Bell className="w-5 h-5 text-bwn-accent" />
-              <h3 className="text-lg font-semibold text-bwn-white">การแจ้งเตือน</h3>
+              <Bell className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              <h3 className="font-semibold text-gray-900 dark:text-white">การแจ้งเตือน</h3>
               {unreadCount > 0 && (
-                <span className="px-2 py-1 bg-bwn-accent text-bwn-deep-black text-xs rounded-full font-medium">
+                <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
                   {unreadCount} ใหม่
                 </span>
               )}
             </div>
-            
             <div className="flex items-center space-x-2">
               {showSettings && (
                 <button
                   onClick={() => setShowSettingsPanel(!showSettingsPanel)}
-                  className="p-1 text-bwn-white/50 hover:text-bwn-accent transition-colors duration-200"
-                  title="ตั้งค่าการแจ้งเตือน"
+                  className="p-1 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
                   <Settings className="w-4 h-4" />
                 </button>
               )}
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 text-bwn-white/50 hover:text-bwn-white transition-colors duration-200"
+                className="p-1 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -264,178 +271,190 @@ const NotificationSystem = ({
 
           {/* Settings Panel */}
           {showSettingsPanel && (
-            <div className="p-4 border-b border-bwn-medium-gray bg-bwn-medium-gray/20">
-              <h4 className="text-sm font-medium text-bwn-white mb-3">ตั้งค่าการแจ้งเตือน</h4>
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
+              <h4 className="font-medium text-gray-900 dark:text-white mb-3">การตั้งค่าการแจ้งเตือน</h4>
               
-              <div className="space-y-3">
-                {/* General Settings */}
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-bwn-white/80">เปิดใช้งาน</span>
-                  <button
-                    onClick={() => toggleNotificationSettings('enabled', !notificationSettings.enabled)}
-                    className={`w-10 h-6 rounded-full transition-colors duration-200 ${
-                      notificationSettings.enabled ? 'bg-bwn-accent' : 'bg-bwn-medium-gray'
-                    }`}
-                  >
-                    <div className={`w-4 h-4 bg-white rounded-full transition-transform duration-200 ${
-                      notificationSettings.enabled ? 'translate-x-4' : 'translate-x-0'
-                    }`}></div>
-                  </button>
-                </div>
+              {/* Notification Methods */}
+              <div className="space-y-3 mb-4">
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={userPreferences.email}
+                    onChange={(e) => handlePreferenceChange('email', e.target.checked)}
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <span className="text-sm text-gray-700 dark:text-gray-300">อีเมล</span>
+                </label>
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={userPreferences.push}
+                    onChange={(e) => handlePreferenceChange('push', e.target.checked)}
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <span className="text-sm text-gray-700 dark:text-gray-300">Push Notifications</span>
+                </label>
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={userPreferences.sound}
+                    onChange={(e) => handlePreferenceChange('sound', e.target.checked)}
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <span className="text-sm text-gray-700 dark:text-gray-300">เสียง</span>
+                </label>
+              </div>
 
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-bwn-white/80">เสียง</span>
-                  <button
-                    onClick={() => toggleNotificationSettings('sound', !notificationSettings.sound)}
-                    className="p-1 text-bwn-white/50 hover:text-bwn-accent transition-colors duration-200"
-                  >
-                    {notificationSettings.sound ? (
-                      <Volume2 className="w-4 h-4" />
-                    ) : (
-                      <VolumeX className="w-4 h-4" />
-                    )}
-                  </button>
-                </div>
-
-                {/* Category Settings */}
-                <div className="space-y-2">
-                  <span className="text-xs text-bwn-white/60">หมวดหมู่</span>
-                  {Object.entries(notificationSettings.categories).map(([category, enabled]) => {
-                    const Icon = categoryIcons[category];
-                    return (
-                      <div key={category} className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2">
-                          <Icon className="w-4 h-4 text-bwn-white/50" />
-                          <span className="text-sm text-bwn-white/80 capitalize">{category}</span>
-                        </div>
-                        <button
-                          onClick={() => toggleCategorySetting(category)}
-                          className={`w-8 h-4 rounded-full transition-colors duration-200 ${
-                            enabled ? 'bg-bwn-accent' : 'bg-bwn-medium-gray'
-                          }`}
-                        >
-                          <div className={`w-3 h-3 bg-white rounded-full transition-transform duration-200 ${
-                            enabled ? 'translate-x-4' : 'translate-x-0'
-                          }`}></div>
-                        </button>
-                      </div>
-                    );
-                  })}
+              {/* Category Preferences */}
+              <div>
+                <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">หมวดหมู่ที่ต้องการ</h5>
+                <div className="grid grid-cols-2 gap-2">
+                  {categories.slice(1).map(category => (
+                    <label key={category.value} className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        checked={userPreferences.categories.includes(category.value)}
+                        onChange={(e) => handleCategoryPreferenceChange(category.value, e.target.checked)}
+                        className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <span className="text-xs text-gray-700 dark:text-gray-300">{category.label}</span>
+                    </label>
+                  ))}
                 </div>
               </div>
             </div>
           )}
 
+          {/* Filters */}
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center space-x-2">
+                <Filter className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">ตัวกรอง</span>
+              </div>
+              <button
+                onClick={() => setShowRead(!showRead)}
+                className="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              >
+                {showRead ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
+                <span>{showRead ? 'ซ่อนที่อ่านแล้ว' : 'แสดงทั้งหมด'}</span>
+              </button>
+            </div>
+            
+            {/* Category Filter */}
+            <div className="flex flex-wrap gap-2">
+              {categories.map(category => (
+                <button
+                  key={category.value}
+                  onClick={() => setSelectedCategory(category.value)}
+                  className={`flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                    selectedCategory === category.value
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  }`}
+                >
+                  <category.icon className="w-3 h-3" />
+                  <span>{category.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+            <button
+              onClick={handleMarkAllRead}
+              disabled={unreadCount === 0}
+              className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              ทำเครื่องหมายว่าอ่านแล้วทั้งหมด
+            </button>
+            <button
+              onClick={handleClearAll}
+              className="text-sm text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300"
+            >
+              ล้างทั้งหมด
+            </button>
+          </div>
+
           {/* Notifications List */}
           <div className="max-h-96 overflow-y-auto">
-            {currentNotifications.length === 0 ? (
-              <div className="p-8 text-center">
-                <Bell className="w-12 h-12 text-bwn-white/30 mx-auto mb-3" />
-                <p className="text-bwn-white/70">ไม่มีการแจ้งเตือน</p>
-              </div>
-            ) : (
-              <div className="divide-y divide-bwn-medium-gray/20">
-                {currentNotifications.map((notification) => {
-                  const typeConfig = getNotificationTypeConfig(notification.type);
-                  const Icon = typeConfig.icon;
-                  const CategoryIcon = categoryIcons[notification.category];
-                  
-                  return (
-                    <div
-                      key={notification.id}
-                      onClick={() => handleNotificationClick(notification)}
-                      className={`p-4 hover:bg-bwn-medium-gray/20 transition-colors duration-200 cursor-pointer ${
-                        !notification.read ? 'bg-bwn-accent/5 border-l-4 border-l-bwn-accent' : ''
-                      }`}
-                    >
-                      {/* Notification Header */}
-                      <div className="flex items-start space-x-3 mb-2">
-                        <div className={`w-10 h-10 ${typeConfig.bgColor} rounded-xl flex items-center justify-center flex-shrink-0`}>
-                          <Icon className={`w-5 h-5 ${typeConfig.color}`} />
-                        </div>
-                        
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between mb-1">
-                            <h4 className="text-sm font-medium text-bwn-white truncate">
-                              {notification.title}
-                            </h4>
-                            <button
-                              onClick={(e) => handleNotificationDismiss(notification.id, e)}
-                              className="p-1 text-bwn-white/30 hover:text-red-400 transition-colors duration-200 flex-shrink-0"
-                            >
-                              <X className="w-3 h-3" />
-                            </button>
-                          </div>
-                          
-                          <p className="text-sm text-bwn-white/70 mb-2 line-clamp-2">
-                            {notification.message}
+            {filteredNotifications.length > 0 ? (
+              <div className="divide-y divide-gray-200 dark:divide-gray-700">
+                {filteredNotifications.slice(0, maxNotifications).map(notification => (
+                  <div
+                    key={notification.id}
+                    className={`p-4 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-l-4 ${getPriorityColor(notification.priority)} ${
+                      !notification.isRead ? 'bg-blue-50 dark:bg-blue-900/20' : ''
+                    }`}
+                  >
+                    <div className="flex items-start space-x-3">
+                      <div className="flex-shrink-0 mt-1">
+                        {getNotificationIcon(notification.type)}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <p className={`text-sm font-medium ${
+                            notification.isRead ? 'text-gray-700 dark:text-gray-300' : 'text-gray-900 dark:text-white'
+                          }`}>
+                            {notification.title}
                           </p>
-                          
-                          {/* Category and Time */}
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center space-x-2">
-                              <CategoryIcon className="w-3 h-3 text-bwn-white/50" />
-                              <span className="text-xs text-bwn-white/50 capitalize">
-                                {notification.category}
-                              </span>
-                            </div>
-                            <div className="flex items-center space-x-1 text-xs text-bwn-white/50">
-                              <Clock className="w-3 h-3" />
-                              <span>{formatTimestamp(notification.timestamp)}</span>
-                            </div>
+                          <div className="flex items-center space-x-1">
+                            <span className="text-xs text-gray-500 dark:text-gray-400">
+                              {formatTimestamp(notification.timestamp)}
+                            </span>
+                            {!notification.isRead && (
+                              <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                            )}
+                          </div>
+                        </div>
+                        <p className={`text-sm mt-1 ${
+                          notification.isRead ? 'text-gray-600 dark:text-gray-400' : 'text-gray-700 dark:text-gray-300'
+                        }`}>
+                          {notification.message}
+                        </p>
+                        <div className="flex items-center justify-between mt-2">
+                          <span className="text-xs text-gray-500 dark:text-gray-400">
+                            {notification.category}
+                          </span>
+                          <div className="flex items-center space-x-2">
+                            {!notification.isRead && (
+                              <button
+                                onClick={() => handleNotificationAction('markRead', notification)}
+                                className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                              >
+                                ทำเครื่องหมายว่าอ่านแล้ว
+                              </button>
+                            )}
+                            <button
+                              onClick={() => handleNotificationAction('delete', notification)}
+                              className="text-xs text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300"
+                            >
+                              ลบ
+                            </button>
                           </div>
                         </div>
                       </div>
-
-                      {/* Actions */}
-                      {notification.actions && notification.actions.length > 0 && (
-                        <div className="flex items-center space-x-2 mt-3">
-                          {notification.actions.map((action, index) => (
-                            <button
-                              key={index}
-                              onClick={(e) => handleNotificationAction(notification, action.action, e)}
-                              className="px-3 py-1 bg-bwn-medium-gray text-bwn-white text-xs rounded-lg hover:bg-bwn-accent hover:text-bwn-deep-black transition-colors duration-200"
-                            >
-                              {action.label}
-                            </button>
-                          ))}
-                        </div>
-                      )}
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="p-8 text-center">
+                <Bell className="w-12 h-12 text-gray-400 mx-auto mb-3" />
+                <p className="text-gray-500 dark:text-gray-400">ไม่มีการแจ้งเตือน</p>
               </div>
             )}
           </div>
 
           {/* Footer */}
-          <div className="p-3 border-t border-bwn-medium-gray bg-bwn-medium-gray/20">
-            <div className="flex items-center justify-between">
-              <button
-                onClick={() => {
-                  // Mark all as read
-                  currentNotifications.forEach(n => {
-                    if (onNotificationClick) onNotificationClick({ ...n, read: true });
-                  });
-                }}
-                className="text-xs text-bwn-accent hover:text-bwn-accent-light transition-colors duration-200"
-              >
-                อ่านทั้งหมดแล้ว
-              </button>
-              
-              <button
-                onClick={() => {
-                  // Clear all notifications
-                  currentNotifications.forEach(n => {
-                    if (onNotificationDismiss) onNotificationDismiss(n.id);
-                  });
-                }}
-                className="text-xs text-bwn-white/50 hover:text-red-400 transition-colors duration-200"
-              >
-                ล้างทั้งหมด
+          {filteredNotifications.length > maxNotifications && (
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700 text-center">
+              <button className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
+                ดูการแจ้งเตือนทั้งหมด ({filteredNotifications.length})
               </button>
             </div>
-          </div>
+          )}
         </div>
       )}
     </div>
