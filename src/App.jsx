@@ -8,6 +8,7 @@ import AnimatedBackground from './components/ui/AnimatedBackground';
 
 // Page Components
 import HomePage from './pages/HomePage';
+import CategoryPage from './pages/CategoryPage';
 import AppsPage from './pages/AppsPage';
 import ChannelsPage from './pages/ChannelsPage';
 import FanpagesPage from './pages/FanpagesPage';
@@ -71,6 +72,9 @@ function App() {
             
             {/* Demo Page */}
             <Route path="/demo" element={<DemoPage />} />
+            
+            {/* Category Pages */}
+            <Route path="/category/:category" element={<CategoryPage />} />
             
             {/* Apps Category */}
             <Route path="/apps" element={<AppsPage />} />
