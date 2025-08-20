@@ -131,7 +131,7 @@ deploy:
 		echo "❌ Not a git repository!"; \
 	fi
 
-deploy:quick:
+deploy-quick:
 	@echo "⚡ Quick deploy to GitHub..."
 	@if [ -d ".git" ]; then \
 		make build; \
