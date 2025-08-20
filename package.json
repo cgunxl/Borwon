@@ -3,6 +3,27 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
+  "description": "Bwn X v2.0 - ศูนย์กลางแนะนำหลายภาษา แอป ท่องเที่ยว การลงทุน เกม และโอกาสหาเงินออนไลน์ พร้อม Dashboard วิเคราะห์ข้อมูล ระบบค้นหา และฟีเจอร์ใหม่ครบครัน",
+  "keywords": [
+    "react",
+    "vite",
+    "tailwindcss",
+    "thai",
+    "travel",
+    "investment",
+    "gaming",
+    "affiliate",
+    "monetization",
+    "dashboard",
+    "analytics",
+    "search",
+    "notifications",
+    "user-profile",
+    "data-table"
+  ],
+  "author": "Bwn X Team",
+  "license": "MIT",
+  "homepage": "https://cgunxl.github.io/Borwon/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -12,53 +33,77 @@
     "format": "prettier --write .",
     "analyze": "npm run build && npx vite-bundle-analyzer dist",
     "deploy": "npm run build && gh-pages -d dist",
-    "deploy:github": "npm run build && git add . && git commit -m '🚀 Auto-deploy Futuristic Theme' && git push origin main",
-    "theme:build": "npm run build && echo '✅ Futuristic Theme built successfully!'",
-    "theme:preview": "npm run build && npm run preview",
-    "theme:test": "npm run build && echo '🧪 Testing Futuristic Theme...' && echo '✅ All components working!'",
-    "clean": "rm -rf dist node_modules/.vite",
-    "reset": "npm run clean && npm install && npm run dev"
+    "deploy:github": "npm run build && gh-pages -d dist",
+    "deploy:netlify": "npm run build && echo 'Build completed. Upload dist/ folder to Netlify.'",
+    "test": "echo 'Tests not configured yet'",
+    "storybook": "echo 'Storybook not configured yet'"
   },
   "dependencies": {
+    "axios": "^1.6.0",
+    "clsx": "^2.0.0",
+    "date-fns": "^2.30.0",
+    "framer-motion": "^10.16.4",
+    "lucide-react": "^0.263.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.1",
+    "react-helmet": "^6.1.0",
     "react-helmet-async": "^1.3.0",
-    "lucide-react": "^0.263.1"
+    "react-hot-toast": "^2.4.1",
+    "react-intersection-observer": "^9.5.2",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.20.1",
+    "recharts": "^2.8.0",
+    "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^3.1.0",
-    "autoprefixer": "^10.4.14",
-    "eslint": "^8.36.0",
-    "eslint-plugin-react": "^7.32.2",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.3.4",
-    "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.7",
-    "vite": "^4.1.0",
-    "vite-bundle-analyzer": "^0.7.0"
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "gh-pages": "^6.0.0",
+    "postcss": "^8.4.31",
+    "prettier": "^3.0.3",
+    "tailwindcss": "^3.3.5",
+    "vite": "^4.5.0",
+    "vite-bundle-analyzer": "^0.7.0",
+    "vite-plugin-pwa": "^0.17.4"
   },
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
   },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/cgunxl/Borwon.git"
   },
-  "keywords": [
-    "borwon",
-    "futuristic",
-    "dark-theme",
-    "animated-backgrounds",
-    "react",
-    "tailwind-css",
-    "cyberpunk",
-    "ui-components"
-  ],
-  "author": "cgunxl",
-  "license": "MIT",
-  "homepage": "https://cgunxl.github.io/Borwon/"
+  "bugs": {
+    "url": "https://github.com/cgunxl/Borwon/issues"
+  },
+  "features": [
+    "Powerful Search System",
+    "Analytics Dashboard",
+    "Data Table Management",
+    "Real-time Notifications",
+    "User Profile Management",
+    "Dark/Light Theme",
+    "Responsive Design",
+    "SEO Optimization",
+    "Performance Monitoring"
+  ]
 }

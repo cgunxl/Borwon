@@ -17,6 +17,7 @@ import NewsPage from './pages/NewsPage';
 import AdvicePage from './pages/AdvicePage';
 import LocationsPage from './pages/LocationsPage';
 import MoneyPage from './pages/MoneyPage';
+import DashboardPage from './pages/DashboardPage';
 import NotFoundPage from './pages/NotFoundPage';
 import DemoPage from './pages/DemoPage';
 
@@ -123,6 +124,9 @@ function App() {
             <Route path="/money/passive-income" element={<MoneyPage category="passive" />} />
             <Route path="/money/investment-strategies" element={<MoneyPage category="investment" />} />
             <Route path="/money/side-hustles" element={<MoneyPage category="side-hustles" />} />
+            
+            {/* Dashboard */}
+            <Route path="/dashboard" element={<DashboardPage />} />
             
             {/* 404 Page */}
             <Route path="*" element={<NotFoundPage />} />
