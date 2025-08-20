@@ -1,385 +1,472 @@
 import React, { useState, useEffect } from 'react';
-import { TrendingUp, TrendingDown, Users, Eye, Heart, Share2, Download, Star, Clock, Target, BarChart3, PieChart, Activity, Zap } from 'lucide-react';
+import { 
+  TrendingUp, 
+  TrendingDown, 
+  Users, 
+  Eye, 
+  Heart, 
+  Share2, 
+  DollarSign,
+  Activity,
+  Calendar,
+  BarChart3,
+  PieChart,
+  Target,
+  Zap
+} from 'lucide-react';
 
-const AnalyticsDashboard = ({
-  data = {},
-  timeRange = '7d',
+const AnalyticsDashboard = ({ 
+  data = {}, 
   className = "",
-  onTimeRangeChange,
-  onMetricClick
+  showCharts = true,
+  showInsights = true
 }) => {
-  const [selectedMetric, setSelectedMetric] = useState(null);
-  const [hoveredChart, setHoveredChart] = useState(null);
+  const [timeRange, setTimeRange] = useState('7d');
+  const [selectedMetric, setSelectedMetric] = useState('overview');
 
-  // Mock data for demonstration
+  // Mock data - ในระบบจริงจะมาจาก API
   const mockData = {
     overview: {
       totalUsers: 15420,
       totalViews: 89250,
-      totalLikes: 45680,
-      totalShares: 12340,
-      growthRate: 12.5,
-      conversionRate: 3.2
-    },
-    trends: {
-      '7d': [
-        { date: '2024-01-01', users: 1200, views: 8500, likes: 4200, shares: 1100 },
-        { date: '2024-01-02', users: 1350, views: 9200, likes: 4800, shares: 1250 },
-        { date: '2024-01-03', users: 1100, views: 7800, likes: 3900, shares: 980 },
-        { date: '2024-01-04', users: 1600, views: 10500, likes: 5200, shares: 1400 },
-        { date: '2024-01-05', users: 1800, views: 11800, likes: 5800, shares: 1550 },
-        { date: '2024-01-06', users: 2000, views: 13200, likes: 6500, shares: 1700 },
-        { date: '2024-01-07', users: 2200, views: 14500, likes: 7200, shares: 1850 }
-      ],
-      '30d': Array.from({ length: 30 }, (_, i) => ({
-        date: new Date(2024, 0, i + 1).toISOString().split('T')[0],
-        users: 1000 + Math.random() * 2000,
-        views: 7000 + Math.random() * 8000,
-        likes: 3500 + Math.random() * 4000,
-        shares: 900 + Math.random() * 1000
-      })),
-      '90d': Array.from({ length: 90 }, (_, i) => ({
-        date: new Date(2023, 9, i + 1).toISOString().split('T')[0],
-        users: 800 + Math.random() * 2500,
-        views: 6000 + Math.random() * 10000,
-        likes: 3000 + Math.random() * 5000,
-        shares: 700 + Math.random() * 1500
-      }))
+      totalLikes: 12450,
+      totalShares: 5670,
+      userGrowth: 12.5,
+      viewGrowth: 8.3,
+      likeGrowth: 15.7,
+      shareGrowth: 22.1
     },
     categories: [
-      { name: 'แอปและเครื่องมือ', value: 35, color: '#3B82F6', growth: 15.2 },
-      { name: 'ช่องทางการลงทุน', value: 28, color: '#10B981', growth: 8.7 },
-      { name: 'เพจแนะนำ', value: 22, color: '#8B5CF6', growth: 12.4 },
-      { name: 'สินค้าและบริการ', value: 15, color: '#F59E0B', growth: 5.9 }
+      { name: 'แอป', value: 35, color: '#3B82F6' },
+      { name: 'ช่องทาง', value: 25, color: '#10B981' },
+      { name: 'เพจ', value: 20, color: '#F59E0B' },
+      { name: 'สินค้า', value: 15, color: '#EF4444' },
+      { name: 'อื่นๆ', value: 5, color: '#8B5CF6' }
+    ],
+    trends: [
+      { date: '2024-01-01', users: 1200, views: 8500, likes: 950, shares: 420 },
+      { date: '2024-01-02', users: 1350, views: 9200, likes: 1100, shares: 480 },
+      { date: '2024-01-03', users: 1280, views: 8800, likes: 980, shares: 450 },
+      { date: '2024-01-04', users: 1420, views: 9500, likes: 1150, shares: 520 },
+      { date: '2024-01-05', users: 1380, views: 9100, likes: 1080, shares: 490 },
+      { date: '2024-01-06', users: 1550, views: 10200, likes: 1250, shares: 580 },
+      { date: '2024-01-07', users: 1620, views: 10800, likes: 1320, shares: 620 }
     ],
     topContent: [
-      { title: 'แอปท่องเที่ยว Agoda', views: 12500, likes: 6800, shares: 1200, category: 'apps' },
-      { title: 'การลงทุนคริปโต Bitcoin', views: 9800, likes: 5200, shares: 890, category: 'channels' },
-      { title: 'เกมเติมเงิน Robux', views: 8700, likes: 4600, shares: 750, category: 'fanpages' },
-      { title: 'สินค้าความงาม SK-II', views: 7200, likes: 3800, shares: 620, category: 'products' }
-    ],
-    userBehavior: {
-      pageViews: { mobile: 65, desktop: 35 },
-      timeOnSite: { '0-30s': 25, '30s-2m': 35, '2m-5m': 25, '5m+': 15 },
-      bounceRate: 42.3,
-      returnRate: 28.7
-    }
+      { title: 'แอปท่องเที่ยวที่ดีที่สุด 2024', views: 8500, likes: 1250, shares: 320, category: 'แอป' },
+      { title: 'วิธีลงทุนคริปโตสำหรับมือใหม่', views: 7200, likes: 980, shares: 280, category: 'ช่องทาง' },
+      { title: 'เพจเติมเกมราคาถูกที่สุด', views: 6800, likes: 890, shares: 250, category: 'เพจ' },
+      { title: 'สินค้าความงามที่คนดังใช้', views: 6200, likes: 750, shares: 200, category: 'สินค้า' },
+      { title: 'ข่าวเทคโนโลยีล่าสุด', views: 5800, likes: 680, shares: 180, category: 'ข่าว' }
+    ]
   };
 
-  const currentData = data.overview || mockData.overview;
-  const currentTrends = data.trends?.[timeRange] || mockData.trends[timeRange];
-  const currentCategories = data.categories || mockData.categories;
-  const currentTopContent = data.topContent || mockData.topContent;
-  const currentUserBehavior = data.userBehavior || mockData.userBehavior;
+  // Merge with real data
+  const analyticsData = { ...mockData, ...data };
 
   // Time range options
-  const timeRangeOptions = [
-    { value: '7d', label: '7 วัน', icon: Clock },
-    { value: '30d', label: '30 วัน', icon: Calendar },
-    { value: '90d', label: '90 วัน', icon: BarChart3 }
+  const timeRanges = [
+    { value: '1d', label: 'วันนี้' },
+    { value: '7d', label: '7 วัน' },
+    { value: '30d', label: '30 วัน' },
+    { value: '90d', label: '90 วัน' },
+    { value: '1y', label: '1 ปี' }
   ];
 
-  // Metric cards
-  const metricCards = [
-    {
-      key: 'totalUsers',
-      label: 'ผู้ใช้งานทั้งหมด',
-      value: currentData.totalUsers?.toLocaleString(),
-      icon: Users,
-      color: 'text-blue-400',
-      bgColor: 'bg-blue-400/10',
-      growth: currentData.growthRate,
-      trend: 'up'
-    },
-    {
-      key: 'totalViews',
-      label: 'การดูทั้งหมด',
-      value: currentData.totalViews?.toLocaleString(),
-      icon: Eye,
-      color: 'text-green-400',
-      bgColor: 'bg-green-400/10',
-      growth: 8.7,
-      trend: 'up'
-    },
-    {
-      key: 'totalLikes',
-      label: 'ไลค์ทั้งหมด',
-      value: currentData.totalLikes?.toLocaleString(),
-      icon: Heart,
-      color: 'text-pink-400',
-      bgColor: 'bg-pink-400/10',
-      growth: 15.3,
-      trend: 'up'
-    },
-    {
-      key: 'totalShares',
-      label: 'แชร์ทั้งหมด',
-      value: currentData.totalShares?.toLocaleString(),
-      icon: Share2,
-      color: 'text-purple-400',
-      bgColor: 'bg-purple-400/10',
-      growth: 22.1,
-      trend: 'up'
-    }
+  // Metric options
+  const metricOptions = [
+    { value: 'overview', label: 'ภาพรวม', icon: BarChart3 },
+    { value: 'users', label: 'ผู้ใช้', icon: Users },
+    { value: 'content', label: 'เนื้อหา', icon: Target },
+    { value: 'engagement', label: 'การมีส่วนร่วม', icon: Heart }
   ];
 
-  // Handle metric click
-  const handleMetricClick = (metric) => {
-    setSelectedMetric(metric);
-    onMetricClick && onMetricClick(metric);
+  // Calculate growth percentage
+  const getGrowthPercentage = (current, previous) => {
+    if (previous === 0) return 100;
+    return ((current - previous) / previous * 100).toFixed(1);
   };
 
-  // Handle time range change
-  const handleTimeRangeChange = (range) => {
-    onTimeRangeChange && onTimeRangeChange(range);
+  // Get growth icon and color
+  const getGrowthDisplay = (growth) => {
+    const isPositive = growth > 0;
+    return {
+      icon: isPositive ? TrendingUp : TrendingDown,
+      color: isPositive ? 'text-green-500' : 'text-red-500',
+      bgColor: isPositive ? 'bg-green-100 dark:bg-green-900/20' : 'bg-red-100 dark:bg-red-900/20'
+    };
   };
 
-  // Format number with K/M suffix
+  // Format numbers
   const formatNumber = (num) => {
-    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-    if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + 'M';
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + 'K';
+    }
     return num.toString();
   };
 
-  // Calculate chart data
-  const chartData = currentTrends?.map(item => ({
-    date: new Date(item.date).toLocaleDateString('th-TH', { month: 'short', day: 'numeric' }),
-    users: item.users,
-    views: item.views,
-    likes: item.likes,
-    shares: item.shares
-  })) || [];
+  // Simple chart component
+  const SimpleChart = ({ data, height = 100 }) => {
+    const maxValue = Math.max(...data.map(d => d.value));
+    
+    return (
+      <div className="flex items-end space-x-1 h-20">
+        {data.map((item, index) => (
+          <div key={index} className="flex-1">
+            <div
+              className="bg-blue-500 rounded-t transition-all duration-300 hover:bg-blue-600"
+              style={{
+                height: `${(item.value / maxValue) * height}px`,
+                backgroundColor: item.color
+              }}
+              title={`${item.name}: ${item.value}%`}
+            />
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  // Simple line chart
+  const LineChart = ({ data, height = 100 }) => {
+    const maxValue = Math.max(...data.map(d => Math.max(d.users, d.views, d.likes, d.shares)));
+    
+    return (
+      <div className="relative h-32">
+        <svg className="w-full h-full" viewBox={`0 0 ${data.length * 50} ${height}`}>
+          {/* Users line */}
+          <polyline
+            fill="none"
+            stroke="#3B82F6"
+            strokeWidth="2"
+            points={data.map((d, i) => `${i * 50},${height - (d.users / maxValue) * height}`).join(' ')}
+          />
+          {/* Views line */}
+          <polyline
+            fill="none"
+            stroke="#10B981"
+            strokeWidth="2"
+            points={data.map((d, i) => `${i * 50},${height - (d.views / maxValue) * height}`).join(' ')}
+          />
+          {/* Likes line */}
+          <polyline
+            fill="none"
+            stroke="#F59E0B"
+            strokeWidth="2"
+            points={data.map((d, i) => `${i * 50},${height - (d.likes / maxValue) * height}`).join(' ')}
+          />
+        </svg>
+      </div>
+    );
+  };
 
   return (
     <div className={`space-y-6 ${className}`}>
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-bwn-white mb-2">แดชบอร์ดวิเคราะห์</h2>
-          <p className="text-bwn-white/70">ติดตามประสิทธิภาพและพฤติกรรมผู้ใช้แบบเรียลไทม์</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            แดชบอร์ดวิเคราะห์ข้อมูล
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400">
+            ติดตามประสิทธิภาพและแนวโน้มของเว็บไซต์
+          </p>
         </div>
-        
-        <div className="flex items-center space-x-2">
-          {timeRangeOptions.map((option) => (
-            <button
-              key={option.value}
-              onClick={() => handleTimeRangeChange(option.value)}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                timeRange === option.value
-                  ? 'bg-bwn-accent text-bwn-deep-black'
-                  : 'bg-bwn-medium-gray text-bwn-white hover:bg-bwn-accent/10 hover:text-bwn-accent'
-              }`}
-            >
-              <option.icon className="w-4 h-4" />
-              <span>{option.label}</span>
-            </button>
-          ))}
+
+        <div className="flex items-center space-x-3">
+          {/* Time Range Selector */}
+          <select
+            value={timeRange}
+            onChange={(e) => setTimeRange(e.target.value)}
+            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          >
+            {timeRanges.map(range => (
+              <option key={range.value} value={range.value}>
+                {range.label}
+              </option>
+            ))}
+          </select>
+
+          {/* Metric Selector */}
+          <select
+            value={selectedMetric}
+            onChange={(e) => setSelectedMetric(e.target.value)}
+            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          >
+            {metricOptions.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
-      {/* Metric Cards */}
+      {/* Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {metricCards.map((metric) => (
-          <div
-            key={metric.key}
-            onClick={() => handleMetricClick(metric)}
-            className={`bg-bwn-dark-gray border border-bwn-medium-gray rounded-2xl p-6 cursor-pointer hover:border-bwn-accent hover:bg-bwn-accent/5 transition-all duration-300 ${
-              selectedMetric?.key === metric.key ? 'border-bwn-accent bg-bwn-accent/10' : ''
-            }`}
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className={`w-12 h-12 ${metric.bgColor} rounded-xl flex items-center justify-center`}>
-                <metric.icon className={`w-6 h-6 ${metric.color}`} />
-              </div>
-              <div className="flex items-center space-x-1">
-                {metric.trend === 'up' ? (
-                  <TrendingUp className="w-4 h-4 text-green-400" />
-                ) : (
-                  <TrendingDown className="w-4 h-4 text-red-400" />
-                )}
-                <span className={`text-sm font-medium ${
-                  metric.trend === 'up' ? 'text-green-400' : 'text-red-400'
-                }`}>
-                  +{metric.growth}%
-                </span>
-              </div>
+        {/* Total Users */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">ผู้ใช้ทั้งหมด</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                {formatNumber(analyticsData.overview.totalUsers)}
+              </p>
             </div>
-            
-            <div className="mb-2">
-              <div className="text-2xl font-bold text-bwn-white">{metric.value}</div>
-              <div className="text-sm text-bwn-white/70">{metric.label}</div>
+            <div className={`p-3 rounded-full ${getGrowthDisplay(analyticsData.overview.userGrowth).bgColor}`}>
+              <Users className={`w-6 h-6 ${getGrowthDisplay(analyticsData.overview.userGrowth).color}`} />
             </div>
           </div>
-        ))}
+          <div className="mt-4 flex items-center space-x-2">
+            {React.createElement(getGrowthDisplay(analyticsData.overview.userGrowth).icon, {
+              className: `w-4 h-4 ${getGrowthDisplay(analyticsData.overview.userGrowth).color}`
+            })}
+            <span className={`text-sm font-medium ${getGrowthDisplay(analyticsData.overview.userGrowth).color}`}>
+              {analyticsData.overview.userGrowth}%
+            </span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">จากช่วงก่อน</span>
+          </div>
+        </div>
+
+        {/* Total Views */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">การดูทั้งหมด</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                {formatNumber(analyticsData.overview.totalViews)}
+              </p>
+            </div>
+            <div className={`p-3 rounded-full ${getGrowthDisplay(analyticsData.overview.viewGrowth).bgColor}`}>
+              <Eye className={`w-6 h-6 ${getGrowthDisplay(analyticsData.overview.viewGrowth).color}`} />
+            </div>
+          </div>
+          <div className="mt-4 flex items-center space-x-2">
+            {React.createElement(getGrowthDisplay(analyticsData.overview.viewGrowth).icon, {
+              className: `w-4 h-4 ${getGrowthDisplay(analyticsData.overview.viewGrowth).color}`
+            })}
+            <span className={`text-sm font-medium ${getGrowthDisplay(analyticsData.overview.viewGrowth).color}`}>
+              {analyticsData.overview.viewGrowth}%
+            </span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">จากช่วงก่อน</span>
+          </div>
+        </div>
+
+        {/* Total Likes */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">ไลค์ทั้งหมด</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                {formatNumber(analyticsData.overview.totalLikes)}
+              </p>
+            </div>
+            <div className={`p-3 rounded-full ${getGrowthDisplay(analyticsData.overview.likeGrowth).bgColor}`}>
+              <Heart className={`w-6 h-6 ${getGrowthDisplay(analyticsData.overview.likeGrowth).color}`} />
+            </div>
+          </div>
+          <div className="mt-4 flex items-center space-x-2">
+            {React.createElement(getGrowthDisplay(analyticsData.overview.likeGrowth).icon, {
+              className: `w-4 h-4 ${getGrowthDisplay(analyticsData.overview.likeGrowth).color}`
+            })}
+            <span className={`text-sm font-medium ${getGrowthDisplay(analyticsData.overview.likeGrowth).color}`}>
+              {analyticsData.overview.likeGrowth}%
+            </span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">จากช่วงก่อน</span>
+          </div>
+        </div>
+
+        {/* Total Shares */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">แชร์ทั้งหมด</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                {formatNumber(analyticsData.overview.totalShares)}
+              </p>
+            </div>
+            <div className={`p-3 rounded-full ${getGrowthDisplay(analyticsData.overview.shareGrowth).bgColor}`}>
+              <Share2 className={`w-6 h-6 ${getGrowthDisplay(analyticsData.overview.shareGrowth).color}`} />
+            </div>
+          </div>
+          <div className="mt-4 flex items-center space-x-2">
+            {React.createElement(getGrowthDisplay(analyticsData.overview.shareGrowth).icon, {
+              className: `w-4 h-4 ${getGrowthDisplay(analyticsData.overview.shareGrowth).color}`
+            })}
+            <span className={`text-sm font-medium ${getGrowthDisplay(analyticsData.overview.shareGrowth).color}`}>
+              {analyticsData.overview.shareGrowth}%
+            </span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">จากช่วงก่อน</span>
+          </div>
+        </div>
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Line Chart */}
-        <div className="bg-bwn-dark-gray border border-bwn-medium-gray rounded-2xl p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-bwn-white">แนวโน้มการใช้งาน</h3>
-            <div className="flex items-center space-x-2">
-              <span className="text-xs text-bwn-white/50">ผู้ใช้งาน</span>
-              <span className="text-xs text-bwn-white/50">การดู</span>
-              <span className="text-xs text-bwn-white/50">ไลค์</span>
+      {showCharts && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Category Distribution */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                การกระจายหมวดหมู่
+              </h3>
+              <PieChart className="w-5 h-5 text-gray-400" />
             </div>
-          </div>
-          
-          <div className="h-64 relative">
-            {/* Simple line chart representation */}
-            <div className="absolute inset-0 flex items-end justify-between px-4 pb-4">
-              {chartData.map((item, index) => (
-                <div key={index} className="flex flex-col items-center space-y-2">
-                  <div className="text-xs text-bwn-white/50">{item.date}</div>
-                  <div className="w-8 bg-gradient-to-t from-bwn-accent to-bwn-accent/50 rounded-t-sm" 
-                       style={{ height: `${(item.users / 2500) * 200}px` }}></div>
-                  <div className="w-6 bg-gradient-to-t from-green-400 to-green-400/50 rounded-t-sm" 
-                       style={{ height: `${(item.views / 15000) * 200}px` }}></div>
-                  <div className="w-4 bg-gradient-to-t from-pink-400 to-pink-400/50 rounded-t-sm" 
-                       style={{ height: `${(item.likes / 8000) * 200}px` }}></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Pie Chart */}
-        <div className="bg-bwn-dark-gray border border-bwn-medium-gray rounded-2xl p-6">
-          <h3 className="text-lg font-semibold text-bwn-white mb-6">การใช้งานตามหมวดหมู่</h3>
-          
-          <div className="space-y-4">
-            {currentCategories.map((category, index) => (
-              <div key={index} className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <div 
-                    className="w-4 h-4 rounded-full" 
-                    style={{ backgroundColor: category.color }}
-                  ></div>
-                  <span className="text-sm text-bwn-white/80">{category.name}</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-sm font-medium text-bwn-white">{category.value}%</span>
-                  <div className="flex items-center space-x-1 text-xs text-green-400">
-                    <TrendingUp className="w-3 h-3" />
-                    <span>+{category.growth}%</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Top Content & User Behavior */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Top Content */}
-        <div className="bg-bwn-dark-gray border border-bwn-medium-gray rounded-2xl p-6">
-          <h3 className="text-lg font-semibold text-bwn-white mb-6">เนื้อหายอดนิยม</h3>
-          
-          <div className="space-y-4">
-            {currentTopContent.map((content, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-bwn-medium-gray/20 rounded-lg">
-                <div className="flex-1">
-                  <h4 className="text-sm font-medium text-bwn-white mb-1">{content.title}</h4>
-                  <div className="flex items-center space-x-4 text-xs text-bwn-white/60">
-                    <span>👁️ {formatNumber(content.views)}</span>
-                    <span>❤️ {formatNumber(content.likes)}</span>
-                    <span>📤 {formatNumber(content.shares)}</span>
-                  </div>
-                </div>
-                <div className="text-xs text-bwn-accent bg-bwn-accent/10 px-2 py-1 rounded">
-                  {content.category}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* User Behavior */}
-        <div className="bg-bwn-dark-gray border border-bwn-medium-gray rounded-2xl p-6">
-          <h3 className="text-lg font-semibold text-bwn-white mb-6">พฤติกรรมผู้ใช้</h3>
-          
-          <div className="space-y-6">
-            {/* Page Views */}
-            <div>
-              <h4 className="text-sm font-medium text-bwn-white mb-3">การดูหน้าเว็บ</h4>
-              <div className="flex h-8 bg-bwn-medium-gray rounded-lg overflow-hidden">
-                <div 
-                  className="bg-blue-400 h-full flex items-center justify-center text-xs text-bwn-deep-black font-medium"
-                  style={{ width: `${currentUserBehavior.pageViews.mobile}%` }}
-                >
-                  {currentUserBehavior.pageViews.mobile}%
-                </div>
-                <div 
-                  className="bg-green-400 h-full flex items-center justify-center text-xs text-bwn-deep-black font-medium"
-                  style={{ width: `${currentUserBehavior.pageViews.desktop}%` }}
-                >
-                  {currentUserBehavior.pageViews.desktop}%
-                </div>
-              </div>
-              <div className="flex justify-between text-xs text-bwn-white/60 mt-2">
-                <span>📱 มือถือ</span>
-                <span>💻 เดสก์ท็อป</span>
-              </div>
-            </div>
-
-            {/* Time on Site */}
-            <div>
-              <h4 className="text-sm font-medium text-bwn-white mb-3">เวลาอยู่ในเว็บไซต์</h4>
+            <div className="space-y-4">
+              <SimpleChart data={analyticsData.categories} />
               <div className="space-y-2">
-                {Object.entries(currentUserBehavior.timeOnSite).map(([time, percentage]) => (
-                  <div key={time} className="flex items-center justify-between">
-                    <span className="text-xs text-bwn-white/60">{time}</span>
-                    <div className="flex-1 mx-3">
-                      <div className="h-2 bg-bwn-medium-gray rounded-full overflow-hidden">
-                        <div 
-                          className="h-full bg-bwn-accent rounded-full"
-                          style={{ width: `${percentage}%` }}
-                        ></div>
-                      </div>
+                {analyticsData.categories.map((category, index) => (
+                  <div key={index} className="flex items-center justify-between text-sm">
+                    <div className="flex items-center space-x-2">
+                      <div
+                        className="w-3 h-3 rounded-full"
+                        style={{ backgroundColor: category.color }}
+                      />
+                      <span className="text-gray-700 dark:text-gray-300">{category.name}</span>
                     </div>
-                    <span className="text-xs text-bwn-white/60 w-12 text-right">{percentage}%</span>
+                    <span className="font-medium text-gray-900 dark:text-white">{category.value}%</span>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
 
-            {/* Key Metrics */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="text-center p-3 bg-bwn-medium-gray/20 rounded-lg">
-                <div className="text-lg font-bold text-bwn-white">{currentUserBehavior.bounceRate}%</div>
-                <div className="text-xs text-bwn-white/60">Bounce Rate</div>
-              </div>
-              <div className="text-center p-3 bg-bwn-medium-gray/20 rounded-lg">
-                <div className="text-lg font-bold text-bwn-white">{currentUserBehavior.returnRate}%</div>
-                <div className="text-xs text-bwn-white/60">Return Rate</div>
+          {/* Trends Chart */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                แนวโน้ม 7 วัน
+              </h3>
+              <Activity className="w-5 h-5 text-gray-400" />
+            </div>
+            <div className="space-y-4">
+              <LineChart data={analyticsData.trends} />
+              <div className="grid grid-cols-4 gap-4 text-xs">
+                <div className="text-center">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full mx-auto mb-1" />
+                  <span className="text-gray-600 dark:text-gray-400">ผู้ใช้</span>
+                </div>
+                <div className="text-center">
+                  <div className="w-3 h-3 bg-green-500 rounded-full mx-auto mb-1" />
+                  <span className="text-gray-600 dark:text-gray-400">การดู</span>
+                </div>
+                <div className="text-center">
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full mx-auto mb-1" />
+                  <span className="text-gray-600 dark:text-gray-400">ไลค์</span>
+                </div>
+                <div className="text-center">
+                  <div className="w-3 h-3 bg-red-500 rounded-full mx-auto mb-1" />
+                  <span className="text-gray-600 dark:text-gray-400">แชร์</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* Quick Actions */}
-      <div className="bg-gradient-to-r from-bwn-accent to-bwn-ocean-blue rounded-2xl p-6">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-          <div>
-            <h3 className="text-xl font-bold text-bwn-deep-black mb-2">ต้องการข้อมูลเพิ่มเติม?</h3>
-            <p className="text-bwn-deep-black/80">ดาวน์โหลดรายงานละเอียดหรือตั้งค่าการแจ้งเตือน</p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-3">
-            <button className="px-6 py-3 bg-bwn-deep-black text-bwn-accent rounded-lg hover:bg-bwn-dark-gray transition-colors duration-200 flex items-center justify-center space-x-2">
-              <Download className="w-4 h-4" />
-              <span>ดาวน์โหลดรายงาน</span>
-            </button>
-            <button className="px-6 py-3 border-2 border-bwn-deep-black text-bwn-deep-black rounded-lg hover:bg-bwn-deep-black hover:text-bwn-accent transition-colors duration-200 flex items-center justify-center space-x-2">
-              <Zap className="w-4 h-4" />
-              <span>ตั้งค่าการแจ้งเตือน</span>
-            </button>
-          </div>
+      {/* Top Content */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            เนื้อหายอดนิยม
+          </h3>
+          <Target className="w-5 h-5 text-gray-400" />
+        </div>
+        <div className="space-y-4">
+          {analyticsData.topContent.map((content, index) => (
+            <div key={index} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <div className="flex-1">
+                <h4 className="font-medium text-gray-900 dark:text-white mb-1">
+                  {content.title}
+                </h4>
+                <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
+                  <span className="flex items-center space-x-1">
+                    <Eye className="w-4 h-4" />
+                    <span>{formatNumber(content.views)}</span>
+                  </span>
+                  <span className="flex items-center space-x-1">
+                    <Heart className="w-4 h-4" />
+                    <span>{formatNumber(content.likes)}</span>
+                  </span>
+                  <span className="flex items-center space-x-1">
+                    <Share2 className="w-4 h-4" />
+                    <span>{formatNumber(content.shares)}</span>
+                  </span>
+                </div>
+              </div>
+              <div className="ml-4">
+                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 text-xs font-medium rounded-full">
+                  {content.category}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
+
+      {/* Insights */}
+      {showInsights && (
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              ข้อมูลเชิงลึก
+            </h3>
+            <Zap className="w-5 h-5 text-gray-400" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-green-500 rounded-full mt-2" />
+                <div>
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    การเติบโตของผู้ใช้เพิ่มขึ้น {analyticsData.overview.userGrowth}%
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    จากการปรับปรุง SEO และการตลาดออนไลน์
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-blue-500 rounded-full mt-2" />
+                <div>
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    หมวดหมู่แอปได้รับความนิยมสูงสุด
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    คิดเป็น {analyticsData.categories[0].value}% ของการเข้าชมทั้งหมด
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2" />
+                <div>
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    อัตราการมีส่วนร่วมเพิ่มขึ้น
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    ไลค์และแชร์เพิ่มขึ้นเฉลี่ย {Math.round((analyticsData.overview.likeGrowth + analyticsData.overview.shareGrowth) / 2)}%
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-purple-500 rounded-full mt-2" />
+                <div>
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    แนะนำเพิ่มเนื้อหาเกี่ยวกับการลงทุน
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    หมวดหมู่ช่องทางมีศักยภาพการเติบโตสูง
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
