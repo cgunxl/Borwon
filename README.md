@@ -1,108 +1,42 @@
-# 🚀 Bwn X - ศูนย์กลางแนะนำหลายภาษา
+# 🌟 BORWON - Futuristic Website
 
-เว็บไซต์ Bwn X เป็นศูนย์กลางแนะนำหลายภาษาที่รวบรวมแอป เครื่องมือ ช่องทาง และโอกาสหาเงินออนไลน์ที่ดีที่สุด โดยใช้ธีมสี Deep Ocean ที่สวยงามและทันสมัย
+> **เว็บไซต์ BORWON แบบอนาคต** พร้อมธีมมืดแบบ Cyberpunk และแอนิเมชันพื้นหลังที่สวยงาม
 
-## ✨ คุณสมบัติหลัก
+## 🚀 Live Demo
 
-### 🎨 การออกแบบ
-- **ธีม Deep Ocean**: ใช้โทนสีดำ เทา และสีเขียวน้ำทะเล
-- **อนิเมชั่นลื่นไหล**: เอฟเฟกต์ Morphing shapes, Fluid particles, และ Glow effects
-- **Responsive Design**: รองรับทุกขนาดหน้าจอ
-- **Dark/Light Mode**: ระบบสลับธีมที่ใช้งานง่าย
+**🌐 Website**: [https://cgunxl.github.io/Borwon/](https://cgunxl.github.io/Borwon/)
 
-### 🚀 ฟีเจอร์หลัก
-- **8 หมวดหมู่หลัก**: Apps, Channel, Fanpage, Product, News, Advice, Location, Money
-- **ระบบนำทาง**: Header แบบ Fixed พร้อมเมนูหมวดหมู่และ Dropdown
-- **Hero Section**: หน้าแรกที่โดดเด่นพร้อมสถิติและ Call-to-Action
-- **Category Grid**: แสดงหมวดหมู่แบบ Interactive Cards พร้อมข้อมูลครบถ้วน
-- **Footer**: ข้อมูลติดต่อและลิงก์โซเชียลที่ใช้งานได้จริง
+**🎮 Demo Page**: [https://cgunxl.github.io/Borwon/demo](https://cgunxl.github.io/Borwon/demo)
 
-### 💫 เอฟเฟกต์พิเศษ
-- **Morphing Shapes**: รูปทรงที่เปลี่ยนแปลงอย่างต่อเนื่อง
-- **Fluid Particles**: อนุภาคลอยตัวเลียนแบบน้ำทะเลลึก
-- **Deep Glow**: เอฟเฟกต์เรืองแสงสีเขียวน้ำทะเล
-- **Scroll Reveal**: อนิเมชั่นเมื่อเลื่อนหน้า
-- **Hover Effects**: เอฟเฟกต์เมื่อเอาเมาส์ชี้
+## ✨ Features
 
-## 🛠️ เทคโนโลยีที่ใช้
+### 🎨 **Futuristic Dark Theme**
+- **Dark Graphite Base**: พื้นหลังมืดแบบกราไฟต์ (#0B0D10, #0F1115, #151922)
+- **Mint/Teal Accents**: เน้นสีมิ้นท์/เทียล (#00FFC6, #66FFF5)
+- **Glass Effects**: การ์ดแบบแก้วพร้อม backdrop blur
+- **Neon Glows**: เอฟเฟกต์เรืองแสงและเงาที่นุ่มนวล
 
-- **React 18**: Framework หลัก
-- **Vite**: Build tool ที่เร็วและมีประสิทธิภาพ
-- **Tailwind CSS**: CSS Framework สำหรับการออกแบบ
-- **Lucide React**: Icon library ที่สวยงาม
-- **React Router**: สำหรับการนำทางหลายหน้า
-- **React Helmet**: สำหรับ SEO optimization
-- **Framer Motion**: สำหรับอนิเมชั่นขั้นสูง
+### 🌊 **Animated Backgrounds**
+- **Multi-layer Waves**: ระบบคลื่น 3 ชั้นที่เคลื่อนไหวต่อเนื่อง
+- **Scan Lines**: เส้นสแกนแนวทแยงพร้อมเอฟเฟกต์
+- **Particle System**: 80+ อนุภาคที่มีเอฟเฟกต์เรืองแสง
+- **Performance Optimized**: ปรับแต่งอัตโนมัติสำหรับมือถือ
 
-## 📱 หมวดหมู่หลัก (8 หมวด)
+### 🎭 **Modern UI Components**
+- **FuturisticButton**: ปุ่มหลายรูปแบบพร้อม hover effects
+- **FuturisticCard**: การ์ดแบบแก้วพร้อม neon edge glows
+- **FuturisticInput**: อินพุตแบบแอนิเมชันพร้อม focus states
+- **AnimatedBackground**: ระบบพื้นหลังแบบแอนิเมชัน
 
-### 1. **📱 Smart Travel & Booking ✈️**
-- แอปท่องเที่ยวและการจอง
-- Affiliate: Agoda, Booking.com, Airbnb, Grab, Bolt
-- Keywords: travel apps, booking, hotel, flight
+## 🛠️ Tech Stack
 
-### 2. **🎥 Investment & Trading Channels 📊**
-- ช่องการลงทุนและเทรด
-- เนื้อหา: หุ้น, คริปโต, Forex, การเงินส่วนบุคคล
-- Keywords: investment, trading, crypto, stocks
+- **Frontend**: React 18 + Vite
+- **Styling**: Tailwind CSS + Custom CSS
+- **Animations**: CSS Keyframes + Canvas API
+- **Routing**: React Router DOM
+- **Deployment**: GitHub Pages + GitHub Actions
 
-### 3. **📘 Best Game Top-up Deals 🎮**
-- เพจเติมเกมราคาถูก
-- เนื้อหา: Robux, Free Fire, PUBG, Mobile Legends
-- Keywords: game topup, gaming, mobile games
-
-### 4. **🛍️ Influencer Picks & Beauty 💄**
-- สินค้าคนดังและความงาม
-- Affiliate: Amazon, Shopee, Lazada
-- Keywords: beauty, influencer, shopping
-
-### 5. **📰 Crypto & Tech News ₿**
-- ข่าวคริปโตและเทคโนโลยี
-- เนื้อหา: Bitcoin, Ethereum, AI, Tech trends
-- Keywords: crypto news, tech news, blockchain
-
-### 6. **💡 Affiliate & Online Business Tips 🔗**
-- คำแนะนำทำ Affiliate
-- เนื้อหา: Affiliate Marketing, Dropshipping, E-commerce
-- Keywords: affiliate marketing, online business
-
-### 7. **📍 Travel Destinations & Hidden Gems 🏞️**
-- สถานที่ท่องเที่ยวและจุดลับ
-- เนื้อหา: คาเฟ่, สถานที่ท่องเที่ยว, OTOP
-- Keywords: travel destinations, hidden gems, local
-
-### 8. **💸 Passive Income & Automation 🌱**
-- รายได้เสริมและการทำเงินอัตโนมัติ
-- เนื้อหา: Crypto Staking, NFT, Auto Trading
-- Keywords: passive income, automation, side hustle
-
-## 💰 กลยุทธ์ Monetization
-
-### **1. Multi-page Routing**
-- `/apps/travel-booking` - Smart Travel & Booking
-- `/channels/investment-trading` - Investment Channels
-- `/fanpages/game-topup` - Game Top-up Deals
-- `/products/beauty-influencer` - Beauty Products
-- `/news/crypto-tech` - Crypto & Tech News
-- `/advice/affiliate-business` - Business Tips
-- `/locations/travel-gems` - Travel Destinations
-- `/money/passive-income` - Money Making
-
-### **2. Ad Network Optimization**
-- Ad Slots Positions ที่เหมาะสม
-- Google AdSense integration ready
-- Native recommendation slots
-
-### **3. Affiliate Integration**
-- Affiliate Links Structure ที่ครบถ้วน
-- Tracking system ready
-- Revenue analytics
-
-## 🚀 การติดตั้งและใช้งาน
-
-### **Prerequisites**
-- Node.js 18+ 
-- npm หรือ yarn
+## 🚀 Quick Start
 
 ### **1. Clone Repository**
 ```bash
@@ -110,153 +44,115 @@ git clone https://github.com/cgunxl/Borwon.git
 cd Borwon
 ```
 
-### **2. ติดตั้ง Dependencies**
+### **2. Install Dependencies**
 ```bash
 npm install
 ```
 
-### **3. รันในโหมด Development**
+### **3. Run Development Server**
 ```bash
 npm run dev
 ```
 
-### **4. เปิดเบราว์เซอร์**
-ไปที่ `http://localhost:5173`
-
-### **5. Build สำหรับ Production**
+### **4. Build for Production**
 ```bash
 npm run build
 ```
 
-### **6. Preview Build**
-```bash
-npm run preview
-```
+## 📱 Pages
 
-## 📊 Scripts ที่มี
+### **🏠 Homepage** (`/`)
+- Hero section แบบอนาคต
+- Category grid พร้อมการ์ดแบบแก้ว
+- Feature cards พร้อม hover effects
 
-```json
-{
-  "dev": "vite",                    // รันในโหมด Development
-  "build": "vite build",            // Build สำหรับ Production
-  "preview": "vite preview",        // Preview Build
-  "lint": "eslint .",               // ตรวจสอบ Code Quality
-  "lint:fix": "eslint . --fix",     // แก้ไข Code Quality อัตโนมัติ
-  "format": "prettier --write .",   // Format Code
-  "analyze": "npm run build && npx vite-bundle-analyzer dist", // วิเคราะห์ Bundle
-  "deploy": "npm run build && gh-pages -d dist" // Deploy ไปยัง GitHub Pages
+### **🎮 Demo Page** (`/demo`)
+- แสดงคอมโพเนนต์ทั้งหมด
+- Interactive examples
+- Color palette showcase
+- Animation demonstrations
+
+### **📂 Category Pages** (`/category/:id`)
+- Dynamic content display
+- Interactive cards
+- Consistent futuristic styling
+
+## 🎨 Customization
+
+### **เปลี่ยนสีหลัก**
+```css
+:root {
+  --accent-primary: #00D4FF; /* สีฟ้า */
+  --accent-aqua: #00FF88;    /* สีเขียว */
 }
 ```
 
-## 🌐 การ Deploy
-
-### **GitHub Pages**
-```bash
-npm run deploy
-```
-
-### **Netlify/Vercel**
-- Connect repository
-- Build command: `npm run build`
-- Publish directory: `dist`
-
-## 📈 SEO Optimization
-
-### **Meta Tags**
-- Complete Open Graph tags
-- Twitter Cards
-- Structured Data (Schema.org)
-- Canonical URLs
-
-### **Performance**
-- Core Web Vitals optimization
-- Image optimization
-- Code splitting
-- Lazy loading
-
-### **SEO Files**
-- `robots.txt` - สำหรับ search engines
-- `sitemap.xml` - แผนผังเว็บไซต์
-- Meta tags ในทุกหน้า
-
-## 🔧 การปรับแต่ง
-
-### **Colors & Theme**
-ไฟล์ `tailwind.config.js` มีระบบสีที่ครบถ้วน:
-```javascript
-colors: {
-  'bwn': {
-    'deep-black': '#0a0a0a',
-    'dark-gray': '#1a1a1a',
-    'accent': '#00ff88',
-    'ocean-blue': '#0066cc',
-    // ... และอื่นๆ
-  }
+### **ปรับความเร็วแอนิเมชัน**
+```css
+.bg-waves::before {
+  animation-duration: 8s; /* ค่าเริ่มต้น: 14s */
 }
 ```
 
-### **Components**
-- ใช้ Tailwind CSS classes ที่กำหนดเอง
-- Custom CSS variables สำหรับธีม
-- Responsive design utilities
+## ♿ Accessibility
+
+- **Contrast**: AA compliance (4.5:1) สำหรับข้อความหลัก
+- **Motion**: รองรับ `prefers-reduced-motion`
+- **Focus**: Focus rings ที่ชัดเจน
+- **Screen Readers**: รองรับ screen readers
 
 ## 📱 Responsive Design
 
 - **Mobile First**: ออกแบบสำหรับมือถือก่อน
-- **Breakpoints**: sm, md, lg, xl, 2xl
-- **Grid System**: CSS Grid และ Flexbox
-- **Touch Friendly**: ปุ่มและลิงก์ที่ใช้งานง่ายบนมือถือ
+- **Touch Friendly**: ปุ่มและลิงก์ที่เหมาะสำหรับการสัมผัส
+- **Performance**: ลดแอนิเมชันบนมือถืออัตโนมัติ
+- **Breakpoints**: 480px, 768px, 1024px, 1280px, 1536px
 
-## 🌟 ฟีเจอร์พิเศษ
+## 🚀 Deployment
 
-### **PWA Ready**
-- Service Worker
-- Offline support
-- App-like experience
+### **GitHub Pages (Auto)**
+- ใช้ GitHub Actions สำหรับ auto-deploy
+- Deploy ทุกครั้งที่ push ไปยัง main branch
+- ใช้ `dist/` folder เป็น source
 
-### **Accessibility**
-- ARIA labels
-- Keyboard navigation
-- Screen reader support
-- High contrast mode
+### **Manual Deployment**
+```bash
+npm run build
+# Copy dist/* to your web server
+```
 
-### **Performance**
-- Lazy loading
-- Image optimization
-- Code splitting
-- Bundle analysis
+## 📊 Performance
 
-## 🤝 การมีส่วนร่วม
+- **Bundle Size**: Optimized JavaScript และ CSS
+- **Lazy Loading**: Components โหลดตามต้องการ
+- **Animation Optimization**: ปรับแต่งตามประสิทธิภาพของอุปกรณ์
+- **Mobile Optimization**: ลดจำนวนอนุภาคบนมือถือ
+
+## 🤝 Contributing
 
 1. Fork repository
-2. สร้าง feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. เปิด Pull Request
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
 
-## 📄 License
+## 📝 License
 
-MIT License - ดูรายละเอียดใน [LICENSE](LICENSE) file
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📞 ติดต่อ
+## 🌟 Special Thanks
 
-- **Website**: https://cgunxl.github.io/Borwon/
-- **Email**: support@bwnx.com
-- **Social Media**: 
-  - Instagram: [@bouaonpanat_](https://www.instagram.com/bouaonpanat_)
-  - Facebook: [facebook.com](https://facebook.com)
-  - Twitter: [twitter.com](https://twitter.com)
-  - YouTube: [youtube.com](https://youtube.com)
-
-## 🙏 ขอบคุณ
-
-- **Manus AI** - สำหรับการออกแบบและพัฒนา
-- **Cursor AI** - สำหรับการช่วยเหลือในการพัฒนา
-- **Community** - สำหรับการสนับสนุนและข้อเสนอแนะ
+- **Design Inspiration**: Cyberpunk และ Futuristic themes
+- **Animation Techniques**: CSS animations และ Canvas API
+- **UI Components**: Modern design patterns และ micro-interactions
 
 ---
 
-**สร้างโดย Manus AI - 20 สิงหาคม 2025**
+## 🎉 **BORWON Futuristic Theme v2.0.0**
 
-*Happy Coding! 🚀*
+**พร้อมใช้งานได้ทันที!** 🚀✨
+
+เว็บไซต์ BORWON ตอนนี้มีธีมมืดแบบอนาคตที่ทันสมัยและสวยงาม พร้อมกับแอนิเมชันพื้นหลังที่เคลื่อนไหวตลอดเวลา และคอมโพเนนต์ UI ที่ล้ำสมัย!
+
+**เยี่ยมชมได้ที่**: [https://cgunxl.github.io/Borwon/](https://cgunxl.github.io/Borwon/)
 
