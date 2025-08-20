@@ -3,7 +3,7 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
-  "description": "Bwn X - ศูนย์กลางแนะนำหลายภาษา แอป ท่องเที่ยว การลงทุน เกม และโอกาสหาเงินออนไลน์",
+  "description": "Bwn X v2.0 - ศูนย์กลางแนะนำหลายภาษา แอป ท่องเที่ยว การลงทุน เกม และโอกาสหาเงินออนไลน์ พร้อม Dashboard วิเคราะห์ข้อมูล ระบบค้นหา และฟีเจอร์ใหม่ครบครัน",
   "keywords": [
     "react",
     "vite",
@@ -13,7 +13,13 @@
     "investment",
     "gaming",
     "affiliate",
-    "monetization"
+    "monetization",
+    "dashboard",
+    "analytics",
+    "search",
+    "notifications",
+    "user-profile",
+    "data-table"
   ],
   "author": "Bwn X Team",
   "license": "MIT",
@@ -26,7 +32,11 @@
     "lint:fix": "eslint . --ext js,jsx --fix",
     "format": "prettier --write .",
     "analyze": "npm run build && npx vite-bundle-analyzer dist",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "deploy:github": "npm run build && gh-pages -d dist",
+    "deploy:netlify": "npm run build && echo 'Build completed. Upload dist/ folder to Netlify.'",
+    "test": "echo 'Tests not configured yet'",
+    "storybook": "echo 'Storybook not configured yet'"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -39,7 +49,10 @@
     "react-query": "^3.39.3",
     "axios": "^1.6.0",
     "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0"
+    "tailwind-merge": "^2.0.0",
+    "recharts": "^2.8.0",
+    "date-fns": "^2.30.0",
+    "react-hot-toast": "^2.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
@@ -73,5 +86,24 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cgunxl/Borwon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cgunxl/Borwon/issues"
+  },
+  "homepage": "https://cgunxl.github.io/Borwon/",
+  "features": [
+    "Powerful Search System",
+    "Analytics Dashboard",
+    "Data Table Management",
+    "Real-time Notifications",
+    "User Profile Management",
+    "Dark/Light Theme",
+    "Responsive Design",
+    "SEO Optimization",
+    "Performance Monitoring"
+  ]
 }
