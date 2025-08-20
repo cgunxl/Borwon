@@ -13,6 +13,16 @@ const Header = () => {
   // Navigation items with categories
   const navigationItems = [
     {
+      name: 'แดชบอร์ด',
+      path: '/dashboard',
+      icon: '📊',
+      subItems: [
+        { name: 'ภาพรวม', path: '/dashboard', description: 'สถิติและข้อมูลภาพรวม' },
+        { name: 'การวิเคราะห์', path: '/dashboard?tab=analytics', description: 'กราฟและข้อมูลเชิงลึก' },
+        { name: 'จัดการเนื้อหา', path: '/dashboard?tab=content', description: 'จัดการแอปและเนื้อหา' }
+      ]
+    },
+    {
       name: 'แอปและเครื่องมือ',
       path: '/apps',
       icon: '📱',
