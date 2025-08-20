@@ -4,9 +4,11 @@ import { Helmet } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import AnimatedBackground from './components/ui/AnimatedBackground';
 
 // Page Components
 import HomePage from './pages/HomePage';
+import CategoryPage from './pages/CategoryPage';
 import AppsPage from './pages/AppsPage';
 import ChannelsPage from './pages/ChannelsPage';
 import FanpagesPage from './pages/FanpagesPage';
@@ -17,6 +19,7 @@ import LocationsPage from './pages/LocationsPage';
 import MoneyPage from './pages/MoneyPage';
 import DashboardPage from './pages/DashboardPage';
 import NotFoundPage from './pages/NotFoundPage';
+import DemoPage from './pages/DemoPage';
 
 function App() {
   useEffect(() => {
@@ -35,7 +38,7 @@ function App() {
     }, observerOptions);
 
     // Observe all elements with scroll-reveal class
-    const scrollElements = document.querySelectorAll('.bwn-scroll-reveal');
+    const scrollElements = document.querySelectorAll('.scroll-reveal');
     scrollElements.forEach(el => observer.observe(el));
 
     // Cleanup
@@ -46,7 +49,12 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bwn-main-bg bwn-fluid-particles">
+      <AnimatedBackground 
+        showWaves={true}
+        showScanLines={true}
+        showParticles={true}
+        className="min-h-screen"
+      >
         <Helmet>
           <title>Bwn X - ศูนย์กลางแนะนำหลายภาษา</title>
           <meta name="description" content="รวมแอป เครื่องมือ ช่องทาง และโอกาสหาเงินออนไลน์ที่ดีที่สุด Smart Travel, Investment, Gaming, Beauty, Crypto News และอื่นๆ" />
@@ -58,10 +66,16 @@ function App() {
         <Header />
         
         {/* Main Content */}
-        <main className="flex-1">
+        <main className="flex-1 pt-16">
           <Routes>
             {/* Home Page */}
             <Route path="/" element={<HomePage />} />
+            
+            {/* Demo Page */}
+            <Route path="/demo" element={<DemoPage />} />
+            
+            {/* Category Pages */}
+            <Route path="/category/:category" element={<CategoryPage />} />
             
             {/* Apps Category */}
             <Route path="/apps" element={<AppsPage />} />
@@ -121,7 +135,7 @@ function App() {
         
         {/* Footer */}
         <Footer />
-      </div>
+      </AnimatedBackground>
     </ThemeProvider>
   );
 }
