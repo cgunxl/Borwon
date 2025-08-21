@@ -1,0 +1,55 @@
+{
+  "project": "BwnX Platform",
+  "owner": "cgunxlcb@gmail.com",
+  "repo": "https://github.com/cgunxl/Borwon",
+  "defaultBranch": "main",
+  "aiSettings": {
+    "model": "gpt-4o",
+    "temperature": 0.2,
+    "maxTokens": 8000,
+    "topP": 1,
+    "frequencyPenalty": 0,
+    "presencePenalty": 0
+  },
+  "features": {
+    "autoDebug": true,
+    "autoComplete": true,
+    "autoTest": true,
+    "autoFix": true,
+    "autoCommit": true,
+    "autoDeploy": true
+  },
+  "integrations": {
+    "github": {
+      "enabled": true,
+      "repo": "cgunxl/Borwon",
+      "branch": "main",
+      "autoCommit": true,
+      "autoPush": true
+    },
+    "vercel": {
+      "enabled": true,
+      "projectId": "bwnx-platform",
+      "teamId": "team_cgunxlcb"
+    }
+  },
+  "paths": {
+    "source": "src",
+    "output": "dist",
+    "public": "public",
+    "assets": "public/assets",
+    "components": "src/components",
+    "pages": "src/app",
+    "lib": "src/lib",
+    "types": "src/types"
+  },
+  "commands": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "start": "npm run start",
+    "lint": "npm run lint",
+    "test": "npm run test",
+    "deploy": "npm run build && npm run deploy"
+  }
+}
+

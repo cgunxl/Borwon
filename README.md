@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BwnX Platform
+
+🌊 Deep Ocean Recommendations for Life, Money & Lifestyle
+
+## Overview
+
+BwnX Platform is an AI-powered recommendation system that provides personalized suggestions for apps, tools, finance, lifestyle, and more. Discover what you need with deep personalization.
+
+## Features
+
+- 🤖 **AI-Powered Recommendations**: Get personalized suggestions based on your preferences
+- 🌐 **Multi-language Support**: Available in 10 languages
+- 📱 **Responsive Design**: Works on all devices
+- 🔍 **Advanced Search**: Find exactly what you need
+- 📊 **Categories**: Explore 8 different categories of recommendations
+- 🔄 **Daily Updates**: Fresh content and recommendations every day
+
+## Categories
+
+- 📱 **Apps**: Smart Travel & Booking, Career & Freelance, AI Tools & Finance
+- 🎥 **Channels**: Investment & Trading, Knowledge & Learning, Podcasts & Expert Talks
+- 🛍️ **Products**: Influencer Picks & Beauty, Health & Wellness, Smart Living & Gadgets
+- 📰 **News**: World & Global News, Finance & Market Insights, Crypto & Tech News
+- 💡 **Advice**: Money & Tax Insights, Smart Living & Home Design, Career Growth
+- 📍 **Location**: Cafes & Hot Spots, Local Goods & OTOP, Travel Destinations
+- 💸 **Money Making**: Online Business, Affiliate Marketing, Crypto & Trading Income
+- 🤖 **AI Tools**: AI-powered tools for productivity, creativity, and automation
+
+## Tech Stack
+
+- **Frontend**: Next.js, TypeScript, Tailwind CSS
+- **Backend**: Next.js API Routes, Supabase
+- **Authentication**: Clerk
+- **Database**: Supabase PostgreSQL
+- **Caching**: Upstash Redis
+- **AI**: OpenAI API
+- **Analytics**: PostHog / Google Analytics
+- **Deployment**: Vercel
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+
+- npm or pnpm
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/cgunxl/Borwon.git
+cd Borwon
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+pnpm install
+```
+
+3. Set up environment variables
+```bash
+cp .env.example .env.local
+```
+
+4. Start the development server
 ```bash
 npm run dev
 # or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project is set up for easy deployment to Vercel:
 
-## Learn More
+```bash
+npm run build
+# or
+vercel deploy
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For any questions or feedback, please contact: cgunxlcb@gmail.com

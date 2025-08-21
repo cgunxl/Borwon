@@ -1,0 +1,50 @@
+# BwnX Platform Cursor AI Rules
+
+## Project Overview
+BwnX Platform is a recommendation system for life, money, and lifestyle using AI and deep personalization.
+
+## Tech Stack
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Supabase Database
+- Clerk Authentication
+- OpenAI API
+- Upstash Redis
+- PostHog Analytics
+
+## Code Style Guidelines
+- Use TypeScript for type safety
+- Follow ESLint rules
+- Use Tailwind CSS for styling
+- Use React Server Components where possible
+- Use client components only when necessary
+- Follow the folder structure:
+  - `/app` - Next.js App Router pages
+  - `/components` - UI components
+  - `/lib` - Utility functions and services
+  - `/types` - TypeScript types
+  - `/public` - Static assets
+
+## Debugging Tips
+- Check Supabase connection in lib/supabase.ts
+- Verify Clerk authentication in app/layout.tsx
+- Check OpenAI API integration in lib/ai.ts
+- Verify Redis connection in lib/redis.ts
+
+## Common Issues
+- Clerk authentication requires proper environment variables
+- Supabase requires proper environment variables
+- OpenAI API requires valid API key
+- Tailwind classes might need purging for production
+
+## Feature Requests
+- Implement user profiles
+- Add recommendation engine
+- Implement search functionality
+- Add monetization features
+- Implement admin dashboard
+
+## Contact
+For any questions, contact: cgunxlcb@gmail.com
+
