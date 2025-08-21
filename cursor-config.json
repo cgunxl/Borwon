@@ -1,0 +1,92 @@
+{
+  "project": {
+    "name": "BwnX Platform",
+    "description": "Deep Ocean Recommendations for Life, Money & Lifestyle",
+    "version": "1.0.0",
+    "author": "cgunxlcb@gmail.com",
+    "repository": "https://github.com/cgunxlcb/BwnX-Platform"
+  },
+  "ai": {
+    "model": "gpt-4",
+    "temperature": 0.7,
+    "max_tokens": 2000,
+    "context_window": 8000,
+    "system_prompt": "You are an expert React developer working on BwnX Platform. Always provide code that follows the project's conventions and maintains the Deep Ocean theme."
+  },
+  "development": {
+    "framework": "React",
+    "bundler": "Vite",
+    "styling": "Tailwind CSS",
+    "ui_library": "shadcn/ui",
+    "icons": "Lucide React",
+    "database": "Supabase",
+    "deployment": "GitHub Pages"
+  },
+  "commands": {
+    "dev": "pnpm run dev",
+    "build": "pnpm run build",
+    "preview": "pnpm run preview",
+    "deploy": "git push origin main",
+    "install": "pnpm install",
+    "update": "pnpm update"
+  },
+  "shortcuts": {
+    "create_component": "Create a new React component with TypeScript",
+    "add_page": "Add a new page to the application",
+    "update_styles": "Update Tailwind CSS styles",
+    "fix_responsive": "Fix responsive design issues",
+    "add_feature": "Add a new feature to the platform",
+    "optimize_performance": "Optimize application performance"
+  },
+  "integrations": {
+    "github": {
+      "enabled": true,
+      "auto_deploy": true,
+      "branch": "main",
+      "owner": "cgunxlcb"
+    },
+    "supabase": {
+      "enabled": true,
+      "url": "https://fztszhpbkztfzzzhktxx.supabase.co",
+      "features": ["database", "auth", "realtime"]
+    },
+    "openai": {
+      "enabled": true,
+      "models": ["gpt-3.5-turbo", "gpt-4"],
+      "features": ["recommendations", "search", "chatbot"]
+    }
+  },
+  "plugins": [
+    {
+      "name": "Auto Deploy",
+      "description": "Automatically deploy to GitHub Pages on push",
+      "enabled": true,
+      "trigger": "git push"
+    },
+    {
+      "name": "AI Recommendations",
+      "description": "Generate AI-powered recommendations",
+      "enabled": true,
+      "api": "OpenAI"
+    },
+    {
+      "name": "Database Sync",
+      "description": "Sync data with Supabase",
+      "enabled": true,
+      "api": "Supabase"
+    },
+    {
+      "name": "Theme Manager",
+      "description": "Manage Deep Ocean theme",
+      "enabled": true,
+      "colors": ["#0a0f1c", "#06b6d4", "#0ea5e9"]
+    }
+  ],
+  "user": {
+    "email": "cgunxlcb@gmail.com",
+    "name": "BwnX Platform Developer",
+    "role": "owner",
+    "permissions": ["read", "write", "deploy", "admin"]
+  }
+}
+

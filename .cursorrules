@@ -1,0 +1,137 @@
+# BwnX Platform - Cursor AI Configuration
+
+## Project Overview
+BwnX Platform is a Deep Ocean Recommendations system for Life, Money & Lifestyle.
+Built with React, Vite, Tailwind CSS, Supabase, and AI integration.
+
+## Development Guidelines
+
+### Tech Stack
+- **Frontend**: React 19, Vite, Tailwind CSS, shadcn/ui
+- **Backend**: Supabase (PostgreSQL), AI Integration (OpenAI)
+- **Deployment**: GitHub Pages, Auto Deploy via GitHub Actions
+- **AI**: OpenAI GPT-3.5/4 for recommendations and search enhancement
+
+### Code Style
+- Use TypeScript when possible
+- Follow React best practices
+- Use Tailwind CSS for styling
+- Implement responsive design (mobile-first)
+- Use semantic HTML
+- Follow accessibility guidelines
+
+### File Structure
+```
+src/
+├── components/          # Reusable UI components
+├── lib/                # Utilities and configurations
+│   ├── supabase.js     # Database functions
+│   ├── ai.js           # AI integration
+│   └── utils.js        # Helper functions
+├── assets/             # Static assets
+├── App.jsx             # Main application
+└── main.jsx           # Entry point
+```
+
+### Database Schema (Supabase)
+```sql
+-- Recommendations table
+CREATE TABLE recommendations (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  title TEXT NOT NULL,
+  description TEXT,
+  category TEXT NOT NULL,
+  url TEXT,
+  rating DECIMAL(2,1) DEFAULT 0,
+  tags TEXT[],
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Categories table
+CREATE TABLE categories (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE,
+  description TEXT,
+  icon TEXT,
+  color TEXT,
+  count INTEGER DEFAULT 0
+);
+
+-- Users table (for future authentication)
+CREATE TABLE users (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  email TEXT UNIQUE NOT NULL,
+  name TEXT,
+  preferences JSONB,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Stats table
+CREATE TABLE stats (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  total_recommendations INTEGER DEFAULT 0,
+  languages_supported INTEGER DEFAULT 10,
+  categories INTEGER DEFAULT 8,
+  daily_updates TEXT DEFAULT '24/7',
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+```
+
+### Environment Variables
+```
+REACT_APP_SUPABASE_URL=https://fztszhpbkztfzzzhktxx.supabase.co
+REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key
+REACT_APP_OPENAI_API_KEY=your_openai_api_key
+```
+
+### Deployment
+- Auto deploy to GitHub Pages on push to main/master
+- Build command: `pnpm run build`
+- Deploy directory: `dist/`
+
+### AI Integration
+- Use OpenAI API for generating recommendations
+- Implement fallback system when AI is unavailable
+- Cache AI responses for better performance
+- Support Thai language responses
+
+### Common Commands
+```bash
+# Development
+pnpm run dev
+
+# Build for production
+pnpm run build
+
+# Deploy to GitHub Pages
+git push origin main
+
+# Install new dependencies
+pnpm add package-name
+
+# Update dependencies
+pnpm update
+```
+
+### Cursor AI Instructions
+When working on this project:
+1. Always maintain the Deep Ocean theme (dark colors, cyan/blue accents)
+2. Keep the responsive design working on all devices
+3. Test all changes in the browser before committing
+4. Use the existing component structure
+5. Follow the established naming conventions
+6. Update this file when adding new features
+
+### GitHub Integration
+- Repository: BwnX-Platform
+- Owner: cgunxlcb@gmail.com
+- Auto deploy enabled via GitHub Actions
+- Branch protection on main/master
+
+### Testing
+- Test all features in browser before deployment
+- Verify responsive design on mobile and desktop
+- Check all API integrations work correctly
+- Validate form inputs and error handling
+
