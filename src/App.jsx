@@ -1,117 +1,97 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import './index.css';
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
-  
+
   return (
     <>
       <div className="background-container">
-        <img src="/background.jpeg" alt="Background" className="background-image" />
+        <img 
+          src="/background.jpeg" 
+          alt="Flowing Liquid Background" 
+          className="background-image"
+        />
       </div>
-      
+
       <div className="container">
         <header className="header">
           <div className="logo-container">
-            <img src="/logo.png" alt="BwnX Logo" className="logo" />
+            <div className="logo">
+              <img 
+                src="/logo.png" 
+                alt="BwnX Tech Logo" 
+                className="logo-image"
+                width="40" 
+                height="40"
+              />
+            </div>
             <div>
-              <div className="logo-text">BwnX</div>
-              <div className="logo-subtitle">การให้คำแนะนำสิ่งที่คุณต้องการ ที่ดีที่สุดในการใช้ชีวิต หาเงิน และไลฟ์สไตล์</div>
+              <div className="logo-text">BwnX Platform</div>
+              <div className="logo-subtitle">Deep Ocean Recommendations</div>
             </div>
           </div>
           
-          <div className="nav">
-            <div className="nav-item">📱 Apps</div>
-            <div className="nav-item">🎥 Channel</div>
-            <div className="nav-item">📘 Fanpage</div>
-            <div className="nav-item">🛍️ Product</div>
-            <div className="nav-item">📰 News</div>
-            <div className="nav-item">💡 Advice</div>
-            <div className="nav-item">📍 Location</div>
-            <div className="nav-item">💸 Money</div>
-          </div>
-          
-          <div className="language-selector">
-            <span>🇹🇭</span>
-            <span>ไทย</span>
-          </div>
+          <nav className="nav">
+            <div className="nav-item">Categories</div>
+            <div className="nav-item">Trending</div>
+            <div className="nav-item">About</div>
+            <div className="nav-item">🇹🇭 ไทย</div>
+          </nav>
+
+          <button className="menu-toggle" onClick={() => setShowMenu(!showMenu)}>
+            ☰
+          </button>
         </header>
-        
-        <main>
+
+        <main className="main">
           <section className="hero">
-            <div className="hero-content">
-              <div className="hero-left">
-                <h1 className="hero-title">BwnX Platform</h1>
-                <h2 className="hero-subtitle">การให้คำแนะนำสิ่งที่คุณต้องการ ที่ดีที่สุดในการใช้ชีวิต หาเงิน และไลฟ์สไตล์</h2>
-                
-                <div className="search-container">
-                  <input 
-                    type="text" 
-                    className="search-input" 
-                    placeholder="ค้นหาสิ่งที่คุณต้องการ..." 
-                  />
-                  <button className="search-button">🔍</button>
-                </div>
-                
-                <div className="hero-buttons">
-                  <button className="button button-primary">
-                    Get Started
-                  </button>
-                  <button className="button button-secondary">
-                    Learn More
-                  </button>
-                </div>
-                
-                <div className="stats-cards">
-                  <div className="stat-card">
-                    <div className="stat-number">10,000+</div>
-                    <div className="stat-label">คำแนะนำ</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="stat-number">10</div>
-                    <div className="stat-label">ภาษา</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="stat-number">8</div>
-                    <div className="stat-label">หมวดหมู่</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="stat-number">24/7</div>
-                    <div className="stat-label">อัปเดต</div>
-                  </div>
-                </div>
-                
-                <div className="value-text">ความคุ้มค่ารายเซอร์</div>
+            <h1 className="hero-title">BwnX Platform</h1>
+            <p className="hero-subtitle">Deep Ocean Recommendations for Life, Money & Lifestyle</p>
+            <p className="hero-description">
+              AI-powered recommendation system that provides personalized suggestions for apps, tools,<br/>
+              finance, lifestyle, and more. Discover what you need with deep personalization.
+            </p>
+            
+            <div className="search-container">
+              <input 
+                type="text" 
+                className="search-input" 
+                placeholder="Search for apps, tools, finance..."
+              />
+              <button className="search-button">🔍</button>
+            </div>
+
+            <div className="hero-buttons">
+              <button className="button button-primary">⚡ Get Started</button>
+              <button className="button button-secondary">Learn More</button>
+            </div>
+
+            <div className="stats-cards">
+              <div className="stat-card">
+                <div className="stat-icon">🎯</div>
+                <div className="stat-number">10,000+</div>
+                <div className="stat-label">Total Recommendations</div>
               </div>
-              
-              <div className="hero-right">
-                <div className="social-links">
-                  <div className="social-row">
-                    <a href="#" className="social-link">
-                      <span className="social-icon">𝕏</span>
-                      Twitter
-                    </a>
-                    <a href="#" className="social-link">
-                      <span className="social-icon">📸</span>
-                      Instagram
-                    </a>
-                  </div>
-                  <div className="social-row">
-                    <a href="#" className="social-link">
-                      <span className="social-icon">▶️</span>
-                      YouTube
-                    </a>
-                    <a href="#" className="social-link">
-                      <span className="social-icon">💬</span>
-                      Discord
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="update-card">
-                  <div className="update-title">อัปเดตล่าสุด</div>
-                  <div className="update-time">ทุกวัน 24/7</div>
-                </div>
+              <div className="stat-card">
+                <div className="stat-icon">🌍</div>
+                <div className="stat-number">10</div>
+                <div className="stat-label">Languages Supported</div>
               </div>
+              <div className="stat-card">
+                <div className="stat-icon">📊</div>
+                <div className="stat-number">8</div>
+                <div className="stat-label">Categories</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon">⏰</div>
+                <div className="stat-number">24/7</div>
+                <div className="stat-label">Daily Updates</div>
+              </div>
+            </div>
+
+            <div className="value-text">
+              ความคุ้มค่ารายเซอร์
             </div>
           </section>
 
@@ -125,7 +105,7 @@ function App() {
                 </div>
                 <h3 className="category-title">Smart Travel & Booking</h3>
                 <p className="category-description">
-                  ท่องเที่ยว & การจองตั๋ว - แอปและเว็บไซต์สำหรับการท่องเที่ยวและการจองที่พัก
+                  แอปท่องเที่ยว & จองที่พัก - แอปพลิเคชันสำหรับการเดินทางและการจองที่พักอัจฉริยะ
                 </p>
                 <div className="category-tags">
                   <div className="category-tag">Travel Apps</div>
@@ -144,12 +124,12 @@ function App() {
                 </div>
                 <h3 className="category-title">Career & Freelance Hub</h3>
                 <p className="category-description">
-                  แพลตฟอร์มหางาน & ฟรีแลนซ์ - โอกาสในการสร้างรายได้และพัฒนาอาชีพ
+                  แอปหางาน & ฟรีแลนซ์ - แพลตฟอร์มสำหรับการหางานและงานฟรีแลนซ์
                 </p>
                 <div className="category-tags">
-                  <div className="category-tag">Freelance</div>
-                  <div className="category-tag">Remote Work</div>
                   <div className="category-tag">Job Search</div>
+                  <div className="category-tag">Freelance</div>
+                  <div className="category-tag">Career</div>
                 </div>
                 <div className="category-link">
                   สำรวจ <span className="category-link-icon">→</span>
@@ -163,12 +143,12 @@ function App() {
                 </div>
                 <h3 className="category-title">AI Tools & Finance Apps</h3>
                 <p className="category-description">
-                  AI + แอปการเงิน - เครื่องมือ AI และแอปการเงินที่ช่วยเพิ่มประสิทธิภาพ
+                  เครื่องมือ AI & แอปการเงิน - เครื่องมือปัญญาประดิษฐ์และแอปพลิเคชันการเงิน
                 </p>
                 <div className="category-tags">
                   <div className="category-tag">AI Tools</div>
-                  <div className="category-tag">Finance Apps</div>
-                  <div className="category-tag">Productivity</div>
+                  <div className="category-tag">Finance</div>
+                  <div className="category-tag">Automation</div>
                 </div>
                 <div className="category-link">
                   สำรวจ <span className="category-link-icon">→</span>
@@ -182,12 +162,12 @@ function App() {
                 </div>
                 <h3 className="category-title">Social & Lifestyle Connect</h3>
                 <p className="category-description">
-                  หาเพื่อน & หาคู่ & โซเชียล - แอปสำหรับการเชื่อมต่อและสร้างความสัมพันธ์
+                  แอปโซเชียล & ไลฟ์สไตล์ - แอปพลิเคชันสำหรับการเชื่อมต่อสังคมและไลฟ์สไตล์
                 </p>
                 <div className="category-tags">
                   <div className="category-tag">Social Media</div>
-                  <div className="category-tag">Dating Apps</div>
-                  <div className="category-tag">Networking</div>
+                  <div className="category-tag">Lifestyle</div>
+                  <div className="category-tag">Communication</div>
                 </div>
                 <div className="category-link">
                   สำรวจ <span className="category-link-icon">→</span>
@@ -201,7 +181,7 @@ function App() {
                 </div>
                 <h3 className="category-title">E-commerce & Shopping Apps</h3>
                 <p className="category-description">
-                  แอปสั่งของออนไลน์ - แพลตฟอร์มช้อปปิ้งและการสั่งซื้อสินค้าออนไลน์
+                  แอปช้อปปิ้ง & อีคอมเมิร์ซ - แอปพลิเคชันสำหรับการช้อปปิ้งและการค้าออนไลน์
                 </p>
                 <div className="category-tags">
                   <div className="category-tag">Shopping</div>
@@ -220,11 +200,11 @@ function App() {
                 </div>
                 <h3 className="category-title">Safe Web & VPN Solutions</h3>
                 <p className="category-description">
-                  VPN & อินเทอร์เน็ตปลอดภัย - เครื่องมือรักษาความปลอดภัยออนไลน์
+                  เว็บปลอดภัย & VPN - เครื่องมือสำหรับการรักษาความปลอดภัยออนไลน์
                 </p>
                 <div className="category-tags">
-                  <div className="category-tag">VPN</div>
                   <div className="category-tag">Security</div>
+                  <div className="category-tag">VPN</div>
                   <div className="category-tag">Privacy</div>
                 </div>
                 <div className="category-link">
@@ -239,11 +219,11 @@ function App() {
                 </div>
                 <h3 className="category-title">Affiliate & Money-Making Apps</h3>
                 <p className="category-description">
-                  แอปหาเงิน & แอฟฟิลิเอต - แอปและเครื่องมือสำหรับสร้างรายได้ออนไลน์
+                  แอปหาเงิน & แอฟฟิลิเอต - แอปพลิเคชันสำหรับการหาเงินและการตลาดแบบแอฟฟิลิเอต
                 </p>
                 <div className="category-tags">
-                  <div className="category-tag">Affiliate</div>
                   <div className="category-tag">Money Making</div>
+                  <div className="category-tag">Affiliate</div>
                   <div className="category-tag">Passive Income</div>
                 </div>
                 <div className="category-link">
@@ -263,7 +243,7 @@ function App() {
                 </div>
                 <h3 className="category-title">Investment & Trading Channels</h3>
                 <p className="category-description">
-                  ช่องการลงทุน & เทรด - ช่องที่สอนการลงทุนและเทรดดิ้งอย่างมืออาชีพ
+                  ช่องลงทุน & เทรดดิ้ง - ช่องที่สอนการลงทุนและการเทรดดิ้งอย่างมืออาชีพ
                 </p>
                 <div className="category-tags">
                   <div className="category-tag">Investment</div>
@@ -282,12 +262,12 @@ function App() {
                 </div>
                 <h3 className="category-title">Knowledge & Deep-Dive Learning</h3>
                 <p className="category-description">
-                  ช่องหาความรู้ & เจาะลึกบุคคล - เนื้อหาการเรียนรู้และการวิเคราะห์เชิงลึก
+                  ช่องความรู้ & การเรียนรู้เชิงลึก - ช่องที่ให้ความรู้และการเรียนรู้อย่างลึกซึ้ง
                 </p>
                 <div className="category-tags">
                   <div className="category-tag">Education</div>
-                  <div className="category-tag">Deep Dive</div>
-                  <div className="category-tag">Analysis</div>
+                  <div className="category-tag">Learning</div>
+                  <div className="category-tag">Knowledge</div>
                 </div>
                 <div className="category-link">
                   สำรวจ <span className="category-link-icon">→</span>
@@ -301,12 +281,12 @@ function App() {
                 </div>
                 <h3 className="category-title">Podcasts & Expert Talks</h3>
                 <p className="category-description">
-                  พอดแคสต์ & บทสัมภาษณ์ - รายการสนทนาและบทสัมภาษณ์จากผู้เชี่ยวชาญ
+                  พอดแคสต์ & การสนทนาผู้เชี่ยวชาญ - ช่องพอดแคสต์และการสนทนากับผู้เชี่ยวชาญ
                 </p>
                 <div className="category-tags">
                   <div className="category-tag">Podcasts</div>
-                  <div className="category-tag">Interviews</div>
                   <div className="category-tag">Expert Talks</div>
+                  <div className="category-tag">Interviews</div>
                 </div>
                 <div className="category-link">
                   สำรวจ <span className="category-link-icon">→</span>
@@ -320,12 +300,12 @@ function App() {
                 </div>
                 <h3 className="category-title">Entertainment & Lifestyle Media</h3>
                 <p className="category-description">
-                  ความบันเทิง & สุขภาพ - เนื้อหาความบันเทิงและการดูแลสุขภาพ
+                  ช่องบันเทิง & ไลฟ์สไตล์ - ช่องที่ให้ความบันเทิงและเนื้อหาไลฟ์สไตล์
                 </p>
                 <div className="category-tags">
                   <div className="category-tag">Entertainment</div>
                   <div className="category-tag">Lifestyle</div>
-                  <div className="category-tag">Health</div>
+                  <div className="category-tag">Media</div>
                 </div>
                 <div className="category-link">
                   สำรวจ <span className="category-link-icon">→</span>
@@ -339,12 +319,12 @@ function App() {
                 </div>
                 <h3 className="category-title">E-commerce & Product Review</h3>
                 <p className="category-description">
-                  รีวิวสินค้า & ร้านค้าออนไลน์ - ช่องรีวิวสินค้าและแนะนำร้านค้า
+                  ช่องอีคอมเมิร์ซ & รีวิวสินค้า - ช่องที่รีวิวสินค้าและสอนการขายออนไลน์
                 </p>
                 <div className="category-tags">
                   <div className="category-tag">Product Review</div>
-                  <div className="category-tag">Shopping</div>
                   <div className="category-tag">E-commerce</div>
+                  <div className="category-tag">Shopping Guide</div>
                 </div>
                 <div className="category-link">
                   สำรวจ <span className="category-link-icon">→</span>
@@ -358,7 +338,7 @@ function App() {
                 </div>
                 <h3 className="category-title">Gaming Deals & Tutorials</h3>
                 <p className="category-description">
-                  ดีลเกม & สอนเกม - ช่องที่รวมดีลเกมและสอนวิธีเล่นเกมต่างๆ
+                  ช่องเกม & ดีลเกม - ช่องที่แนะนำเกมและดีลเกมที่คุ้มค่า
                 </p>
                 <div className="category-tags">
                   <div className="category-tag">Gaming</div>
@@ -377,12 +357,12 @@ function App() {
                 </div>
                 <h3 className="category-title">Affiliate & Passive Income Channels</h3>
                 <p className="category-description">
-                  ช่องสอนหาเงินออนไลน์ & Affiliate - ช่องที่สอนวิธีสร้างรายได้ออนไลน์
+                  ช่องแอฟฟิลิเอต & รายได้แบบพาสซีฟ - ช่องที่สอนการสร้างรายได้แบบพาสซีฟ
                 </p>
                 <div className="category-tags">
                   <div className="category-tag">Affiliate Marketing</div>
-                  <div className="category-tag">Online Income</div>
                   <div className="category-tag">Passive Income</div>
+                  <div className="category-tag">Online Business</div>
                 </div>
                 <div className="category-link">
                   สำรวจ <span className="category-link-icon">→</span>
@@ -390,71 +370,6 @@ function App() {
               </div>
             </div>
           </section>
-
-          <section className="newsletter-section">
-            <div className="newsletter-container">
-              <h2 className="newsletter-title">รับข้อมูลล่าสุด</h2>
-              <p className="newsletter-description">สมัครรับข่าวสารและคำแนะนำใหม่ๆ ส่งตรงถึงอีเมลของคุณ</p>
-              
-              <div className="newsletter-form">
-                <input 
-                  type="email" 
-                  className="newsletter-input" 
-                  placeholder="อีเมลของคุณ" 
-                />
-                <button className="newsletter-button">สมัคร</button>
-              </div>
-            </div>
-          </section>
-        </main>
-
-        <footer className="footer">
-          <div className="footer-content">
-            <div className="footer-copyright">
-              © 2024 Bwn X. สร้างด้วย ❤️ ในประเทศไทย
-            </div>
-            
-            <div className="footer-links">
-              <a href="#" className="footer-link">นโยบายความเป็นส่วนตัว</a>
-              <a href="#" className="footer-link">เงื่อนไขการใช้งาน</a>
-              <a href="#" className="footer-link">กลับขึ้นบน</a>
-            </div>
-          </div>
-          
-          <div className="made-with">
-            Made with Manus
-          </div>
-        </footer>
-      </div>
-      
-      {showMenu && (
-        <div className="side-menu">
-          <div className="side-menu-header">
-            <div className="logo-container">
-              <img src="/logo.png" alt="BwnX Logo" className="logo" />
-              <div className="logo-text">BwnX</div>
-            </div>
-            <button className="close-menu" onClick={() => setShowMenu(false)}>×</button>
-          </div>
-          
-          <div className="side-menu-content">
-            <div className="side-menu-item">Apps</div>
-            <div className="side-menu-item">Channel</div>
-            <div className="side-menu-item">Fanpage</div>
-            <div className="side-menu-item">Product</div>
-            <div className="side-menu-item">News</div>
-            <div className="side-menu-item">Advice</div>
-            <div className="side-menu-item">Location</div>
-            <div className="side-menu-item">Money</div>
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
-
-export default App;
-
 
           <section className="categories-section">
             <h2 className="section-title">📘 Fanpages</h2>
@@ -1115,7 +1030,7 @@ export default App;
         <div className="side-menu">
           <div className="side-menu-header">
             <div className="logo-container">
-              <img src="/logo.png" alt="BwnX Logo" className="logo" />
+              <div className="logo">🌊</div>
               <div className="logo-text">BwnX</div>
             </div>
             <button className="close-menu" onClick={() => setShowMenu(false)}>×</button>
